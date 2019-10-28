@@ -1,18 +1,25 @@
 //
-//  Event.swift
+//  Player+CoreDataClass.swift
 //  TeamApp
 //
-//  Created by Saeed Taheri on 10/21/19.
+//  Created by Saeed Taheri on 10/28/19.
 //  Copyright © 2019 Saeed Taheri. All rights reserved.
 //
+//
 
-import SwiftUI
+import Foundation
 import CoreData
 
-extension Event {
-    static func create(in managedObjectContext: NSManagedObjectContext){
-        let newEvent = self.init(context: managedObjectContext)
-        newEvent.timestamp = Date()
+@objc(Player)
+public class Player: NSManagedObject {
+	
+}
+
+extension Player {
+	static func create(name: String, rating: Double, in managedObjectContext: NSManagedObjectContext){
+        let newPlayer = self.init(context: managedObjectContext)
+		newPlayer.name = name
+		newPlayer.rating = rating
         
         do {
             try  managedObjectContext.save()
@@ -22,12 +29,12 @@ extension Event {
             let nserror = error as NSError
             fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
         }
-    }   
+    }
 }
 
-extension Collection where Element == Event, Index == Int {
+extension Collection where Element == Player, Index == Int {
     func delete(at indices: IndexSet, from managedObjectContext: NSManagedObjectContext) {
-        indices.forEach { managedObjectContext.delete(self[$0]) }       
+        indices.forEach { managedObjectContext.delete(self[$0]) }
  
         do {
             try managedObjectContext.save()

@@ -22,12 +22,14 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             MasterView()
-                .navigationBarTitle(Text("Master"))
+                .navigationBarTitle(Text("TeamApp"))
                 .navigationBarItems(
                     leading: EditButton(),
                     trailing: Button(
                         action: {
-                            withAnimation { Event.create(in: self.viewContext) }
+                            withAnimation {
+								Player.create(name: "Player " + dateFormatter.string(from: Date()), rating: round(Double.random(in: 0...5)), in: self.viewContext)
+							}
                         }
                     ) { 
                         Image(systemName: "plus")
@@ -41,34 +43,34 @@ struct ContentView: View {
 
 struct MasterView: View {
     @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Event.timestamp, ascending: true)], 
+		sortDescriptors: [NSSortDescriptor(keyPath: \Player.name, ascending: true)],
         animation: .default)
-    var events: FetchedResults<Event>
+    var players: FetchedResults<Player>
 
     @Environment(\.managedObjectContext)
     var viewContext
 
     var body: some View {
         List {
-            ForEach(events, id: \.self) { event in
+            ForEach(players, id: \.self) { player in
                 NavigationLink(
-                    destination: DetailView(event: event)
+                    destination: DetailView(player: player)
                 ) {
-                    Text("\(event.timestamp!, formatter: dateFormatter)")
+					Text("\(player.name), \(player.rating)")
                 }
             }.onDelete { indices in
-                self.events.delete(at: indices, from: self.viewContext)
+                self.players.delete(at: indices, from: self.viewContext)
             }
         }
     }
 }
 
 struct DetailView: View {
-    @ObservedObject var event: Event
+    @ObservedObject var player: Player
 
     var body: some View {
-        Text("\(event.timestamp!, formatter: dateFormatter)")
-            .navigationBarTitle(Text("Detail"))
+		Text("\(player.name), \(player.rating)")
+			.navigationBarTitle(Text(player.name))
     }
 }
 
