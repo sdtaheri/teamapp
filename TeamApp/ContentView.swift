@@ -24,7 +24,7 @@ struct ContentView: View {
             MasterView()
                 .navigationBarTitle(Text("TeamApp"))
                 .navigationBarItems(
-                    leading: EditButton(),
+					leading: EditButton(),
                     trailing: Button(
                         action: {
                             withAnimation {
@@ -50,8 +50,10 @@ struct MasterView: View {
     @Environment(\.managedObjectContext)
     var viewContext
 
+	@State private var selectionKeeper = Set<Player>()
+	
     var body: some View {
-        List {
+		List(selection: $selectionKeeper) {
             ForEach(players, id: \.self) { player in
                 NavigationLink(
                     destination: DetailView(player: player)
@@ -60,8 +62,8 @@ struct MasterView: View {
                 }
             }.onDelete { indices in
                 self.players.delete(at: indices, from: self.viewContext)
-            }
-        }
+			}
+		}
     }
 }
 
