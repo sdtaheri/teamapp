@@ -8,6 +8,8 @@
 
 "app_name" = "TeamApp";
 "add_player" = "Add Player";
+"add" = "Add";
 "name" = "Name";
 "save" = "Save";
+"cancel" = "Cancel";
 "rating %lld" = "Rating: %lld";

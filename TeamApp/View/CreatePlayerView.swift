@@ -31,7 +31,7 @@ struct CreatePlayerView: View {
 				Button(action: {
 					self.presentationMode.wrappedValue.dismiss()
 				}) {
-					Image(systemName: "xmark.circle.fill")
+					Text("cancel")
 				}
 				,trailing: Button(action: {
 					Player.create(name: self.name, rating: self.rating, in: self.viewContext)

@@ -25,7 +25,7 @@ struct ContentView: View {
 							self.shouldShowCreatePlayerSheet = true
 						})
 					{
-						Image(systemName: "plus")
+						Text("add")
 					}
 					.sheet(isPresented: self.$shouldShowCreatePlayerSheet) {
 						CreatePlayerView().environment(\.managedObjectContext, self.viewContext)
