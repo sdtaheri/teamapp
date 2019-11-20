@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15508" systemVersion="19B88" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Player" representedClassName="Player" syncable="YES" codeGenerationType="class">
+        <attribute name="name" attributeType="String" defaultValueString=""/>
+        <attribute name="rating" attributeType="Integer 16" minValueString="0" maxValueString="10" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="uuid" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+    </entity>
+    <elements>
+        <element name="Player" positionX="261" positionY="198" width="128" height="88"/>
+    </elements>
+</model>

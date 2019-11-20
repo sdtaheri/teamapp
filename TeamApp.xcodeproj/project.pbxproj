@@ -15,8 +15,11 @@
 		3014EADB235D4C5E004F428F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3014EADA235D4C5E004F428F /* Preview Assets.xcassets */; };
 		3014EADE235D4C5E004F428F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3014EADC235D4C5E004F428F /* LaunchScreen.storyboard */; };
 		3078EF532366F9A400CB94D9 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3078EF522366F9A400CB94D9 /* CloudKit.framework */; };
-		30F93C562366F16E00199DC7 /* Player+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F93C542366F16E00199DC7 /* Player+CoreDataClass.swift */; };
-		30F93C572366F16E00199DC7 /* Player+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F93C552366F16E00199DC7 /* Player+CoreDataProperties.swift */; };
+		30A13BF32383F09F001C43CA /* TeamAppCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A13BF22383F09F001C43CA /* TeamAppCore.swift */; };
+		30C02E192385E444009CC2DF /* Player+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C02E182385E444009CC2DF /* Player+Extension.swift */; };
+		30C02E222385EC8D009CC2DF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 30C02E242385EC8D009CC2DF /* Localizable.strings */; };
+		30C02E262385ED72009CC2DF /* PlayersListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C02E252385ED72009CC2DF /* PlayersListView.swift */; };
+		30C02E292385EDE9009CC2DF /* CreatePlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C02E282385EDE9009CC2DF /* CreatePlayerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,8 +34,11 @@
 		3014EADF235D4C5E004F428F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3078EF502366F99500CB94D9 /* TeamApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TeamApp.entitlements; sourceTree = "<group>"; };
 		3078EF522366F9A400CB94D9 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
-		30F93C542366F16E00199DC7 /* Player+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Player+CoreDataClass.swift"; sourceTree = "<group>"; };
-		30F93C552366F16E00199DC7 /* Player+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Player+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		30A13BF22383F09F001C43CA /* TeamAppCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamAppCore.swift; sourceTree = "<group>"; };
+		30C02E182385E444009CC2DF /* Player+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Player+Extension.swift"; sourceTree = "<group>"; };
+		30C02E232385EC8D009CC2DF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		30C02E252385ED72009CC2DF /* PlayersListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayersListView.swift; sourceTree = "<group>"; };
+		30C02E282385EDE9009CC2DF /* CreatePlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePlayerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,17 +73,11 @@
 		3014EACB235D4C5D004F428F /* TeamApp */ = {
 			isa = PBXGroup;
 			children = (
-				3078EF502366F99500CB94D9 /* TeamApp.entitlements */,
-				30F93C542366F16E00199DC7 /* Player+CoreDataClass.swift */,
-				30F93C552366F16E00199DC7 /* Player+CoreDataProperties.swift */,
-				3014EACC235D4C5D004F428F /* AppDelegate.swift */,
-				3014EAD1235D4C5D004F428F /* SceneDelegate.swift */,
-				3014EAD5235D4C5D004F428F /* ContentView.swift */,
-				3014EAD7235D4C5E004F428F /* Assets.xcassets */,
-				3014EADC235D4C5E004F428F /* LaunchScreen.storyboard */,
-				3014EADF235D4C5E004F428F /* Info.plist */,
-				3014EACE235D4C5D004F428F /* TeamApp.xcdatamodeld */,
+				30C02E272385ED7F009CC2DF /* View */,
+				30C02E1E2385EBAD009CC2DF /* AppScene */,
+				30C02E1D2385EB98009CC2DF /* Model */,
 				3014EAD9235D4C5E004F428F /* Preview Content */,
+				30C02E1C2385EB86009CC2DF /* Supporting Files */,
 			);
 			path = TeamApp;
 			sourceTree = "<group>";
@@ -96,6 +96,55 @@
 				3078EF522366F9A400CB94D9 /* CloudKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		30C02E1C2385EB86009CC2DF /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3078EF502366F99500CB94D9 /* TeamApp.entitlements */,
+				3014EADF235D4C5E004F428F /* Info.plist */,
+				30C02E1F2385EC3E009CC2DF /* Resources */,
+				3014EADC235D4C5E004F428F /* LaunchScreen.storyboard */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		30C02E1D2385EB98009CC2DF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				30A13BF22383F09F001C43CA /* TeamAppCore.swift */,
+				30C02E182385E444009CC2DF /* Player+Extension.swift */,
+				3014EACE235D4C5D004F428F /* TeamApp.xcdatamodeld */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		30C02E1E2385EBAD009CC2DF /* AppScene */ = {
+			isa = PBXGroup;
+			children = (
+				3014EACC235D4C5D004F428F /* AppDelegate.swift */,
+				3014EAD1235D4C5D004F428F /* SceneDelegate.swift */,
+			);
+			path = AppScene;
+			sourceTree = "<group>";
+		};
+		30C02E1F2385EC3E009CC2DF /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				3014EAD7235D4C5E004F428F /* Assets.xcassets */,
+				30C02E242385EC8D009CC2DF /* Localizable.strings */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		30C02E272385ED7F009CC2DF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3014EAD5235D4C5D004F428F /* ContentView.swift */,
+				30C02E252385ED72009CC2DF /* PlayersListView.swift */,
+				30C02E282385EDE9009CC2DF /* CreatePlayerView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -157,6 +206,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3014EADE235D4C5E004F428F /* LaunchScreen.storyboard in Resources */,
+				30C02E222385EC8D009CC2DF /* Localizable.strings in Resources */,
 				3014EADB235D4C5E004F428F /* Preview Assets.xcassets in Resources */,
 				3014EAD8235D4C5E004F428F /* Assets.xcassets in Resources */,
 			);
@@ -169,12 +219,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				30F93C562366F16E00199DC7 /* Player+CoreDataClass.swift in Sources */,
+				30C02E192385E444009CC2DF /* Player+Extension.swift in Sources */,
 				3014EAD6235D4C5D004F428F /* ContentView.swift in Sources */,
-				30F93C572366F16E00199DC7 /* Player+CoreDataProperties.swift in Sources */,
 				3014EAD0235D4C5D004F428F /* TeamApp.xcdatamodeld in Sources */,
+				30A13BF32383F09F001C43CA /* TeamAppCore.swift in Sources */,
 				3014EACD235D4C5D004F428F /* AppDelegate.swift in Sources */,
+				30C02E292385EDE9009CC2DF /* CreatePlayerView.swift in Sources */,
 				3014EAD2235D4C5D004F428F /* SceneDelegate.swift in Sources */,
+				30C02E262385ED72009CC2DF /* PlayersListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -187,6 +239,14 @@
 				3014EADD235D4C5E004F428F /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		30C02E242385EC8D009CC2DF /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				30C02E232385EC8D009CC2DF /* en */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -310,12 +370,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = TeamApp/TeamApp.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "TeamApp/Supporting Files/TeamApp.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"TeamApp/Preview Content\"";
 				DEVELOPMENT_TEAM = CS7Q92U9AY;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = TeamApp/Info.plist;
+				INFOPLIST_FILE = "TeamApp/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -331,12 +391,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = TeamApp/TeamApp.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "TeamApp/Supporting Files/TeamApp.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"TeamApp/Preview Content\"";
 				DEVELOPMENT_TEAM = CS7Q92U9AY;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = TeamApp/Info.plist;
+				INFOPLIST_FILE = "TeamApp/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

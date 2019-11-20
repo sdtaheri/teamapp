@@ -1,0 +1,13 @@
+/* 
+  Localizable.strings
+  TeamApp
+
+  Created by Saeed Taheri on 11/21/19.
+  Copyright © 2019 Saeed Taheri. All rights reserved.
+*/
+
+"app_name" = "TeamApp";
+"add_player" = "Add Player";
+"name" = "Name";
+"save" = "Save";
+"rating %lld" = "Rating: %lld";
