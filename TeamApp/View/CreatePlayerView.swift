@@ -46,7 +46,7 @@ struct CreatePlayerView: View {
 				}) {
 					Text("save").fontWeight(.bold)
 				}.disabled(name.isEmpty))
-		}
+		}.navigationViewStyle(StackNavigationViewStyle())
 		
 	}
 }
