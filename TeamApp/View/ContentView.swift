@@ -31,18 +31,7 @@ struct ContentView: View {
 						CreatePlayerView().environment(\.managedObjectContext, self.viewContext)
 					}
 			)
-			Text("Detail view content goes here")
-				.navigationBarTitle(Text("Detail"))
 		}.navigationViewStyle(DoubleColumnNavigationViewStyle())
-	}
-}
-
-struct DetailView: View {
-	@ObservedObject var player: Player
-	
-	var body: some View {
-		Text("\(player.name ?? "Unknown"), \(player.rating)")
-			.navigationBarTitle(Text(player.name ?? "Unknown"))
 	}
 }
 

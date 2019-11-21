@@ -13,17 +13,24 @@ struct CreatePlayerView: View {
 	@Environment(\.presentationMode) private var presentationMode
 	
 	@State private var name: String = ""
-	@State private var rating: Int = 0
+	@State private var rating: Int = 5
 	
 	var body: some View {
 		NavigationView {
 			Form {
 				Section {
-					TextField("name", text: $name)
-						.disableAutocorrection(true)
+					VStack {
+						ZStack {
+							RingView(rating: $rating)
+							Text("\(rating)")
+								.font(Font.system(size: 80, weight: .bold, design: .rounded))
+						}
+						Stepper("rating", value: $rating, in: 0...10)
+					}
 				}
 				Section {
-					Stepper("rating \(rating)", value: $rating, in: 0...10)
+					TextField("name", text: $name)
+						.disableAutocorrection(true)
 				}
 			}
 			.navigationBarTitle("add_player")

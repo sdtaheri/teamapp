@@ -20,6 +20,8 @@
 		30C02E222385EC8D009CC2DF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 30C02E242385EC8D009CC2DF /* Localizable.strings */; };
 		30C02E262385ED72009CC2DF /* PlayersListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C02E252385ED72009CC2DF /* PlayersListView.swift */; };
 		30C02E292385EDE9009CC2DF /* CreatePlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C02E282385EDE9009CC2DF /* CreatePlayerView.swift */; };
+		30DE86C2238735CD00ED0B6D /* RingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DE86C1238735CD00ED0B6D /* RingView.swift */; };
+		30DE86C42387418B00ED0B6D /* PlayerDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DE86C32387418B00ED0B6D /* PlayerDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +41,8 @@
 		30C02E232385EC8D009CC2DF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		30C02E252385ED72009CC2DF /* PlayersListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayersListView.swift; sourceTree = "<group>"; };
 		30C02E282385EDE9009CC2DF /* CreatePlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePlayerView.swift; sourceTree = "<group>"; };
+		30DE86C1238735CD00ED0B6D /* RingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingView.swift; sourceTree = "<group>"; };
+		30DE86C32387418B00ED0B6D /* PlayerDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +147,8 @@
 				3014EAD5235D4C5D004F428F /* ContentView.swift */,
 				30C02E252385ED72009CC2DF /* PlayersListView.swift */,
 				30C02E282385EDE9009CC2DF /* CreatePlayerView.swift */,
+				30DE86C1238735CD00ED0B6D /* RingView.swift */,
+				30DE86C32387418B00ED0B6D /* PlayerDetailView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -219,12 +225,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30DE86C2238735CD00ED0B6D /* RingView.swift in Sources */,
 				30C02E192385E444009CC2DF /* Player+Extension.swift in Sources */,
 				3014EAD6235D4C5D004F428F /* ContentView.swift in Sources */,
 				3014EAD0235D4C5D004F428F /* TeamApp.xcdatamodeld in Sources */,
 				30A13BF32383F09F001C43CA /* TeamAppCore.swift in Sources */,
 				3014EACD235D4C5D004F428F /* AppDelegate.swift in Sources */,
 				30C02E292385EDE9009CC2DF /* CreatePlayerView.swift in Sources */,
+				30DE86C42387418B00ED0B6D /* PlayerDetailView.swift in Sources */,
 				3014EAD2235D4C5D004F428F /* SceneDelegate.swift in Sources */,
 				30C02E262385ED72009CC2DF /* PlayersListView.swift in Sources */,
 			);

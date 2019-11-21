@@ -23,7 +23,7 @@ struct PlayersListView: View {
 		List(selection: $selectionKeeper) {
 			ForEach(players, id: \.self) { player in
 				NavigationLink(
-					destination: DetailView(player: player)
+					destination: PlayerDetailView(player: player)
 				) {
 					Text("\(player.name ?? "Unknown"), \(player.rating)")
 				}
