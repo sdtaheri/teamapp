@@ -20,11 +20,7 @@ struct CreatePlayerView: View {
 			Form {
 				Section {
 					VStack {
-						ZStack {
-							RingView(rating: $rating)
-							Text("\(rating)")
-								.font(Font.system(size: 80, weight: .bold, design: .rounded))
-						}
+						RingView(rating: $rating)
 						Stepper("rating", value: $rating, in: 0...10)
 					}
 				}

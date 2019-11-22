@@ -13,11 +13,7 @@ struct PlayerDetailView: View {
 	
 	var body: some View {
 		VStack(alignment: .center) {
-			ZStack {
-				RingView(rating: Binding.constant(Int(player.rating)))
-				Text("\(player.rating)")
-					.font(Font.system(size: 80, weight: .bold, design: .rounded))
-			}
+			RingView(rating: Binding.constant(Int(player.rating)))
 			Text(player.name ?? "")
 				.font(Font.system(size: 80, weight: .bold, design: .rounded))
 				.offset(x: 0, y: -32)

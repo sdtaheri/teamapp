@@ -11,13 +11,15 @@ import SwiftUI
 struct RingView: View {
 	
 	private let colors = Gradient(colors: [Color.red, Color.yellow, Color.green, Color.red])
+
 	@Binding var rating: Int
-	
+	@State var ringWidth: CGFloat = 30
+
 	var body: some View {
 		ZStack {
 			Circle()
 				.stroke(style: StrokeStyle(
-					lineWidth: 30,
+					lineWidth: ringWidth,
 					lineCap: .round,
 					lineJoin: .round))
 				.fill(Color(UIColor.systemGray6))
@@ -25,16 +27,22 @@ struct RingView: View {
 			Circle()
 				.trim(from: 0, to: CGFloat(rating) / 10.0)
 				.stroke(style: StrokeStyle(
-					lineWidth: 30,
+					lineWidth: ringWidth,
 					lineCap: .round,
 					lineJoin: .round))
 				.fill(AngularGradient(gradient: colors, center: .center, startAngle: .degrees(36), endAngle: .degrees(396)))
-				.shadow(radius: 4.0)
+				.shadow(radius: round(0.125 * ringWidth))
 				.animation(Animation.default)
+
+			Text("\(rating)")
+				.font(Font.system(size: round(ringWidth * 3 - 10),
+								  weight: .bold,
+								  design: .rounded))
+				.rotationEffect(.degrees(90))
 		}
 		.rotationEffect(.degrees(270))
-		.padding(24)
-		.frame(height: 200)
+		.padding(round(ringWidth * 0.8))
+		.frame(height: round(ringWidth * 6.5))
 
 
 	}
