@@ -23,8 +23,7 @@ struct ContentView: View {
 					trailing: Button(
 						action: {
 							self.shouldShowCreatePlayerSheet = true
-						})
-					{
+					}) {
 						Text("add")
 					}
 					.sheet(isPresented: self.$shouldShowCreatePlayerSheet) {
