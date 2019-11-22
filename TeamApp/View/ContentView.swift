@@ -19,7 +19,6 @@ struct ContentView: View {
 			PlayersListView()
 				.navigationBarTitle(Text("app_name"))
 				.navigationBarItems(
-					leading: EditButton(),
 					trailing: Button(
 						action: {
 							self.shouldShowCreatePlayerSheet = true

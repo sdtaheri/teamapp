@@ -22,7 +22,7 @@ struct RingView: View {
 					lineWidth: ringWidth,
 					lineCap: .round,
 					lineJoin: .round))
-				.fill(Color(UIColor.systemGray6))
+				.fill(Color(UIColor.systemGray4))
 
 			Circle()
 				.trim(from: 0, to: CGFloat(rating) / 10.0)
@@ -39,10 +39,12 @@ struct RingView: View {
 								  weight: .bold,
 								  design: .rounded))
 				.rotationEffect(.degrees(90))
+				.foregroundColor(Color.primary)
 		}
 		.rotationEffect(.degrees(270))
 		.padding(round(ringWidth * 0.8))
-		.frame(height: round(ringWidth * 6.5))
+		.frame(width: round(ringWidth * 6.5),
+			   height: round(ringWidth * 6.5))
 
 
 	}
