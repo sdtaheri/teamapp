@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>StringKey</key>
+	<dict>
+		<key>team_count_%lld</key>
+		<string>%#@team@</string>
+		<key>team</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>lld</string>
+			<key>zero</key>
+			<string>No Teams</string>
+			<key>one</key>
+			<string>1 Team</string>
+			<key>two</key>
+			<string>2 Teams</string>
+			<key>few</key>
+			<string>%lld Teams</string>
+			<key>many</key>
+			<string>%lld Teams</string>
+			<key>other</key>
+			<string>%lld Teams</string>
+		</dict>
+	</dict>
+</dict>
+</plist>

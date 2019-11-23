@@ -14,3 +14,8 @@
 "cancel" = "Cancel";
 "rating" = "Rating";
 "lets_play" = "Let's Play!";
+"teams" = "Teams";
+"again" = "Again!";
+"team_count %lld" = "%lld Teams";
+"you_seem_very_lonely" = "You seem very lonely! No one plays with you huh?";
+"you_seem_very_smart" = "You seem very smart by the way!";

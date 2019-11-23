@@ -18,32 +18,31 @@ struct PlayersListView: View {
 	@Environment(\.managedObjectContext)
 	private var viewContext
 
-	@State private var selectedItems = Set<UUID>()
+	@State private var selectedPlayers = Set<Player>()
 
 	var body: some View {
 		ZStack(alignment: .bottomTrailing) {
-			List(selection: $selectedItems) {
+			List {
 				ForEach(players, id: \.self) { player in
-					PlayerListItemView(player: player, selectedItems: self.$selectedItems)
+					PlayerListItemViewSelectable(player: player, selectedItems: self.$selectedPlayers)
 				}.onDelete { indices in
+					self.selectedPlayers.removeAll()
 					self.players.delete(at: indices, from: self.viewContext)
 				}
 			}
 			.listStyle(GroupedListStyle())
 
-			Button(action: {
-
-			}) {
+			NavigationLink(destination: CalculatedTeamsView(players: $selectedPlayers)) {
 				HStack {
 					Text("lets_play")
 						.fontWeight(.medium)
-					Image(systemName: "\(selectedItems.count).circle.fill")
+					Image(systemName: "\(selectedPlayers.count).circle.fill")
 				}
-				.font(.title)
+				.font(.system(.title, design: .rounded))
 			}
 			.buttonStyle(ActionButtonBackgroundStyle())
-			.opacity(selectedItems.isEmpty ? 0 : 1)
-			.blur(radius: selectedItems.isEmpty ? 10 : 0)
+			.opacity(selectedPlayers.isEmpty ? 0 : 1)
+			.blur(radius: selectedPlayers.isEmpty ? 10 : 0)
 		}
 		.animation(Animation.default)
 	}
