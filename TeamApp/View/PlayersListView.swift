@@ -29,6 +29,32 @@ struct PlayersListView: View {
 				List {
 					ForEach(players, id: \.self) { player in
 						PlayerListItemViewSelectable(player: player, selectedItems: self.$selectedPlayers)
+//							.contextMenu {
+//								Button(action: {
+//
+//								}) {
+//									Text("edit")
+//									Image(systemName: "pencil")
+//								}
+//
+//								Button(action: {
+//									if self.selectedPlayers.contains(player) {
+//										self.selectedPlayers.remove(player)
+//									} else {
+//										self.selectedPlayers.insert(player)
+//									}
+//								}) {
+//									Text(self.selectedPlayers.contains(player) ? "unselect" : "select")
+//									Image(systemName: self.selectedPlayers.contains(player) ? "multiply" : "checkmark")
+//								}
+//
+//								Button(action: {
+//
+//								}) {
+//									Text("delete")
+//									Image(systemName: "trash")
+//								}
+//							}
 					}.onDelete { indices in
 						self.selectedPlayers.removeAll()
 						self.players.delete(at: indices, from: self.viewContext)

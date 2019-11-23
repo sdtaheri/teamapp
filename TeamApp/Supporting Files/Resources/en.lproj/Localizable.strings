@@ -13,6 +13,10 @@
 "save" = "Save";
 "clear" = "Clear";
 "cancel" = "Cancel";
+"delete" = "Delete";
+"edit" = "Edit";
+"select" = "Select";
+"unselect" = "Unselect";
 "rating" = "Rating";
 "lets_play" = "Let's Play!";
 "teams" = "Teams";
