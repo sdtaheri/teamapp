@@ -17,6 +17,7 @@ struct CalculatedTeamsView: View {
 	@State private var teams = [(index: Int, players: [Player])]()
 	@State private var numberOfTeams = 2
 
+	@State private var shouldShowShareSheet = false
 
 	init(players: Binding<Set<Player>>) {
 		self._players = players
@@ -31,21 +32,21 @@ struct CalculatedTeamsView: View {
 		return ZStack {
 			if self.players.count < 2 {
 				VStack {
-					Image(systemName: "person.badge.minus").font(.system(size: 100))
+					Image(systemName: "person.badge.minus").font(.system(size: 60))
 						.padding()
 					Text("you_seem_very_lonely")
 						.multilineTextAlignment(.center)
-						.font(.system(.title))
+						.font(.system(.body))
 				}.padding()
 			} else {
 				VStack(spacing: 0) {
 					List {
 						ForEach(teams.isEmpty ? initialTeams : teams, id: \.self.0) { index, team in
-							Section(header: Text("Team \(index + 1)"),
+							Section(header: Text("team_index \(index + 1)"),
 									footer: TeamFooterView(index: index, players: team)) {
-								ForEach(team) {
-									PlayerListItemView(player: $0)
-								}
+										ForEach(team) {
+											PlayerListItemView(player: $0)
+										}
 							}
 						}
 					}.listStyle(PlainListStyle())
@@ -58,7 +59,8 @@ struct CalculatedTeamsView: View {
 								self.generateNewTeams()
 							}) {
 								Text("again")
-									.font(.headline)
+									.fontWeight(.medium)
+									.font(.system(.headline, design: .rounded))
 							}
 							.buttonStyle(ActionButtonBackgroundStyle())
 
@@ -74,7 +76,7 @@ struct CalculatedTeamsView: View {
 								Text("team_count \(numberOfTeams)")
 									.font(.system(.body, design: .rounded))
 							}
-							.padding()
+							.padding(.horizontal)
 							.fixedSize()
 						}
 
@@ -92,12 +94,18 @@ struct CalculatedTeamsView: View {
 		.navigationBarTitle(Text("teams"), displayMode: .automatic)
 		.navigationBarItems(trailing:
 			Button(action: {
-
+				self.shouldShowShareSheet = true
 			}) {
 				Image(systemName: "square.and.arrow.up")
 			}
 			.opacity(self.players.count >= 2 ? 1 : 0)
 		)
+			.sheet(isPresented: $shouldShowShareSheet) {
+//			.popover(isPresented: $shouldShowShareSheet,
+//					 attachmentAnchor: PopoverAttachmentAnchor.point(.topTrailing),
+//					 arrowEdge: .top) {
+						ShareSheet(activityItems: [self.core.textualRepresentation(teams: self.teams.isEmpty ? self.initialTeams : self.teams)])
+		}
 
 	}
 

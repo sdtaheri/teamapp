@@ -42,11 +42,12 @@ struct PlayersListView: View {
 							.fontWeight(.medium)
 						Image(systemName: "\(selectedPlayers.count).circle.fill")
 					}
-					.font(.system(.title, design: .rounded))
+					.font(.system(.headline, design: .rounded))
 				}
 				.buttonStyle(ActionButtonBackgroundStyle())
 				.opacity(selectedPlayers.isEmpty ? 0 : 1)
 				.blur(radius: selectedPlayers.isEmpty ? 10 : 0)
+				.padding(.vertical)
 			}
 
 			if players.isEmpty {
@@ -54,18 +55,32 @@ struct PlayersListView: View {
 					self.shouldShowCreatePlayerSheet = true
 				}) {
 					VStack {
-						Image(systemName: "plus.circle").font(.system(size: 100))
+						Image(systemName: "plus.circle").font(.system(size: 60))
 							.padding()
 						Text("try_adding_player")
 							.multilineTextAlignment(.center)
-							.font(.system(.title))
+							.font(.system(.body))
 					}.padding()
 				}
 			}
 		}
 		.navigationBarTitle(Text("app_name"), displayMode: players.isEmpty ? .inline : .large)
-		.sheet(isPresented: self.$shouldShowCreatePlayerSheet) {
-			CreatePlayerView().environment(\.managedObjectContext, self.viewContext)
+		.navigationBarItems(leading:
+			Button(action: {
+				self.selectedPlayers.removeAll()
+			}) {
+				Text("clear")
+			}
+			.opacity(self.selectedPlayers.isEmpty ? 0 : 1)
+			,trailing: Button(
+				action: {
+					self.shouldShowCreatePlayerSheet = true
+			}) {
+				Text("add")
+			}
+		)
+			.sheet(isPresented: self.$shouldShowCreatePlayerSheet) {
+				CreatePlayerView().environment(\.managedObjectContext, self.viewContext)
 		}
 		.animation(Animation.default)
 	}

@@ -21,6 +21,7 @@ struct CreatePlayerView: View {
 				Section {
 					TextField("name", text: $name)
 						.disableAutocorrection(true)
+						.autocapitalization(.words)
 				}
 				Section {
 					VStack {

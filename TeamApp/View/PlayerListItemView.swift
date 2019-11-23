@@ -21,9 +21,9 @@ struct PlayerListItemView: View {
 
 	var body: some View {
 		HStack {
-			RingView(rating: ratingBinding, ringWidth: 10)
+			RingView(rating: ratingBinding, ringWidth: 8)
 			Text(player.name ?? "")
-				.font(Font.system(.title,
+				.font(Font.system(.body,
 								  design: .rounded))
 				.padding()
 				.foregroundColor(Color.primary)

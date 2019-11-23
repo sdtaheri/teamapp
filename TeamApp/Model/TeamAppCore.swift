@@ -90,5 +90,30 @@ struct TeamAppCore {
 
         return sortedResult
     }
+
+	func textualRepresentation(teams:[(index: Int, players: [Player])]) -> String {
+		var result = ""
+
+		for team in teams {
+			result += String.localizedStringWithFormat(NSLocalizedString("team_index %lld", comment: ""), (team.index + 1))
+			result += "; ("
+			result += String.localizedStringWithFormat(NSLocalizedString("players_count %lld", comment: ""), Int(players.map { $0.rating }.sum))
+			result += ", "
+			result += String.localizedStringWithFormat(NSLocalizedString("team_average %@", comment: ""), NumberFormatter.singleDecimal.string(from: NSNumber(value: players.map { $0.rating }.average)) ?? "0")
+			result += ")\n"
+
+			for player in team.players {
+				result += "\(player.name ?? ""): \(player.rating)\n"
+			}
+
+			result += "\n"
+		}
+
+		while result.last == "\n" {
+			result.removeLast()
+		}
+
+		return result
+	}
 }
 

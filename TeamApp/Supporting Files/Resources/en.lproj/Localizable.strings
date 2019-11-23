@@ -11,12 +11,16 @@
 "add" = "Add";
 "name" = "Name";
 "save" = "Save";
+"clear" = "Clear";
 "cancel" = "Cancel";
 "rating" = "Rating";
 "lets_play" = "Let's Play!";
 "teams" = "Teams";
 "again" = "Again!";
 "team_count %lld" = "%lld Teams";
+"team_index %lld" = "Team %lld";
+"team_average %@" = "Average: %@";
+"players_count %lld" = "Total: %lld";
 "you_seem_very_lonely" = "You seem very lonely! No one plays with you huh?";
 "you_seem_very_smart" = "You seem very smart by the way!";
 "choose_from_left_column" = "Choose your players or add a new one in the left column.";

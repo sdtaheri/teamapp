@@ -14,8 +14,8 @@ struct TeamFooterView: View {
 
     var body: some View {
 		HStack {
-			Text("Total: \(players.map { $0.rating }.sum)")
-			Text("Average: \(NumberFormatter.singleDecimal.string(from: NSNumber(value: players.map { $0.rating }.average)) ?? "0")")
+			Text("players_count \(Int(players.map { $0.rating }.sum))")
+			Text("team_average \(NumberFormatter.singleDecimal.string(from: NSNumber(value: players.map { $0.rating }.average)) ?? "0")")
 		}
     }
 }

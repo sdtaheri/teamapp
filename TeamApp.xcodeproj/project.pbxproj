@@ -19,6 +19,7 @@
 		30472DFE23897E2A0032FEC0 /* TeamHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30472DFD23897E2A0032FEC0 /* TeamHeaderView.swift */; };
 		30472E00238980630032FEC0 /* Formatters+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30472DFF238980630032FEC0 /* Formatters+Extension.swift */; };
 		30472E032389887F0032FEC0 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 30472E052389887F0032FEC0 /* Localizable.stringsdict */; };
+		30472E08238998620032FEC0 /* ShareSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30472E07238998620032FEC0 /* ShareSheet.swift */; };
 		3078EF532366F9A400CB94D9 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3078EF522366F9A400CB94D9 /* CloudKit.framework */; };
 		30811AB3238875D60095B3BA /* PlayerListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30811AB2238875D60095B3BA /* PlayerListItemView.swift */; };
 		30811AB5238879C80095B3BA /* Number+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30811AB4238879C80095B3BA /* Number+Extension.swift */; };
@@ -46,6 +47,7 @@
 		30472DFD23897E2A0032FEC0 /* TeamHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamHeaderView.swift; sourceTree = "<group>"; };
 		30472DFF238980630032FEC0 /* Formatters+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Formatters+Extension.swift"; sourceTree = "<group>"; };
 		30472E042389887F0032FEC0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = en; path = en.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
+		30472E07238998620032FEC0 /* ShareSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSheet.swift; sourceTree = "<group>"; };
 		3078EF502366F99500CB94D9 /* TeamApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TeamApp.entitlements; sourceTree = "<group>"; };
 		3078EF522366F9A400CB94D9 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		30811AB2238875D60095B3BA /* PlayerListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerListItemView.swift; sourceTree = "<group>"; };
@@ -106,6 +108,14 @@
 				3014EADA235D4C5E004F428F /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		30472E062389984C0032FEC0 /* Representable */ = {
+			isa = PBXGroup;
+			children = (
+				30472E07238998620032FEC0 /* ShareSheet.swift */,
+			);
+			path = Representable;
 			sourceTree = "<group>";
 		};
 		3078EF512366F9A400CB94D9 /* Frameworks */ = {
@@ -170,6 +180,7 @@
 		30C02E272385ED7F009CC2DF /* View */ = {
 			isa = PBXGroup;
 			children = (
+				30472E062389984C0032FEC0 /* Representable */,
 				3014EAD5235D4C5D004F428F /* ContentView.swift */,
 				30C02E282385EDE9009CC2DF /* CreatePlayerView.swift */,
 				30811AB2238875D60095B3BA /* PlayerListItemView.swift */,
@@ -259,6 +270,7 @@
 				30C02E192385E444009CC2DF /* Player+Extension.swift in Sources */,
 				3014EAD6235D4C5D004F428F /* ContentView.swift in Sources */,
 				30472DFA2389391A0032FEC0 /* CalculatedTeamsView.swift in Sources */,
+				30472E08238998620032FEC0 /* ShareSheet.swift in Sources */,
 				3014EAD0235D4C5D004F428F /* TeamApp.xcdatamodeld in Sources */,
 				30A13BF32383F09F001C43CA /* TeamAppCore.swift in Sources */,
 				3014EACD235D4C5D004F428F /* AppDelegate.swift in Sources */,

@@ -35,7 +35,7 @@ struct RingView: View {
 				.animation(Animation.default)
 
 			Text("\(rating)")
-				.font(Font.system(size: round(ringWidth * 3 - 10),
+				.font(Font.system(size: round(ringWidth * 3 - 8),
 								  weight: .bold,
 								  design: .rounded))
 				.rotationEffect(.degrees(90))

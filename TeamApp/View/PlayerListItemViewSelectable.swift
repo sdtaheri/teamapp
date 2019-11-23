@@ -42,7 +42,7 @@ struct PlayerListItemViewSelectable: View {
 					Spacer()
 					Image(systemName: "checkmark.seal.fill")
 						.foregroundColor(Color.accentColor)
-						.font(Font.system(.title))
+						.font(Font.system(.body))
 						
 				}
 			}

@@ -11,30 +11,16 @@ import SwiftUI
 struct ContentView: View {
 	@Environment(\.managedObjectContext) private var viewContext
 
-	@State
-	private var shouldShowCreatePlayerSheet: Bool = false
-	
 	var body: some View {
 		NavigationView {
 			PlayersListView()
-				.navigationBarItems(
-					trailing: Button(
-						action: {
-							self.shouldShowCreatePlayerSheet = true
-					}) {
-						Text("add")
-					}
-					.sheet(isPresented: self.$shouldShowCreatePlayerSheet) {
-						CreatePlayerView().environment(\.managedObjectContext, self.viewContext)
-					}
-			)
 
 			VStack {
-				Image(systemName: "arrowshape.turn.up.left").font(.system(size: 100))
+				Image(systemName: "arrowshape.turn.up.left").font(.system(size: 60))
 					.padding()
 				Text("choose_from_left_column")
 					.multilineTextAlignment(.center)
-					.font(.system(.title))
+					.font(.system(.body))
 			}.padding()
 
 		}.navigationViewStyle(DoubleColumnNavigationViewStyle())
