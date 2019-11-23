@@ -17,7 +17,6 @@ struct ContentView: View {
 	var body: some View {
 		NavigationView {
 			PlayersListView()
-				.navigationBarTitle(Text("app_name"))
 				.navigationBarItems(
 					trailing: Button(
 						action: {
@@ -29,6 +28,15 @@ struct ContentView: View {
 						CreatePlayerView().environment(\.managedObjectContext, self.viewContext)
 					}
 			)
+
+			VStack {
+				Image(systemName: "arrowshape.turn.up.left").font(.system(size: 100))
+					.padding()
+				Text("choose_from_left_column")
+					.multilineTextAlignment(.center)
+					.font(.system(.title))
+			}.padding()
+
 		}.navigationViewStyle(DoubleColumnNavigationViewStyle())
 	}
 }

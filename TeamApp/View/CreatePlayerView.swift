@@ -19,14 +19,14 @@ struct CreatePlayerView: View {
 		NavigationView {
 			Form {
 				Section {
+					TextField("name", text: $name)
+						.disableAutocorrection(true)
+				}
+				Section {
 					VStack {
 						RingView(rating: $rating)
 						Stepper("rating", value: $rating, in: 0...10)
 					}
-				}
-				Section {
-					TextField("name", text: $name)
-						.disableAutocorrection(true)
 				}
 			}
 			.navigationBarTitle("add_player")

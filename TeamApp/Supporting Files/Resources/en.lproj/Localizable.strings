@@ -19,3 +19,5 @@
 "team_count %lld" = "%lld Teams";
 "you_seem_very_lonely" = "You seem very lonely! No one plays with you huh?";
 "you_seem_very_smart" = "You seem very smart by the way!";
+"choose_from_left_column" = "Choose your players or add a new one in the left column.";
+"try_adding_player" = "Try adding a new player.";
