@@ -14,6 +14,9 @@
 		3014EAD8235D4C5E004F428F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3014EAD7235D4C5E004F428F /* Assets.xcassets */; };
 		3014EADB235D4C5E004F428F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3014EADA235D4C5E004F428F /* Preview Assets.xcassets */; };
 		3014EADE235D4C5E004F428F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3014EADC235D4C5E004F428F /* LaunchScreen.storyboard */; };
+		301F7B54238A2A0B0049CCF2 /* EmptyDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301F7B53238A2A0B0049CCF2 /* EmptyDetailView.swift */; };
+		301F7B56238A2AE00049CCF2 /* BigImageInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301F7B55238A2AE00049CCF2 /* BigImageInfoView.swift */; };
+		301F7B58238A35260049CCF2 /* EditPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301F7B57238A35260049CCF2 /* EditPlayerView.swift */; };
 		30472DFA2389391A0032FEC0 /* CalculatedTeamsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30472DF92389391A0032FEC0 /* CalculatedTeamsView.swift */; };
 		30472DFC238946920032FEC0 /* PlayerListItemViewSelectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30472DFB238946920032FEC0 /* PlayerListItemViewSelectable.swift */; };
 		30472DFE23897E2A0032FEC0 /* TeamHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30472DFD23897E2A0032FEC0 /* TeamHeaderView.swift */; };
@@ -42,6 +45,9 @@
 		3014EADA235D4C5E004F428F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		3014EADD235D4C5E004F428F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3014EADF235D4C5E004F428F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		301F7B53238A2A0B0049CCF2 /* EmptyDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyDetailView.swift; sourceTree = "<group>"; };
+		301F7B55238A2AE00049CCF2 /* BigImageInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigImageInfoView.swift; sourceTree = "<group>"; };
+		301F7B57238A35260049CCF2 /* EditPlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditPlayerView.swift; sourceTree = "<group>"; };
 		30472DF92389391A0032FEC0 /* CalculatedTeamsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatedTeamsView.swift; sourceTree = "<group>"; };
 		30472DFB238946920032FEC0 /* PlayerListItemViewSelectable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerListItemViewSelectable.swift; sourceTree = "<group>"; };
 		30472DFD23897E2A0032FEC0 /* TeamHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamHeaderView.swift; sourceTree = "<group>"; };
@@ -183,12 +189,15 @@
 				30472E062389984C0032FEC0 /* Representable */,
 				3014EAD5235D4C5D004F428F /* ContentView.swift */,
 				30C02E282385EDE9009CC2DF /* CreatePlayerView.swift */,
+				301F7B57238A35260049CCF2 /* EditPlayerView.swift */,
 				30811AB2238875D60095B3BA /* PlayerListItemView.swift */,
 				30472DFB238946920032FEC0 /* PlayerListItemViewSelectable.swift */,
 				30C02E252385ED72009CC2DF /* PlayersListView.swift */,
 				30DE86C1238735CD00ED0B6D /* RingView.swift */,
 				30472DF92389391A0032FEC0 /* CalculatedTeamsView.swift */,
 				30472DFD23897E2A0032FEC0 /* TeamHeaderView.swift */,
+				301F7B53238A2A0B0049CCF2 /* EmptyDetailView.swift */,
+				301F7B55238A2AE00049CCF2 /* BigImageInfoView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -273,14 +282,17 @@
 				30472E08238998620032FEC0 /* ShareSheet.swift in Sources */,
 				3014EAD0235D4C5D004F428F /* TeamApp.xcdatamodeld in Sources */,
 				30A13BF32383F09F001C43CA /* TeamAppCore.swift in Sources */,
+				301F7B56238A2AE00049CCF2 /* BigImageInfoView.swift in Sources */,
 				3014EACD235D4C5D004F428F /* AppDelegate.swift in Sources */,
 				30811AB5238879C80095B3BA /* Number+Extension.swift in Sources */,
+				301F7B54238A2A0B0049CCF2 /* EmptyDetailView.swift in Sources */,
 				30C02E292385EDE9009CC2DF /* CreatePlayerView.swift in Sources */,
 				30811AB3238875D60095B3BA /* PlayerListItemView.swift in Sources */,
 				30472DFE23897E2A0032FEC0 /* TeamHeaderView.swift in Sources */,
 				3014EAD2235D4C5D004F428F /* SceneDelegate.swift in Sources */,
 				30811AC023888CBB0095B3BA /* ButtonStyles.swift in Sources */,
 				30472E00238980630032FEC0 /* Formatters+Extension.swift in Sources */,
+				301F7B58238A35260049CCF2 /* EditPlayerView.swift in Sources */,
 				30472DFC238946920032FEC0 /* PlayerListItemViewSelectable.swift in Sources */,
 				30C02E262385ED72009CC2DF /* PlayersListView.swift in Sources */,
 			);
@@ -373,6 +385,8 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				iOS_Build = 1911241;
+				iOS_Version = 1.0;
 			};
 			name = Debug;
 		};
@@ -427,6 +441,8 @@
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
+				iOS_Build = 1911241;
+				iOS_Version = 1.0;
 			};
 			name = Release;
 		};
@@ -436,6 +452,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "TeamApp/Supporting Files/TeamApp.entitlements";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = $iOS_Build;
 				DEVELOPMENT_ASSET_PATHS = "\"TeamApp/Preview Content\"";
 				DEVELOPMENT_TEAM = CS7Q92U9AY;
 				ENABLE_PREVIEWS = YES;
@@ -444,6 +461,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = $iOS_Version;
 				PRODUCT_BUNDLE_IDENTIFIER = com.saeedtaheri.TeamApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -457,6 +475,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "TeamApp/Supporting Files/TeamApp.entitlements";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = $iOS_Build;
 				DEVELOPMENT_ASSET_PATHS = "\"TeamApp/Preview Content\"";
 				DEVELOPMENT_TEAM = CS7Q92U9AY;
 				ENABLE_PREVIEWS = YES;
@@ -465,6 +484,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = $iOS_Version;
 				PRODUCT_BUNDLE_IDENTIFIER = com.saeedtaheri.TeamApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

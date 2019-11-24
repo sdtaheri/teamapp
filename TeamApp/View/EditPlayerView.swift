@@ -8,12 +8,14 @@
 
 import SwiftUI
 
-struct CreatePlayerView: View {
+struct EditPlayerView: View {
 	@Environment(\.managedObjectContext) private var viewContext
 	@Environment(\.presentationMode) private var presentationMode
 	
 	@State private var name: String = ""
 	@State private var rating: Int = 5
+
+	@ObservedObject var player: Player
 
 	var body: some View {
 		NavigationView {
@@ -40,7 +42,7 @@ struct CreatePlayerView: View {
 				}
 				, trailing:
 				Button(action: {
-					Player.create(name: self.name, rating: self.rating, in: self.viewContext)
+					self.player.edit(name: self.name, rating: self.rating, in: self.viewContext)
 					self.presentationMode.wrappedValue.dismiss()
 				}) {
 					Text("save").fontWeight(.bold)
@@ -48,12 +50,5 @@ struct CreatePlayerView: View {
 			)
 		}.navigationViewStyle(StackNavigationViewStyle())
 		
-	}
-}
-
-struct CreatePlayerView_Previews: PreviewProvider {
-	static var previews: some View {
-		let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-		return CreatePlayerView().environment(\.managedObjectContext, context)
 	}
 }

@@ -27,6 +27,7 @@ struct PlayerListItemView: View {
 								  design: .rounded))
 				.padding()
 				.foregroundColor(Color.primary)
+			Spacer()
 		}
 	}
 }

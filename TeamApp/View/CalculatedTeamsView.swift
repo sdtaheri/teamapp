@@ -29,15 +29,10 @@ struct CalculatedTeamsView: View {
 	}
 
 	var body: some View {
-		return ZStack {
+		return Group {
 			if self.players.count < 2 {
-				VStack {
-					Image(systemName: "person.badge.minus").font(.system(size: 60))
-						.padding()
-					Text("you_seem_very_lonely")
-						.multilineTextAlignment(.center)
-						.font(.system(.body))
-				}.padding()
+				BigImageInfoView(systemImageName: "person.badge.minus",
+								 localizedStringKey: "you_seem_very_lonely")
 			} else {
 				VStack(spacing: 0) {
 					List {
@@ -49,7 +44,7 @@ struct CalculatedTeamsView: View {
 										}
 							}
 						}
-					}.listStyle(PlainListStyle())
+					}.listStyle(GroupedListStyle())
 
 					Divider()
 
@@ -101,10 +96,7 @@ struct CalculatedTeamsView: View {
 			.opacity(self.players.count >= 2 ? 1 : 0)
 		)
 			.sheet(isPresented: $shouldShowShareSheet) {
-//			.popover(isPresented: $shouldShowShareSheet,
-//					 attachmentAnchor: PopoverAttachmentAnchor.point(.topTrailing),
-//					 arrowEdge: .top) {
-						ShareSheet(activityItems: [self.core.textualRepresentation(teams: self.teams.isEmpty ? self.initialTeams : self.teams)])
+				ShareSheet(activityItems: [self.core.textualRepresentation(teams: self.teams.isEmpty ? self.initialTeams : self.teams)])
 		}
 
 	}

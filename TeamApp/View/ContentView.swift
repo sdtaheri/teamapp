@@ -14,15 +14,7 @@ struct ContentView: View {
 	var body: some View {
 		NavigationView {
 			PlayersListView()
-
-			VStack {
-				Image(systemName: "arrowshape.turn.up.left").font(.system(size: 60))
-					.padding()
-				Text("choose_from_left_column")
-					.multilineTextAlignment(.center)
-					.font(.system(.body))
-			}.padding()
-
+			EmptyDetailView()
 		}.navigationViewStyle(DoubleColumnNavigationViewStyle())
 	}
 }

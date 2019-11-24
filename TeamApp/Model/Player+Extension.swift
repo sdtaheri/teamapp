@@ -8,6 +8,13 @@
 
 import CoreData
 
+struct PlayerValueWrapper: Identifiable {
+	let wrappedValue: Player
+	var id: UUID {
+		wrappedValue.id
+	}
+}
+
 extension Player {
 	static func create(name: String, rating: Int, in managedObjectContext: NSManagedObjectContext) {
 		let newPlayer = self.init(context: managedObjectContext)
@@ -15,6 +22,33 @@ extension Player {
 		newPlayer.name = name
 		newPlayer.rating = Int16(rating)
 		
+		do {
+			try managedObjectContext.save()
+		} catch {
+			// Replace this implementation with code to handle the error appropriately.
+			// fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+			let nserror = error as NSError
+			fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+		}
+	}
+
+	func delete(from managedObjectContext: NSManagedObjectContext) {
+		managedObjectContext.delete(self)
+
+		do {
+			try managedObjectContext.save()
+		} catch {
+			// Replace this implementation with code to handle the error appropriately.
+			// fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+			let nserror = error as NSError
+			fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+		}
+	}
+
+	func edit(name: String, rating: Int, in managedObjectContext: NSManagedObjectContext) {
+		self.name = name
+		self.rating = Int16(rating)
+
 		do {
 			try  managedObjectContext.save()
 		} catch {
@@ -28,8 +62,10 @@ extension Player {
 
 extension Collection where Element == Player, Index == Int {
 	func delete(at indices: IndexSet, from managedObjectContext: NSManagedObjectContext) {
-		indices.forEach { managedObjectContext.delete(self[$0]) }
-		
+		for index in indices {
+			managedObjectContext.delete(self[index])
+		}
+
 		do {
 			try managedObjectContext.save()
 		} catch {

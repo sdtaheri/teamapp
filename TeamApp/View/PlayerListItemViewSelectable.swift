@@ -28,23 +28,22 @@ struct PlayerListItemViewSelectable: View {
 	}
 
 	var body: some View {
-		Button(action: {
+		HStack {
+			PlayerListItemView(player: player)
+			if isSelected {
+				Image(systemName: "checkmark.seal.fill")
+					.foregroundColor(Color.accentColor)
+					.font(Font.system(.body))
+
+			}
+		}
+		.contentShape(Rectangle())
+		.onTapGesture {
 			guard self.player.uuid != nil else { return }
 			if self.isSelected {
 				self.selectedItems.remove(self.player)
 			} else {
 				self.selectedItems.insert(self.player)
-			}
-		}) {
-			HStack {
-				PlayerListItemView(player: player)
-				if isSelected {
-					Spacer()
-					Image(systemName: "checkmark.seal.fill")
-						.foregroundColor(Color.accentColor)
-						.font(Font.system(.body))
-						
-				}
 			}
 		}
 	}

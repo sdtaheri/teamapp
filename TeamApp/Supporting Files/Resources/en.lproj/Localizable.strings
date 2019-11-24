@@ -29,3 +29,6 @@
 "you_seem_very_smart" = "You seem very smart by the way!";
 "choose_from_left_column" = "Choose your players or add a new one in the left column.";
 "try_adding_player" = "Try adding a new player.";
+"coming_soon" = "Coming Soon!";
+"will_come_in_later_release" = "This feature will come in a later release.";
+"tap_to_select_players" = "Tap all the players you want to make teams with.";
