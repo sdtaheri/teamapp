@@ -16,12 +16,27 @@ struct PlayersListView: View {
 	private var players: FetchedResults<Player>
 
 	@Environment(\.managedObjectContext) private var viewContext
+	@EnvironmentObject var core: TeamAppCore
+
 	@State private var shouldShowCreatePlayerSheet: Bool = false
 	@State private var shouldShowComingSoonAlert: Bool = false
 	@State private var selectedPlayers = Set<Player>()
+	@State private var desiredTeamCount = 2
 
 	var body: some View {
-		Group {
+
+		let selectedPlayersBinding = Binding<Set<Player>>(get: {
+			self.selectedPlayers
+		}) {
+			self.selectedPlayers = $0
+			self.desiredTeamCount = min(max(2, $0.count), self.desiredTeamCount)
+			self.core.makeTeams(count: self.desiredTeamCount,
+								from: $0,
+								bestFirst: Bool.random(),
+								averageBased: Bool.random())
+		}
+
+		return Group {
 			if players.isEmpty {
 				Button(action: {
 					self.shouldShowCreatePlayerSheet = true
@@ -34,7 +49,7 @@ struct PlayersListView: View {
 					List {
 						Section(footer: Text("tap_to_select_players")) {
 							ForEach(players, id: \.id) { player in
-								PlayerListItemViewSelectable(player: player, selectedItems: self.$selectedPlayers)
+								PlayerListItemViewSelectable(player: player, selectedItems: selectedPlayersBinding)
 									.contextMenu {
 										Button(action: {
 											self.shouldShowComingSoonAlert = true
@@ -46,7 +61,7 @@ struct PlayersListView: View {
 										Button(action: {
 											if let index = self.players.firstIndex(of: player) {
 												DispatchQueue.main.async {
-													self.selectedPlayers.remove(player)
+													selectedPlayersBinding.wrappedValue.remove(player)
 													self.players[index].delete(from: self.viewContext)
 												}
 											}
@@ -58,7 +73,7 @@ struct PlayersListView: View {
 							}.onDelete { indices in
 								for index in indices {
 									let player = self.players[index]
-									self.selectedPlayers.remove(player)
+									selectedPlayersBinding.wrappedValue.remove(player)
 								}
 								self.players.delete(at: indices, from: self.viewContext)
 							}
@@ -66,17 +81,21 @@ struct PlayersListView: View {
 					}
 					.listStyle(GroupedListStyle())
 
-					NavigationLink(destination: CalculatedTeamsView(players: $selectedPlayers)) {
+					NavigationLink(destination:
+						CalculatedTeamsView(core: self.core,
+											desiredTeamCount: self.$desiredTeamCount,
+											players: selectedPlayersBinding)
+						) {
 						HStack {
-							Text("lets_play")
+							Text("lets_teamup")
 								.fontWeight(.medium)
-							Image(systemName: "\(selectedPlayers.count).circle.fill")
+							Image(systemName: "\(selectedPlayersBinding.wrappedValue.count).circle.fill")
 						}
 						.font(.system(.headline, design: .rounded))
 					}
 					.buttonStyle(ActionButtonBackgroundStyle())
-					.opacity(selectedPlayers.isEmpty ? 0 : 1)
-					.blur(radius: selectedPlayers.isEmpty ? 10 : 0)
+					.opacity(selectedPlayersBinding.wrappedValue.isEmpty ? 0 : 1)
+					.blur(radius: selectedPlayersBinding.wrappedValue.isEmpty ? 10 : 0)
 					.padding(.vertical)
 				}
 			}
@@ -85,11 +104,11 @@ struct PlayersListView: View {
 							displayMode: players.isEmpty ? .inline : .large)
 		.navigationBarItems(leading:
 			Button(action: {
-				self.selectedPlayers.removeAll()
+				selectedPlayersBinding.wrappedValue.removeAll()
 			}) {
 				Text("clear")
 			}
-			.opacity(self.selectedPlayers.isEmpty ? 0 : 1)
+			.opacity(selectedPlayersBinding.wrappedValue.isEmpty ? 0 : 1)
 			,trailing:
 			HStack {
 //				#if DEBUG

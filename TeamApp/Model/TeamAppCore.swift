@@ -1,14 +1,15 @@
 import Foundation
+import Combine
 
 extension Collection where Element: Numeric {
-    var sum: Element { return reduce(0, +) }
+	var sum: Element { return reduce(0, +) }
 }
 
 extension Collection where Element: BinaryInteger {
-    /// Returns the average of all elements in the array
-    var average: Double {
-        return isEmpty ? 0 : Double(sum) / Double(count)
-    }
+	/// Returns the average of all elements in the array
+	var average: Double {
+		return isEmpty ? 0 : Double(sum) / Double(count)
+	}
 }
 
 extension Player: Identifiable {
@@ -17,80 +18,110 @@ extension Player: Identifiable {
 	}
 }
 
-struct TeamAppCore {
+typealias IndexedTeam = (index: Int, players: [Player])
 
-	static func makeTeams(count: Int, from players: Set<Player>, bestFirst: Bool, averageBased: Bool) -> [(index: Int, players: [Player])] {
-        var result = Array(repeating: (index: 0, players: [Player]()), count: count)
+final class TeamAppCore: ObservableObject {
 
-        let playersCount = players.count
+	@Published var teams = [IndexedTeam]()
 
-        // base case
-        if playersCount < count {
-            print("Can't make \(count) teams from \(playersCount) players.")
-            return result
-        }
+	func makeTeams(count: Int, from players: Set<Player>, bestFirst: Bool, averageBased: Bool) {
+		DispatchQueue(label: "core_making_team").async {
+			var result = Array(repeating: (index: 0, players: [Player]()), count: count)
 
-        let sortedPlayers = players.sorted {
-            if $0.rating == $1.rating {
-                return Bool.random()
-            } else {
-				return bestFirst ? $0.rating > $1.rating : $0.rating < $1.rating
-            }
-        }
+			let playersCount = players.count
 
-        for player in sortedPlayers {
-			let counts = result.map { $0.players.count }
-			let (indexOfLeastPopulatedTeam, _) = counts.enumerated().reduce((0, Int.max)) {
-				$0.1 < $1.1 ? $0 : $1
+			if playersCount < count {
+				print("Can't make \(count) teams from \(playersCount) players.")
+				DispatchQueue.main.async {
+					self.teams = []
+				}
+				return
 			}
 
-			if averageBased {
-				let averages = result.map { subset in
-					subset.players.map { $0.rating }.average
+			let sortedPlayers = players.sorted {
+				if $0.rating == $1.rating {
+					return Bool.random()
+				} else {
+					return bestFirst ? $0.rating > $1.rating : $0.rating < $1.rating
 				}
+			}
 
-				let (indexOfMinAverage, _) = averages.enumerated().reduce((0, Double(Int.max))) {
+			for player in sortedPlayers {
+				let counts = result.map { $0.players.count }
+				let (indexOfLeastPopulatedTeam, _) = counts.enumerated().reduce((0, Int.max)) {
 					$0.1 < $1.1 ? $0 : $1
 				}
 
-				if indexOfLeastPopulatedTeam != indexOfMinAverage {
-					result[indexOfLeastPopulatedTeam].index = indexOfLeastPopulatedTeam
-					result[indexOfLeastPopulatedTeam].players.append(player)
-				} else {
-					result[indexOfMinAverage].index = indexOfMinAverage
-					result[indexOfMinAverage].players.append(player)
-				}
+				if averageBased {
+					let averages = result.map { subset in
+						subset.players.map { $0.rating }.average
+					}
 
+					let (indexOfMinAverage, _) = averages.enumerated().reduce((0, Double(Int.max))) {
+						$0.1 < $1.1 ? $0 : $1
+					}
+
+					if indexOfLeastPopulatedTeam != indexOfMinAverage {
+						result[indexOfLeastPopulatedTeam].index = indexOfLeastPopulatedTeam
+						result[indexOfLeastPopulatedTeam].players.append(player)
+					} else {
+						result[indexOfMinAverage].index = indexOfMinAverage
+						result[indexOfMinAverage].players.append(player)
+					}
+
+				} else {
+					let sums = result.map { subset in
+						subset.players.map { $0.rating }.sum
+					}
+
+					let (indexOfMinSum, _) = sums.enumerated().reduce((0, Int16.max)) {
+						$0.1 < $1.1 ? $0 : $1
+					}
+
+					if indexOfLeastPopulatedTeam != indexOfMinSum {
+						result[indexOfLeastPopulatedTeam].index = indexOfLeastPopulatedTeam
+						result[indexOfLeastPopulatedTeam].players.append(player)
+					} else {
+						result[indexOfMinSum].index = indexOfMinSum
+						result[indexOfMinSum].players.append(player)
+					}
+				}
+			}
+
+			if self.areTeamsTheSame(lhs: result, rhs: self.teams) {
+				var shuffledArray = result.shuffled()
+				if self.areTeamsTheSame(lhs: result, rhs: shuffledArray) {
+					if let last = shuffledArray.popLast() {
+						shuffledArray.insert(last, at: 0)
+					}
+				}
+				for i in 0..<shuffledArray.count {
+					shuffledArray[i].index = i
+				}
+				DispatchQueue.main.async {
+					self.teams = shuffledArray
+				}
 			} else {
-				let sums = result.map { subset in
-					subset.players.map { $0.rating }.sum
+				DispatchQueue.main.async {
+					self.teams = result
 				}
-
-				let (indexOfMinSum, _) = sums.enumerated().reduce((0, Int16.max)) {
-					$0.1 < $1.1 ? $0 : $1
-				}
-
-				if indexOfLeastPopulatedTeam != indexOfMinSum {
-					result[indexOfLeastPopulatedTeam].index = indexOfLeastPopulatedTeam
-					result[indexOfLeastPopulatedTeam].players.append(player)
-				} else {
-					result[indexOfMinSum].index = indexOfMinSum
-					result[indexOfMinSum].players.append(player)
-				}
-			}
-        }
-
-		var sortedResult = result
-		for i in 0..<result.count {
-			sortedResult[i].players = result[i].players.sorted {
-				$0.rating > $1.rating
 			}
 		}
+	}
 
-        return sortedResult
-    }
+	private func areTeamsTheSame(lhs: [IndexedTeam], rhs: [IndexedTeam]) -> Bool {
+		var teamsAreTheSame = false
 
-	static func textualRepresentation(of teams: [(index: Int, players: [Player])]) -> String {
+		if lhs.count == rhs.count {
+			let new = lhs.map { $0.players }.flatMap { $0 }.compactMap { $0.uuid }
+			let old = rhs.map { $0.players }.flatMap { $0 }.compactMap { $0.uuid }
+			teamsAreTheSame = (new == old)
+		}
+
+		return teamsAreTheSame
+	}
+
+	static func textualRepresentation(of teams: [IndexedTeam]) -> String {
 		var result = ""
 
 		for team in teams {
@@ -115,4 +146,3 @@ struct TeamAppCore {
 		return result
 	}
 }
-

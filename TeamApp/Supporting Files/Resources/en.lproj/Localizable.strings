@@ -18,7 +18,7 @@
 "select" = "Select";
 "unselect" = "Unselect";
 "rating" = "Rating";
-"lets_play" = "Let's Play!";
+"lets_teamup" = "Let's TeamUp!";
 "teams" = "Teams";
 "again" = "Again!";
 "team_count %lld" = "%lld Teams";

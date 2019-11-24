@@ -14,6 +14,7 @@ struct ContentView: View {
 	var body: some View {
 		NavigationView {
 			PlayersListView()
+				.environmentObject(TeamAppCore())
 			EmptyDetailView()
 		}.navigationViewStyle(DoubleColumnNavigationViewStyle())
 	}
