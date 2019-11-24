@@ -30,9 +30,13 @@ struct CalculatedTeamsView: View {
 
 	var body: some View {
 		return Group {
-			if self.players.count < 2 {
+			if self.players.isEmpty {
+				EmptyDetailView()
+					.navigationBarTitle(Text(""), displayMode: .inline)
+			} else if self.players.count == 1 {
 				BigImageInfoView(systemImageName: "person.badge.minus",
 								 localizedStringKey: "you_seem_very_lonely")
+					.navigationBarTitle(Text(""), displayMode: .inline)
 			} else {
 				VStack(spacing: 0) {
 					List {
@@ -82,11 +86,12 @@ struct CalculatedTeamsView: View {
 							}
 							.font(.system(.subheadline))
 						}
-					}.padding(.vertical)
+					}
+					.padding(.vertical)
+					.navigationBarTitle(Text("teams"), displayMode: .automatic)
 				}
 			}
 		}
-		.navigationBarTitle(Text("teams"), displayMode: .automatic)
 		.navigationBarItems(trailing:
 			Button(action: {
 				self.shouldShowShareSheet = true
