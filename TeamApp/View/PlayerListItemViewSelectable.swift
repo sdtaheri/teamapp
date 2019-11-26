@@ -48,3 +48,13 @@ struct PlayerListItemViewSelectable: View {
 		}
 	}
 }
+
+struct PlayerListItemViewSelectable_Previews: PreviewProvider {
+	static var previews: some View {
+		let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+		let player = Player.dummyPlayer(in: context)
+		let selectedBinding = Binding.constant(Set([player]))
+		return PlayerListItemViewSelectable(player: player,
+											selectedItems: selectedBinding)
+	}
+}

@@ -109,3 +109,16 @@ struct CalculatedTeamsView: View {
 					   averageBased: Bool.random())
 	}
 }
+
+struct CalculatedTeamsView_Previews: PreviewProvider {
+	static var previews: some View {
+		let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+		let player1 = Player.dummyPlayer(in: context)
+		let player2 = Player.dummyPlayer(in: context)
+		let core = TeamAppCore()
+
+		return CalculatedTeamsView(core: core,
+								   desiredTeamCount: Binding.constant(2),
+								   players: Binding.constant(Set([player1, player2])))
+	}
+}

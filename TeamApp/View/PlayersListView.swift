@@ -143,6 +143,10 @@ struct PlayersListView: View {
 
 struct PlayersListView_Previews: PreviewProvider {
 	static var previews: some View {
-		PlayersListView()
+		let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+		let core = TeamAppCore()
+		return PlayersListView()
+			.environment(\.managedObjectContext, context)
+			.environmentObject(core)
 	}
 }

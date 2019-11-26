@@ -19,3 +19,13 @@ struct TeamFooterView: View {
 		}
     }
 }
+
+struct TeamFooterView_Previews: PreviewProvider {
+	static var previews: some View {
+		let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+		let player = Player.dummyPlayer(in: context)
+
+		return TeamFooterView(index: 1,
+							  players: [player])
+	}
+}
