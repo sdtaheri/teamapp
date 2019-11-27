@@ -70,6 +70,7 @@ struct PlayersListView: View {
 											Image(systemName: "trash")
 										}
 								}
+                                .listRowBackground(selectedPlayersBinding.wrappedValue.contains(player) ? Color(UIColor.systemFill) : nil)
 							}.onDelete { indices in
 								for index in indices {
 									let player = self.players[index]
