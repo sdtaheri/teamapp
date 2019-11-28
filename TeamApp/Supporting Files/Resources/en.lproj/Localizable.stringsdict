@@ -2,9 +2,9 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>StringKey</key>
+	<key>team_count %lld</key>
 	<dict>
-		<key>team_count_%lld</key>
+		<key>NSStringLocalizedFormatKey</key>
 		<string>%#@team@</string>
 		<key>team</key>
 		<dict>
@@ -24,6 +24,30 @@
 			<string>%lld Teams</string>
 			<key>other</key>
 			<string>%lld Teams</string>
+		</dict>
+	</dict>
+	<key>player_count %lld</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@player@</string>
+		<key>player</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>lld</string>
+			<key>zero</key>
+			<string>No Players</string>
+			<key>one</key>
+			<string>1 Player</string>
+			<key>two</key>
+			<string>2 Players</string>
+			<key>few</key>
+			<string>%lld Players</string>
+			<key>many</key>
+			<string>%lld Players</string>
+			<key>other</key>
+			<string>%lld Players</string>
 		</dict>
 	</dict>
 </dict>

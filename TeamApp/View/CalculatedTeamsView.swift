@@ -35,8 +35,7 @@ struct CalculatedTeamsView: View {
 				VStack(spacing: 0) {
 					List {
 						ForEach(core.teams, id: \.self.0) { index, team in
-							Section(header: Text("team_index \(index + 1)"),
-									footer: TeamFooterView(index: index, players: team)) {
+							Section(header: TeamHeaderView(index: index, players: team)) {
 										ForEach(team) {
 											PlayerListItemView(player: $0)
 										}

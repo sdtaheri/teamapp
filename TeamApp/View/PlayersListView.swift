@@ -48,7 +48,8 @@ struct PlayersListView: View {
 			} else {
 				ZStack(alignment: .bottomTrailing) {
 					List {
-						Section(footer: Text("tap_to_select_players")) {
+						Section(header: horizontalSizeClass == .compact ? Text("tap_to_select_players") : Text(""),
+								footer: Text("player_count \(players.count)")) {
 							ForEach(players, id: \.id) { player in
 								PlayerListItemViewSelectable(player: player, selectedItems: selectedPlayersBinding)
 									.contextMenu {

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		30045BBA23902DAE00B48D1D /* ProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30045BB923902DAE00B48D1D /* ProgressBarView.swift */; };
+		30045BBC2390355D00B48D1D /* TeamHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30045BBB2390355D00B48D1D /* TeamHeaderView.swift */; };
 		3014EACD235D4C5D004F428F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3014EACC235D4C5D004F428F /* AppDelegate.swift */; };
 		3014EAD0235D4C5D004F428F /* TeamApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3014EACE235D4C5D004F428F /* TeamApp.xcdatamodeld */; };
 		3014EAD2235D4C5D004F428F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3014EAD1235D4C5D004F428F /* SceneDelegate.swift */; };
@@ -20,7 +22,6 @@
 		3037CE3023901E6F0099844A /* ShareButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3037CE2F23901E6F0099844A /* ShareButton.swift */; };
 		30472DFA2389391A0032FEC0 /* CalculatedTeamsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30472DF92389391A0032FEC0 /* CalculatedTeamsView.swift */; };
 		30472DFC238946920032FEC0 /* PlayerListItemViewSelectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30472DFB238946920032FEC0 /* PlayerListItemViewSelectable.swift */; };
-		30472DFE23897E2A0032FEC0 /* TeamHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30472DFD23897E2A0032FEC0 /* TeamHeaderView.swift */; };
 		30472E00238980630032FEC0 /* Formatters+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30472DFF238980630032FEC0 /* Formatters+Extension.swift */; };
 		30472E032389887F0032FEC0 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 30472E052389887F0032FEC0 /* Localizable.stringsdict */; };
 		30472E08238998620032FEC0 /* ShareSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30472E07238998620032FEC0 /* ShareSheet.swift */; };
@@ -37,6 +38,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		30045BB923902DAE00B48D1D /* ProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarView.swift; sourceTree = "<group>"; };
+		30045BBB2390355D00B48D1D /* TeamHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamHeaderView.swift; sourceTree = "<group>"; };
 		3014EAC9235D4C5D004F428F /* TeamApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TeamApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3014EACC235D4C5D004F428F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3014EACF235D4C5D004F428F /* TeamApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TeamApp.xcdatamodel; sourceTree = "<group>"; };
@@ -52,7 +55,6 @@
 		3037CE2F23901E6F0099844A /* ShareButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareButton.swift; sourceTree = "<group>"; };
 		30472DF92389391A0032FEC0 /* CalculatedTeamsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatedTeamsView.swift; sourceTree = "<group>"; };
 		30472DFB238946920032FEC0 /* PlayerListItemViewSelectable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerListItemViewSelectable.swift; sourceTree = "<group>"; };
-		30472DFD23897E2A0032FEC0 /* TeamHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamHeaderView.swift; sourceTree = "<group>"; };
 		30472DFF238980630032FEC0 /* Formatters+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Formatters+Extension.swift"; sourceTree = "<group>"; };
 		30472E042389887F0032FEC0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = en; path = en.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		30472E07238998620032FEC0 /* ShareSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSheet.swift; sourceTree = "<group>"; };
@@ -188,19 +190,20 @@
 		30C02E272385ED7F009CC2DF /* View */ = {
 			isa = PBXGroup;
 			children = (
-				30472E062389984C0032FEC0 /* Representable */,
+				301F7B55238A2AE00049CCF2 /* BigImageInfoView.swift */,
+				30472DF92389391A0032FEC0 /* CalculatedTeamsView.swift */,
 				3014EAD5235D4C5D004F428F /* ContentView.swift */,
 				30C02E282385EDE9009CC2DF /* CreatePlayerView.swift */,
 				301F7B57238A35260049CCF2 /* EditPlayerView.swift */,
+				301F7B53238A2A0B0049CCF2 /* EmptyDetailView.swift */,
 				30811AB2238875D60095B3BA /* PlayerListItemView.swift */,
 				30472DFB238946920032FEC0 /* PlayerListItemViewSelectable.swift */,
 				30C02E252385ED72009CC2DF /* PlayersListView.swift */,
+				30045BB923902DAE00B48D1D /* ProgressBarView.swift */,
 				30DE86C1238735CD00ED0B6D /* RingView.swift */,
-				30472DF92389391A0032FEC0 /* CalculatedTeamsView.swift */,
-				30472DFD23897E2A0032FEC0 /* TeamHeaderView.swift */,
-				301F7B53238A2A0B0049CCF2 /* EmptyDetailView.swift */,
-				301F7B55238A2AE00049CCF2 /* BigImageInfoView.swift */,
 				3037CE2F23901E6F0099844A /* ShareButton.swift */,
+				30045BBB2390355D00B48D1D /* TeamHeaderView.swift */,
+				30472E062389984C0032FEC0 /* Representable */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -283,6 +286,7 @@
 				30C02E192385E444009CC2DF /* Player+Extension.swift in Sources */,
 				3014EAD6235D4C5D004F428F /* ContentView.swift in Sources */,
 				30472DFA2389391A0032FEC0 /* CalculatedTeamsView.swift in Sources */,
+				30045BBA23902DAE00B48D1D /* ProgressBarView.swift in Sources */,
 				30472E08238998620032FEC0 /* ShareSheet.swift in Sources */,
 				3014EAD0235D4C5D004F428F /* TeamApp.xcdatamodeld in Sources */,
 				30A13BF32383F09F001C43CA /* TeamAppCore.swift in Sources */,
@@ -292,10 +296,10 @@
 				301F7B54238A2A0B0049CCF2 /* EmptyDetailView.swift in Sources */,
 				30C02E292385EDE9009CC2DF /* CreatePlayerView.swift in Sources */,
 				30811AB3238875D60095B3BA /* PlayerListItemView.swift in Sources */,
-				30472DFE23897E2A0032FEC0 /* TeamHeaderView.swift in Sources */,
 				3014EAD2235D4C5D004F428F /* SceneDelegate.swift in Sources */,
 				30811AC023888CBB0095B3BA /* ButtonStyles.swift in Sources */,
 				30472E00238980630032FEC0 /* Formatters+Extension.swift in Sources */,
+				30045BBC2390355D00B48D1D /* TeamHeaderView.swift in Sources */,
 				301F7B58238A35260049CCF2 /* EditPlayerView.swift in Sources */,
 				30472DFC238946920032FEC0 /* PlayerListItemViewSelectable.swift in Sources */,
 				30C02E262385ED72009CC2DF /* PlayersListView.swift in Sources */,

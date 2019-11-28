@@ -8,24 +8,35 @@
 
 import SwiftUI
 
-struct TeamFooterView: View {
+struct TeamHeaderView: View {
 	let index: Int
 	let players: [Player]
 
+	private var teamAverage: Double {
+		players.map { $0.rating }.average
+	}
+
     var body: some View {
-		HStack {
-			Text("players_count \(Int(players.map { $0.rating }.sum))")
-			Text("team_average \(NumberFormatter.singleDecimal.string(from: NSNumber(value: players.map { $0.rating }.average)) ?? "0")")
+		GeometryReader { proxy in
+			HStack {
+				Text("team_index \(self.index + 1)")
+					.bold()
+				Text("team_total \(Int(self.players.map { $0.rating }.sum))")
+				Spacer()
+				Text(NumberFormatter.singleDecimal.string(from: NSNumber(value: self.teamAverage)) ?? "0")
+				ProgressBarView(height: 10, progress: Binding.constant(self.teamAverage / 10.0))
+					.frame(width: proxy.size.width / 3.0)
+			}
 		}
-    }
+	}
 }
 
-struct TeamFooterView_Previews: PreviewProvider {
+struct TeamHeaderView_Previews: PreviewProvider {
 	static var previews: some View {
 		let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 		let player = Player.dummyPlayer(in: context)
 
-		return TeamFooterView(index: 1,
+		return TeamHeaderView(index: 1,
 							  players: [player])
 	}
 }
