@@ -29,7 +29,7 @@ struct RingView: View {
                     lineCap: .round,
                     lineJoin: .round))
                 .fill(Color.gray)
-                .blur(radius: round(0.125 * ringWidth))
+				.blur(radius: round(0.075 * ringWidth))
                 .animation(Animation.default)
             
             Circle()
