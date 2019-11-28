@@ -36,7 +36,7 @@ extension Player {
 		let newPlayer = self.init(context: managedObjectContext)
 		newPlayer.uuid = UUID()
 		newPlayer.name = "John Doe + \(Date())"
-		newPlayer.rating = Int16(5)
+		newPlayer.rating = Int16.random(in: 0...10)
 
 		do {
 			try managedObjectContext.save()

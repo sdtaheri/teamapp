@@ -16,6 +16,7 @@ struct PlayersListView: View {
 	private var players: FetchedResults<Player>
 
 	@Environment(\.managedObjectContext) private var viewContext
+	@Environment(\.horizontalSizeClass) private var horizontalSizeClass
 	@EnvironmentObject var core: TeamAppCore
 
 	@State private var shouldShowCreatePlayerSheet: Bool = false
@@ -70,7 +71,7 @@ struct PlayersListView: View {
 											Image(systemName: "trash")
 										}
 								}
-                                .listRowBackground(selectedPlayersBinding.wrappedValue.contains(player) ? Color(UIColor.systemFill) : nil)
+								.listRowBackground(selectedPlayersBinding.wrappedValue.contains(player) ? Color(UIColor.tertiarySystemFill) : nil)
 							}.onDelete { indices in
 								for index in indices {
 									let player = self.players[index]
@@ -86,7 +87,7 @@ struct PlayersListView: View {
 						CalculatedTeamsView(core: self.core,
 											desiredTeamCount: self.$desiredTeamCount,
 											players: selectedPlayersBinding)
-						) {
+					) {
 						HStack {
 							Text("lets_teamup")
 								.fontWeight(.medium)
@@ -103,37 +104,37 @@ struct PlayersListView: View {
 		}
 		.navigationBarTitle(Text("app_name"),
 							displayMode: players.isEmpty ? .inline : .large)
-		.navigationBarItems(leading:
-			Button(action: {
-				selectedPlayersBinding.wrappedValue.removeAll()
-			}) {
-				Text("clear")
-			}
-			.opacity(selectedPlayersBinding.wrappedValue.isEmpty ? 0 : 1)
-			,trailing:
-			HStack {
-//				#if DEBUG
-//				Button("Add-Debug") {
-//						for i in 0..<20 {
-//							Player.create(name: "Player \(i + 1)",
-//								rating: (0...10).randomElement() ?? 0,
-//								in: self.viewContext)
-//						}
-//					}
-//				#endif
-//
-				Button(
-					action: {
-						self.shouldShowCreatePlayerSheet = true
+			.navigationBarItems(leading:
+				Button(action: {
+					selectedPlayersBinding.wrappedValue.removeAll()
 				}) {
-					Text("add")
+					Text("clear")
 				}
-			}
+				.opacity(selectedPlayersBinding.wrappedValue.isEmpty ? 0 : 1)
+				,trailing:
+				HStack {
+					//				#if DEBUG
+					//				Button("Add-Debug") {
+					//						for i in 0..<20 {
+					//							Player.create(name: "Player \(i + 1)",
+					//								rating: (0...10).randomElement() ?? 0,
+					//								in: self.viewContext)
+					//						}
+					//					}
+					//				#endif
+					//
+					Button(
+						action: {
+							self.shouldShowCreatePlayerSheet = true
+					}) {
+						Text("add")
+					}
+				}
 		)
-		.animation(Animation.default)
-		.alert(isPresented: self.$shouldShowComingSoonAlert) {
-			Alert(title: Text("coming_soon"),
-				  message: Text("will_come_in_later_release"))
+			.animation(Animation.default)
+			.alert(isPresented: self.$shouldShowComingSoonAlert) {
+				Alert(title: Text("coming_soon"),
+					  message: Text("will_come_in_later_release"))
 		}
 		.sheet(isPresented: self.$shouldShowCreatePlayerSheet) {
 			CreatePlayerView()

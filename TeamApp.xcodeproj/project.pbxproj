@@ -17,6 +17,7 @@
 		301F7B54238A2A0B0049CCF2 /* EmptyDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301F7B53238A2A0B0049CCF2 /* EmptyDetailView.swift */; };
 		301F7B56238A2AE00049CCF2 /* BigImageInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301F7B55238A2AE00049CCF2 /* BigImageInfoView.swift */; };
 		301F7B58238A35260049CCF2 /* EditPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301F7B57238A35260049CCF2 /* EditPlayerView.swift */; };
+		3037CE3023901E6F0099844A /* ShareButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3037CE2F23901E6F0099844A /* ShareButton.swift */; };
 		30472DFA2389391A0032FEC0 /* CalculatedTeamsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30472DF92389391A0032FEC0 /* CalculatedTeamsView.swift */; };
 		30472DFC238946920032FEC0 /* PlayerListItemViewSelectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30472DFB238946920032FEC0 /* PlayerListItemViewSelectable.swift */; };
 		30472DFE23897E2A0032FEC0 /* TeamHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30472DFD23897E2A0032FEC0 /* TeamHeaderView.swift */; };
@@ -48,6 +49,7 @@
 		301F7B53238A2A0B0049CCF2 /* EmptyDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyDetailView.swift; sourceTree = "<group>"; };
 		301F7B55238A2AE00049CCF2 /* BigImageInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigImageInfoView.swift; sourceTree = "<group>"; };
 		301F7B57238A35260049CCF2 /* EditPlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditPlayerView.swift; sourceTree = "<group>"; };
+		3037CE2F23901E6F0099844A /* ShareButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareButton.swift; sourceTree = "<group>"; };
 		30472DF92389391A0032FEC0 /* CalculatedTeamsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatedTeamsView.swift; sourceTree = "<group>"; };
 		30472DFB238946920032FEC0 /* PlayerListItemViewSelectable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerListItemViewSelectable.swift; sourceTree = "<group>"; };
 		30472DFD23897E2A0032FEC0 /* TeamHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamHeaderView.swift; sourceTree = "<group>"; };
@@ -198,6 +200,7 @@
 				30472DFD23897E2A0032FEC0 /* TeamHeaderView.swift */,
 				301F7B53238A2A0B0049CCF2 /* EmptyDetailView.swift */,
 				301F7B55238A2AE00049CCF2 /* BigImageInfoView.swift */,
+				3037CE2F23901E6F0099844A /* ShareButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -275,6 +278,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3037CE3023901E6F0099844A /* ShareButton.swift in Sources */,
 				30DE86C2238735CD00ED0B6D /* RingView.swift in Sources */,
 				30C02E192385E444009CC2DF /* Player+Extension.swift in Sources */,
 				3014EAD6235D4C5D004F428F /* ContentView.swift in Sources */,

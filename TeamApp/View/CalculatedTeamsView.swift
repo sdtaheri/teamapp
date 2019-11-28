@@ -8,11 +8,13 @@
 
 import SwiftUI
 
-struct CalculatedTeamsView: View {
+struct CalculatedTeamsView: View {	
 
 	@ObservedObject var core: TeamAppCore
 	@Binding var desiredTeamCount: Int
 	@Binding var players: Set<Player>
+
+	@Environment(\.horizontalSizeClass) private var horizontalSizeClass
 
 	private var playersCount: Int {
 		return self.players.count
@@ -86,16 +88,24 @@ struct CalculatedTeamsView: View {
 			}
 		}
 		.navigationBarItems(trailing:
-			Button(action: {
-				self.shouldShowShareSheet = true
-			}) {
-				Image(systemName: "square.and.arrow.up")
+			Group {
+				if self.playersCount >= 2 {
+					if horizontalSizeClass == .regular {
+						ShareButton(shouldShowShareSheet: $shouldShowShareSheet)
+							.popover(isPresented: $shouldShowShareSheet) {
+								ShareSheet(activityItems: [TeamAppCore.textualRepresentation(of: self.core.teams)])
+						}
+					} else {
+						ShareButton(shouldShowShareSheet: $shouldShowShareSheet)
+							.sheet(isPresented: $shouldShowShareSheet) {
+								ShareSheet(activityItems: [TeamAppCore.textualRepresentation(of: self.core.teams)])
+						}
+					}
+				} else {
+					EmptyView()
+				}
 			}
-			.opacity(self.playersCount >= 2 ? 1 : 0)
 		)
-			.sheet(isPresented: $shouldShowShareSheet) {
-				ShareSheet(activityItems: [TeamAppCore.textualRepresentation(of: self.core.teams)])
-		}
 	}
 
 	private func generateNewTeams(originatingFromStepper: Bool = false) {
