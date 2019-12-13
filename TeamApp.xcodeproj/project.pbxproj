@@ -393,8 +393,8 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				iOS_Build = 1911242;
-				iOS_Version = 1.0;
+				iOS_Build = 1912131;
+				iOS_Version = 1.1;
 			};
 			name = Debug;
 		};
@@ -449,8 +449,8 @@
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
-				iOS_Build = 1911242;
-				iOS_Version = 1.0;
+				iOS_Build = 1912131;
+				iOS_Version = 1.1;
 			};
 			name = Release;
 		};
