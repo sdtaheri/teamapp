@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>team_count %lld</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@team@</string>
+		<key>team</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>lld</string>
+			<key>zero</key>
+			<string>No Teams</string>
+			<key>one</key>
+			<string>1 équipe</string>
+			<key>two</key>
+			<string>2 équipes</string>
+			<key>few</key>
+			<string>%lld équipes</string>
+			<key>many</key>
+			<string>%lld équipes</string>
+			<key>other</key>
+			<string>%lld équipes</string>
+		</dict>
+	</dict>
+	<key>player_count %lld</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@player@</string>
+		<key>player</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>lld</string>
+			<key>zero</key>
+			<string>No Players</string>
+			<key>one</key>
+			<string>1 joueur</string>
+			<key>two</key>
+			<string>2 joueurs</string>
+			<key>few</key>
+			<string>%lld joueurs</string>
+			<key>many</key>
+			<string>%lld joueurs</string>
+			<key>other</key>
+			<string>%lld joueurs</string>
+		</dict>
+	</dict>
+</dict>
+</plist>

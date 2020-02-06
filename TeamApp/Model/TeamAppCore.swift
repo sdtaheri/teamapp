@@ -126,14 +126,14 @@ final class TeamAppCore: ObservableObject {
 
 		for team in teams {
 			result += String.localizedStringWithFormat(NSLocalizedString("team_index %lld", comment: ""), (team.index + 1))
-			result += "; ("
+			result += ": ("
 			result += String.localizedStringWithFormat(NSLocalizedString("team_total %lld", comment: ""), Int(team.players.map { $0.rating }.sum))
-			result += ", "
+			result += " - "
 			result += String.localizedStringWithFormat(NSLocalizedString("team_average %@", comment: ""), NumberFormatter.singleDecimal.string(from: NSNumber(value: team.players.map { $0.rating }.average)) ?? "0")
 			result += ")\n"
 
 			for player in team.players {
-				result += "\(player.name ?? ""): \(player.rating)\n"
+				result += "\(player.name ?? ""): \(Int(player.rating))\n"
 			}
 
 			result += "\n"
