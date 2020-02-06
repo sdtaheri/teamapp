@@ -5,7 +5,7 @@ extension Collection where Element: Numeric {
 	var sum: Element { return reduce(0, +) }
 }
 
-extension Collection where Element: BinaryInteger {
+extension Collection where Element: BinaryFloatingPoint {
 	/// Returns the average of all elements in the array
 	var average: Double {
 		return isEmpty ? 0 : Double(sum) / Double(count)
@@ -74,7 +74,7 @@ final class TeamAppCore: ObservableObject {
 						subset.players.map { $0.rating }.sum
 					}
 
-					let (indexOfMinSum, _) = sums.enumerated().reduce((0, Int16.max)) {
+					let (indexOfMinSum, _) = sums.enumerated().reduce((0, Double.greatestFiniteMagnitude)) {
 						$0.1 < $1.1 ? $0 : $1
 					}
 
@@ -142,6 +142,8 @@ final class TeamAppCore: ObservableObject {
 		while result.last == "\n" {
 			result.removeLast()
 		}
+
+		print(result)
 
 		return result
 	}

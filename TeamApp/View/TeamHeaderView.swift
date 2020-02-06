@@ -21,10 +21,10 @@ struct TeamHeaderView: View {
 			HStack {
 				Text("team_index \(self.index + 1)")
 					.bold()
-				Text("team_total \(Int(self.players.map { $0.rating }.sum))")
+				Text("total \(Int(self.players.map { $0.rating }.sum))")
 				Spacer()
 				Text(NumberFormatter.singleDecimal.string(from: NSNumber(value: self.teamAverage)) ?? "0")
-				ProgressBarView(height: 10, progress: Binding.constant(self.teamAverage / 10.0))
+				ProgressBarView(height: 10, progress: Binding.constant(self.teamAverage / 20.0))
 					.frame(width: proxy.size.width / 3.0)
 			}
 		}

@@ -13,7 +13,7 @@ struct EditPlayerView: View {
 	@Environment(\.presentationMode) private var presentationMode
 	
 	@State private var name: String = ""
-	@State private var rating: Int = 5
+	@State private var rating: Double = 5
 
 	@ObservedObject var player: Player
 
@@ -28,7 +28,7 @@ struct EditPlayerView: View {
 				Section {
 					VStack {
 						RingView(rating: $rating)
-						Stepper("rating", value: $rating, in: 0...10)
+						Stepper("rating", value: $rating, in: 0...20)
 					}
 				}
 			}

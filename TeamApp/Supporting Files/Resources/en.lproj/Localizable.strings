@@ -22,7 +22,9 @@
 "teams" = "Teams";
 "again" = "Again!";
 "team_index %lld" = "Team %lld";
-"team_total %lld" = "(%lld)";
+"team_total %lld" = "Total: %lld";
+"total %lld" = "(%lld)";
+"team_average %@" = "Average: %@";
 "you_seem_very_lonely" = "You seem very lonely! No one plays with you huh?";
 "you_seem_very_smart" = "You seem very smart by the way!";
 "choose_from_left_column" = "Choose your players or add a new one in the left column.";

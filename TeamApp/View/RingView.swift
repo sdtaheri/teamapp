@@ -10,8 +10,10 @@ import SwiftUI
 
 struct RingView: View {
         
-    @Binding var rating: Int
+    @Binding var rating: Double
     @State var ringWidth: CGFloat = 30
+
+	@State private var newRating: Double = 0.0
 
     var body: some View {
         ZStack {
@@ -23,26 +25,26 @@ struct RingView: View {
                 .fill(Color(UIColor.systemGray4))
 
             Circle()
-                .trim(from: 0, to: CGFloat(rating) / 10.0)
+                .trim(from: 0, to: CGFloat(rating) / 20.0)
                 .stroke(style: StrokeStyle(
                     lineWidth: ringWidth,
                     lineCap: .round,
                     lineJoin: .round))
                 .fill(Color.gray)
 				.blur(radius: round(0.075 * ringWidth))
-                .animation(Animation.default)
+				.animation(Animation.default)
             
             Circle()
-                .trim(from: 0, to: CGFloat(rating) / 10.0)
+                .trim(from: 0, to: CGFloat(rating) / 20.0)
                 .stroke(style: StrokeStyle(
                     lineWidth: ringWidth,
                     lineCap: .round,
                     lineJoin: .round))
-                .fill(Color("Color\(rating)"))
-                .animation(Animation.default)
+				.fill(Color("Color\(Int((rating / 2.0).rounded()))"))
+				.animation(Animation.default)
 
-            Text("\(rating)")
-                .font(Font.system(size: round(ringWidth * 3 - 8),
+			Text(String(Int(rating.rounded())))
+				.font(Font.system(size: round(ringWidth * 3 - 8.5),
                                   weight: .bold,
                                   design: .rounded))
                 .rotationEffect(.degrees(90))
@@ -52,8 +54,19 @@ struct RingView: View {
         .padding(round(ringWidth * 0.8))
         .frame(width: round(ringWidth * 6.5),
                height: round(ringWidth * 6.5))
-
-
+		.gesture(DragGesture()
+			.onChanged { value in
+				let newValue = self.newRating - Double(value.translation.height / 20.0)
+				self.rating = max(0, min(20, newValue))
+			}
+			.onEnded { value in
+				let newValue = self.newRating - Double(value.translation.height / 20.0)
+				self.rating = max(0, min(20, newValue))
+				self.newRating = self.rating
+		})
+		.onAppear {
+			self.newRating = self.rating
+		}
     }
 }
 

@@ -12,9 +12,9 @@ struct PlayerListItemView: View {
 
 	@ObservedObject var player: Player
 
-	private var ratingBinding: Binding<Int> {
+	private var ratingBinding: Binding<Double> {
 		Binding(get: {
-			self.player.rating.intValue
+			self.player.rating
 		}) { _ in
 		}
 	}

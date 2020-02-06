@@ -16,11 +16,11 @@ struct PlayerValueWrapper: Identifiable {
 }
 
 extension Player {
-	static func create(name: String, rating: Int, in managedObjectContext: NSManagedObjectContext) {
+	static func create(name: String, rating: Double, in managedObjectContext: NSManagedObjectContext) {
 		let newPlayer = self.init(context: managedObjectContext)
 		newPlayer.uuid = UUID()
 		newPlayer.name = name
-		newPlayer.rating = Int16(rating)
+		newPlayer.rating = rating
 		
 		do {
 			try managedObjectContext.save()
@@ -36,7 +36,7 @@ extension Player {
 		let newPlayer = self.init(context: managedObjectContext)
 		newPlayer.uuid = UUID()
 		newPlayer.name = "John Doe + \(Date())"
-		newPlayer.rating = Int16.random(in: 0...10)
+		newPlayer.rating = Double(Int.random(in: 0...20)) * 0.5
 
 		do {
 			try managedObjectContext.save()
@@ -63,9 +63,9 @@ extension Player {
 		}
 	}
 
-	func edit(name: String, rating: Int, in managedObjectContext: NSManagedObjectContext) {
+	func edit(name: String, rating: Double, in managedObjectContext: NSManagedObjectContext) {
 		self.name = name
-		self.rating = Int16(rating)
+		self.rating = rating
 
 		do {
 			try  managedObjectContext.save()
