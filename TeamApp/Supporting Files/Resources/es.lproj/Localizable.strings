@@ -1,0 +1,27 @@
+/* 
+  Localizable.strings
+  TeamApp
+
+  Created by Saeed Taheri on 11/21/19.
+  Copyright © 2019 Saeed Taheri. All rights reserved.
+*/
+
+"app_name" = "TeamApp⁺";
+"add_player" = "Agregar jugador";
+"name" = "Nombre";
+"save" = "Listo";
+"delete" = "Eliminar";
+"edit" = "Editar";
+"rating" = "Valuación";
+"lets_teamup" = "¡Hagamos equipo!";
+"teams" = "Los equipos";
+"again" = "De nuevo!";
+"team_index %lld" = "El equipo %lld";
+"team_total %lld" = "El total: %lld";
+"total %lld" = "(%lld)";
+"team_average %@" = "El promedio: %@";
+"you_seem_very_lonely" = "Pareces muy solo! Nadie juega contigo ¿eh?";
+"you_seem_very_smart" = "¡Pareces muy inteligente por cierto!";
+"choose_from_left_column" = "Elige a tus jugadores o agrega uno nuevo en la columna izquierda.";
+"try_adding_player" = "Agregue un nuevo jugador.";
+"tap_to_select_players" = "Toca a todos los jugadores con los que quieras formar equipo.";

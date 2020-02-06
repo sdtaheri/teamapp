@@ -63,6 +63,9 @@
 		307A6ABC23ECB5150094DFD4 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		307A6ABD23ECB5150094DFD4 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = fr; path = fr.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		307A6ABE23ECB5150094DFD4 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		307A6ABF23ECB9B40094DFD4 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		307A6AC023ECB9B40094DFD4 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = es; path = es.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
+		307A6AC123ECB9B40094DFD4 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		30811AB2238875D60095B3BA /* PlayerListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerListItemView.swift; sourceTree = "<group>"; };
 		30811ABF23888CBB0095B3BA /* ButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyles.swift; sourceTree = "<group>"; };
 		30A13BF22383F09F001C43CA /* TeamAppCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamAppCore.swift; sourceTree = "<group>"; };
@@ -256,6 +259,7 @@
 				Base,
 				fa,
 				fr,
+				es,
 			);
 			mainGroup = 3014EAC0235D4C5D004F428F;
 			productRefGroup = 3014EACA235D4C5D004F428F /* Products */;
@@ -328,6 +332,7 @@
 				30472E042389887F0032FEC0 /* en */,
 				30E2E78823EC984400390488 /* fa */,
 				307A6ABD23ECB5150094DFD4 /* fr */,
+				307A6AC023ECB9B40094DFD4 /* es */,
 			);
 			name = Localizable.stringsdict;
 			sourceTree = "<group>";
@@ -338,6 +343,7 @@
 				307A6AB923ECB47E0094DFD4 /* fa */,
 				307A6ABB23ECB4920094DFD4 /* en */,
 				307A6ABE23ECB5150094DFD4 /* fr */,
+				307A6AC123ECB9B40094DFD4 /* es */,
 			);
 			name = InfoPlist.strings;
 			path = "TeamApp/Supporting Files/Resources";
@@ -349,6 +355,7 @@
 				30C02E232385EC8D009CC2DF /* en */,
 				30E2E78723EC984400390488 /* fa */,
 				307A6ABC23ECB5150094DFD4 /* fr */,
+				307A6ABF23ECB9B40094DFD4 /* es */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

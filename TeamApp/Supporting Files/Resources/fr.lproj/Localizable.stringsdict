@@ -13,7 +13,7 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>lld</string>
 			<key>zero</key>
-			<string>No Teams</string>
+			<string>Pas d&apos;équipes</string>
 			<key>one</key>
 			<string>1 équipe</string>
 			<key>two</key>
@@ -37,7 +37,7 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>lld</string>
 			<key>zero</key>
-			<string>No Players</string>
+			<string>Aucun joueur</string>
 			<key>one</key>
 			<string>1 joueur</string>
 			<key>two</key>

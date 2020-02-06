@@ -13,17 +13,17 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>lld</string>
 			<key>zero</key>
-			<string>بدون تیم</string>
+			<string>Cero equipos</string>
 			<key>one</key>
-			<string>۱ تیم</string>
+			<string>1 equipo</string>
 			<key>two</key>
-			<string>۲ تیم</string>
+			<string>2 equipos</string>
 			<key>few</key>
-			<string>%lld تیم</string>
+			<string>%lld equipos</string>
 			<key>many</key>
-			<string>%lld تیم</string>
+			<string>%lld equipos</string>
 			<key>other</key>
-			<string>%lld تیم</string>
+			<string>%lld equipos</string>
 		</dict>
 	</dict>
 	<key>player_count %lld</key>
@@ -37,17 +37,17 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>lld</string>
 			<key>zero</key>
-			<string>بدون بازیکن</string>
+			<string>Cero jugadores</string>
 			<key>one</key>
-			<string>۱ بازیکن</string>
+			<string>1 jugador</string>
 			<key>two</key>
-			<string>۲ بازیکن</string>
+			<string>2 jugadores</string>
 			<key>few</key>
-			<string>%lld بازیکن</string>
+			<string>%lld jugadores</string>
 			<key>many</key>
-			<string>%lld بازیکن</string>
+			<string>%lld jugadores</string>
 			<key>other</key>
-			<string>%lld بازیکن</string>
+			<string>%lld jugadores</string>
 		</dict>
 	</dict>
 </dict>
