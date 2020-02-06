@@ -17,6 +17,7 @@ struct BigImageInfoView: View {
 			Image(systemName: systemImageName)
 				.font(.system(size: 60))
 				.padding()
+				.flipsForRightToLeftLayoutDirection(true)
 			Text(localizedStringKey)
 				.multilineTextAlignment(.center)
 				.font(.system(.body))

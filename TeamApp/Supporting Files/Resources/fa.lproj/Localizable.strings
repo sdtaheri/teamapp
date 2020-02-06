@@ -1,0 +1,29 @@
+/* 
+  Localizable.strings
+  TeamApp
+
+  Created by Saeed Taheri on 11/21/19.
+  Copyright © 2019 Saeed Taheri. All rights reserved.
+*/
+
+"app_name" = "تیم‌کشی⁺";
+"add_player" = "بازیکن جدید";
+"name" = "اسم";
+"save" = "ذخیره";
+"delete" = "حذف";
+"edit" = "ویرایش";
+"select" = "انتخاب";
+"unselect" = "لغو";
+"rating" = "امتیاز";
+"lets_teamup" = "تیم‌کشی!";
+"teams" = "تیم‌ها";
+"again" = "دوباره!";
+"team_index %lld" = "تیم %lld";
+"team_total %lld" = "مجموع: %lld";
+"total %lld" = "(%lld)";
+"team_average %@" = "میانگین: %@";
+"you_seem_very_lonely" = "به نظر خیلی تنها هستی! کسی با تو بازی نمیکنه؟";
+"you_seem_very_smart" = "خیلی باهوش به نظر میای!";
+"choose_from_left_column" = "بازیکن‌ها رو انتخاب کن یا در ستون سمت راست بازیکن جدید اضافه کن.";
+"try_adding_player" = "بازیکن جدید اضافه کن.";
+"tap_to_select_players" = "بازیکن‌هایی رو که با اونها تیم‌کشی رو انجام میدی انتخاب کن";

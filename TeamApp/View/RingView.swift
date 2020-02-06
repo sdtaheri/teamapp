@@ -9,7 +9,9 @@
 import SwiftUI
 
 struct RingView: View {
-        
+
+	@Environment(\.layoutDirection) private var layoutDirection
+
     @Binding var rating: Double
     @State var ringWidth: CGFloat = 30
 
@@ -33,7 +35,7 @@ struct RingView: View {
                 .fill(Color.gray)
 				.blur(radius: round(0.075 * ringWidth))
 				.animation(Animation.default)
-            
+
             Circle()
                 .trim(from: 0, to: CGFloat(rating) / 20.0)
                 .stroke(style: StrokeStyle(
@@ -42,15 +44,14 @@ struct RingView: View {
                     lineJoin: .round))
 				.fill(Color("Color\(Int((rating / 2.0).rounded()))"))
 				.animation(Animation.default)
-
 			Text(String(Int(rating.rounded())))
 				.font(Font.system(size: round(ringWidth * 3 - 8.5),
                                   weight: .bold,
                                   design: .rounded))
-                .rotationEffect(.degrees(90))
+                .rotationEffect(layoutDirection == .rightToLeft ? .degrees(270) : .degrees(90))
                 .foregroundColor(Color.primary)
         }
-        .rotationEffect(.degrees(270))
+		.rotationEffect(layoutDirection == .rightToLeft ? .degrees(90) : .degrees(270))
         .padding(round(ringWidth * 0.8))
         .frame(width: round(ringWidth * 6.5),
                height: round(ringWidth * 6.5))
@@ -73,5 +74,6 @@ struct RingView: View {
 struct RingView_Previews: PreviewProvider {
 	static var previews: some View {
 		RingView(rating: Binding.constant(5))
+			.environment(\.layoutDirection, .leftToRight)
 	}
 }

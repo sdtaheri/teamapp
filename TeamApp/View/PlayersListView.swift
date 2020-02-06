@@ -111,7 +111,7 @@ struct PlayersListView: View {
 				Button(action: {
 					selectedPlayersBinding.wrappedValue.removeAll()
 				}) {
-					Text("clear")
+					Image(systemName: "arrow.clockwise")
 				}
 				.opacity(selectedPlayersBinding.wrappedValue.isEmpty ? 0 : 1)
 				,trailing:
@@ -131,7 +131,7 @@ struct PlayersListView: View {
 							self.playerToEdit = nil
 							self.shouldShowCreatePlayerSheet = true
 					}) {
-						Text("add")
+						Image(systemName: "plus.circle.fill")
 					}
 				}
 		)

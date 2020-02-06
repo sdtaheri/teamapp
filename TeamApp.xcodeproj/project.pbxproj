@@ -18,7 +18,6 @@
 		3014EADE235D4C5E004F428F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3014EADC235D4C5E004F428F /* LaunchScreen.storyboard */; };
 		301F7B54238A2A0B0049CCF2 /* EmptyDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301F7B53238A2A0B0049CCF2 /* EmptyDetailView.swift */; };
 		301F7B56238A2AE00049CCF2 /* BigImageInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301F7B55238A2AE00049CCF2 /* BigImageInfoView.swift */; };
-		301F7B58238A35260049CCF2 /* EditPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301F7B57238A35260049CCF2 /* EditPlayerView.swift */; };
 		3037CE3023901E6F0099844A /* ShareButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3037CE2F23901E6F0099844A /* ShareButton.swift */; };
 		30472DFA2389391A0032FEC0 /* CalculatedTeamsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30472DF92389391A0032FEC0 /* CalculatedTeamsView.swift */; };
 		30472DFC238946920032FEC0 /* PlayerListItemViewSelectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30472DFB238946920032FEC0 /* PlayerListItemViewSelectable.swift */; };
@@ -26,6 +25,7 @@
 		30472E032389887F0032FEC0 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 30472E052389887F0032FEC0 /* Localizable.stringsdict */; };
 		30472E08238998620032FEC0 /* ShareSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30472E07238998620032FEC0 /* ShareSheet.swift */; };
 		3078EF532366F9A400CB94D9 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3078EF522366F9A400CB94D9 /* CloudKit.framework */; };
+		307A6AB823ECB47E0094DFD4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 307A6ABA23ECB47E0094DFD4 /* InfoPlist.strings */; };
 		30811AB3238875D60095B3BA /* PlayerListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30811AB2238875D60095B3BA /* PlayerListItemView.swift */; };
 		30811AC023888CBB0095B3BA /* ButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30811ABF23888CBB0095B3BA /* ButtonStyles.swift */; };
 		30A13BF32383F09F001C43CA /* TeamAppCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A13BF22383F09F001C43CA /* TeamAppCore.swift */; };
@@ -50,7 +50,6 @@
 		3014EADF235D4C5E004F428F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		301F7B53238A2A0B0049CCF2 /* EmptyDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyDetailView.swift; sourceTree = "<group>"; };
 		301F7B55238A2AE00049CCF2 /* BigImageInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigImageInfoView.swift; sourceTree = "<group>"; };
-		301F7B57238A35260049CCF2 /* EditPlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditPlayerView.swift; sourceTree = "<group>"; };
 		3037CE2F23901E6F0099844A /* ShareButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareButton.swift; sourceTree = "<group>"; };
 		30472DF92389391A0032FEC0 /* CalculatedTeamsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatedTeamsView.swift; sourceTree = "<group>"; };
 		30472DFB238946920032FEC0 /* PlayerListItemViewSelectable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerListItemViewSelectable.swift; sourceTree = "<group>"; };
@@ -59,6 +58,8 @@
 		30472E07238998620032FEC0 /* ShareSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSheet.swift; sourceTree = "<group>"; };
 		3078EF502366F99500CB94D9 /* TeamApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TeamApp.entitlements; sourceTree = "<group>"; };
 		3078EF522366F9A400CB94D9 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		307A6AB923ECB47E0094DFD4 /* fa */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fa; path = fa.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		307A6ABB23ECB4920094DFD4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		30811AB2238875D60095B3BA /* PlayerListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerListItemView.swift; sourceTree = "<group>"; };
 		30811ABF23888CBB0095B3BA /* ButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyles.swift; sourceTree = "<group>"; };
 		30A13BF22383F09F001C43CA /* TeamAppCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamAppCore.swift; sourceTree = "<group>"; };
@@ -68,6 +69,8 @@
 		30C02E282385EDE9009CC2DF /* CreatePlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePlayerView.swift; sourceTree = "<group>"; };
 		30DE86C1238735CD00ED0B6D /* RingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingView.swift; sourceTree = "<group>"; };
 		30E2E78423EC729300390488 /* v2.rating.20.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = v2.rating.20.xcdatamodel; sourceTree = "<group>"; };
+		30E2E78723EC984400390488 /* fa */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fa; path = fa.lproj/Localizable.strings; sourceTree = "<group>"; };
+		30E2E78823EC984400390488 /* fa */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = fa; path = fa.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,6 +184,7 @@
 				3014EAD7235D4C5E004F428F /* Assets.xcassets */,
 				30C02E242385EC8D009CC2DF /* Localizable.strings */,
 				30472E052389887F0032FEC0 /* Localizable.stringsdict */,
+				307A6ABA23ECB47E0094DFD4 /* InfoPlist.strings */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -192,7 +196,6 @@
 				30472DF92389391A0032FEC0 /* CalculatedTeamsView.swift */,
 				3014EAD5235D4C5D004F428F /* ContentView.swift */,
 				30C02E282385EDE9009CC2DF /* CreatePlayerView.swift */,
-				301F7B57238A35260049CCF2 /* EditPlayerView.swift */,
 				301F7B53238A2A0B0049CCF2 /* EmptyDetailView.swift */,
 				30811AB2238875D60095B3BA /* PlayerListItemView.swift */,
 				30472DFB238946920032FEC0 /* PlayerListItemViewSelectable.swift */,
@@ -248,6 +251,7 @@
 			knownRegions = (
 				en,
 				Base,
+				fa,
 			);
 			mainGroup = 3014EAC0235D4C5D004F428F;
 			productRefGroup = 3014EACA235D4C5D004F428F /* Products */;
@@ -265,6 +269,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3014EADE235D4C5E004F428F /* LaunchScreen.storyboard in Resources */,
+				307A6AB823ECB47E0094DFD4 /* InfoPlist.strings in Resources */,
 				30C02E222385EC8D009CC2DF /* Localizable.strings in Resources */,
 				3014EADB235D4C5E004F428F /* Preview Assets.xcassets in Resources */,
 				30472E032389887F0032FEC0 /* Localizable.stringsdict in Resources */,
@@ -297,7 +302,6 @@
 				30811AC023888CBB0095B3BA /* ButtonStyles.swift in Sources */,
 				30472E00238980630032FEC0 /* Formatters+Extension.swift in Sources */,
 				30045BBC2390355D00B48D1D /* TeamHeaderView.swift in Sources */,
-				301F7B58238A35260049CCF2 /* EditPlayerView.swift in Sources */,
 				30472DFC238946920032FEC0 /* PlayerListItemViewSelectable.swift in Sources */,
 				30C02E262385ED72009CC2DF /* PlayersListView.swift in Sources */,
 			);
@@ -318,14 +322,26 @@
 			isa = PBXVariantGroup;
 			children = (
 				30472E042389887F0032FEC0 /* en */,
+				30E2E78823EC984400390488 /* fa */,
 			);
 			name = Localizable.stringsdict;
 			sourceTree = "<group>";
+		};
+		307A6ABA23ECB47E0094DFD4 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				307A6AB923ECB47E0094DFD4 /* fa */,
+				307A6ABB23ECB4920094DFD4 /* en */,
+			);
+			name = InfoPlist.strings;
+			path = "TeamApp/Supporting Files/Resources";
+			sourceTree = SOURCE_ROOT;
 		};
 		30C02E242385EC8D009CC2DF /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				30C02E232385EC8D009CC2DF /* en */,
+				30E2E78723EC984400390488 /* fa */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -337,6 +353,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -399,6 +416,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
