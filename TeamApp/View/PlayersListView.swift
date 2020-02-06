@@ -11,7 +11,7 @@ import SwiftUI
 struct PlayersListView: View {
 
 	@FetchRequest(
-		sortDescriptors: [NSSortDescriptor(keyPath: \Player.name, ascending: true)],
+		sortDescriptors: [NSSortDescriptor(key: "name", ascending: true, selector:#selector(NSString.localizedStandardCompare))],
 		animation: .default)
 	private var players: FetchedResults<Player>
 
@@ -20,9 +20,10 @@ struct PlayersListView: View {
 	@EnvironmentObject var core: TeamAppCore
 
 	@State private var shouldShowCreatePlayerSheet: Bool = false
-	@State private var shouldShowComingSoonAlert: Bool = false
 	@State private var selectedPlayers = Set<Player>()
 	@State private var desiredTeamCount = 2
+
+	@State private var playerToEdit: Player?
 
 	var body: some View {
 
@@ -54,7 +55,8 @@ struct PlayersListView: View {
 								PlayerListItemViewSelectable(player: player, selectedItems: selectedPlayersBinding)
 									.contextMenu {
 										Button(action: {
-											self.shouldShowComingSoonAlert = true
+											self.playerToEdit = player
+											self.shouldShowCreatePlayerSheet = true
 										}) {
 											Text("edit")
 											Image(systemName: "pencil")
@@ -114,31 +116,28 @@ struct PlayersListView: View {
 				.opacity(selectedPlayersBinding.wrappedValue.isEmpty ? 0 : 1)
 				,trailing:
 				HStack {
-					//				#if DEBUG
-					//				Button("Add-Debug") {
-					//						for i in 0..<20 {
-					//							Player.create(name: "Player \(i + 1)",
-					//								rating: (0...10).randomElement() ?? 0,
-					//								in: self.viewContext)
-					//						}
-					//					}
-					//				#endif
-					//
+					#if DEBUG
+					Button("Add-Debug") {
+							for i in 0..<20 {
+								Player.create(name: "Player \(i + 1)",
+									rating: Double((0...20).randomElement() ?? 0),
+									in: self.viewContext)
+							}
+						}
+					#endif
+
 					Button(
 						action: {
+							self.playerToEdit = nil
 							self.shouldShowCreatePlayerSheet = true
 					}) {
 						Text("add")
 					}
 				}
 		)
-			.animation(Animation.default)
-			.alert(isPresented: self.$shouldShowComingSoonAlert) {
-				Alert(title: Text("coming_soon"),
-					  message: Text("will_come_in_later_release"))
-		}
+		.animation(Animation.default)
 		.sheet(isPresented: self.$shouldShowCreatePlayerSheet) {
-			CreatePlayerView()
+			CreatePlayerView(player: self.playerToEdit)
 				.environment(\.managedObjectContext, self.viewContext)
 		}
 	}

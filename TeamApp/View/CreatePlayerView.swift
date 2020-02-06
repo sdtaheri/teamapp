@@ -15,6 +15,8 @@ struct CreatePlayerView: View {
 	@State private var name: String = ""
 	@State private var rating: Double = 5
 
+	var player: Player?
+
 	var body: some View {
 		NavigationView {
 			Form {
@@ -40,13 +42,23 @@ struct CreatePlayerView: View {
 				}
 				, trailing:
 				Button(action: {
-					Player.create(name: self.name, rating: self.rating, in: self.viewContext)
+					if let player = self.player {
+						player.edit(name: self.name, rating: self.rating, in: self.viewContext)
+					} else {
+						Player.create(name: self.name, rating: self.rating, in: self.viewContext)
+					}
 					self.presentationMode.wrappedValue.dismiss()
 				}) {
 					Text("save").fontWeight(.bold)
 				}.disabled(name.isEmpty)
 			)
 		}.navigationViewStyle(StackNavigationViewStyle())
+		.onAppear {
+			if let player = self.player {
+				self.name = player.name ?? ""
+				self.rating = player.rating
+			}
+		}
 		
 	}
 }
