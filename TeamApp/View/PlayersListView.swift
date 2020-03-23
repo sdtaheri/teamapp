@@ -60,18 +60,20 @@ struct PlayersListView: View {
 										}) {
 											Text("edit")
 											Image(systemName: "pencil")
+												.imageScale(.large)
 										}
 
 										Button(action: {
 											if let index = self.players.firstIndex(of: player) {
+												selectedPlayersBinding.wrappedValue.remove(player)
 												DispatchQueue.main.async {
-													selectedPlayersBinding.wrappedValue.remove(player)
 													self.players[index].delete(from: self.viewContext)
 												}
 											}
 										}) {
 											Text("delete")
 											Image(systemName: "trash")
+												.imageScale(.large)
 										}
 								}
 								.listRowBackground(selectedPlayersBinding.wrappedValue.contains(player) ? Color(UIColor.tertiarySystemFill) : nil)
@@ -80,7 +82,9 @@ struct PlayersListView: View {
 									let player = self.players[index]
 									selectedPlayersBinding.wrappedValue.remove(player)
 								}
-								self.players.delete(at: indices, from: self.viewContext)
+								DispatchQueue.main.async {
+									self.players.delete(at: indices, from: self.viewContext)
+								}
 							}
 						}
 					}
@@ -115,16 +119,29 @@ struct PlayersListView: View {
 						.modifier(BetterTappableIcon(alignment: .leading))
 				}
 				.opacity(selectedPlayersBinding.wrappedValue.isEmpty ? 0 : 1)
-				,trailing:
+				, trailing:
 				HStack {
 					#if DEBUG
-					Button("Add-Debug") {
-							for i in 0..<20 {
+					Button(action: {
+						DispatchQueue.main.async {
+							Player.deleteAll(from: self.viewContext)
+						}
+					}) {
+						Image(systemName: "text.badge.xmark")
+							.modifier(BetterTappableIcon(alignment: .leading))
+					}
+
+					Button(action: {
+							for i in 0..<5 {
 								Player.create(name: "Player \(i + 1)",
 									rating: Double((0...20).randomElement() ?? 0),
 									in: self.viewContext)
 							}
-						}
+					}) {
+						Image(systemName: "text.badge.plus")
+							.modifier(BetterTappableIcon(alignment: .center))
+					}
+
 					#endif
 
 					Button(

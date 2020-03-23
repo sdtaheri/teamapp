@@ -50,6 +50,25 @@ extension Player {
 		return newPlayer
 	}
 
+	static func deleteAll(from managedObjectContext: NSManagedObjectContext) {
+		let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Player")
+		fetchRequest.includesPropertyValues = false
+
+		let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+		deleteRequest.resultType = .resultTypeObjectIDs
+
+		do {
+			let result = try managedObjectContext.execute(deleteRequest) as? NSBatchDeleteResult
+			let objectIDArray = result?.result as? [NSManagedObjectID]
+			if let array = objectIDArray, !array.isEmpty {
+				let changes = [NSDeletedObjectsKey : array]
+				NSManagedObjectContext.mergeChanges(fromRemoteContextSave: changes, into: [managedObjectContext])
+			}
+		} catch let error {
+			print("Failed to delete all players: \(error.localizedDescription)")
+		}
+	}
+
 	func delete(from managedObjectContext: NSManagedObjectContext) {
 		managedObjectContext.delete(self)
 
@@ -68,7 +87,7 @@ extension Player {
 		self.rating = rating
 
 		do {
-			try  managedObjectContext.save()
+			try managedObjectContext.save()
 		} catch {
 			// Replace this implementation with code to handle the error appropriately.
 			// fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
