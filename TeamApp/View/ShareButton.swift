@@ -10,6 +10,7 @@ import SwiftUI
 
 struct ShareButton: View {
 
+	let alignment: Alignment
 	@Binding var shouldShowShareSheet: Bool
 
 	var body: some View {
@@ -17,12 +18,13 @@ struct ShareButton: View {
 			self.shouldShowShareSheet = true
 		}) {
 			Image(systemName: "square.and.arrow.up")
+				.modifier(BetterTappableIcon(alignment: alignment))
 		}
 	}
 }
 
 struct ShareButton_Previews: PreviewProvider {
     static var previews: some View {
-		ShareButton(shouldShowShareSheet: Binding.constant(true))
+		ShareButton(alignment: .center, shouldShowShareSheet: Binding.constant(true))
     }
 }

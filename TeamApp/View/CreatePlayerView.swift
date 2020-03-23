@@ -39,6 +39,7 @@ struct CreatePlayerView: View {
 					self.presentationMode.wrappedValue.dismiss()
 				}) {
 					Image(systemName: "xmark.circle")
+						.modifier(BetterTappableIcon(alignment: .leading))
 				}
 				, trailing:
 				Button(action: {

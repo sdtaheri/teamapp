@@ -26,6 +26,7 @@
 		30472E08238998620032FEC0 /* ShareSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30472E07238998620032FEC0 /* ShareSheet.swift */; };
 		3078EF532366F9A400CB94D9 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3078EF522366F9A400CB94D9 /* CloudKit.framework */; };
 		307A6AB823ECB47E0094DFD4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 307A6ABA23ECB47E0094DFD4 /* InfoPlist.strings */; };
+		307CFA4F2428FCCE00DE0DC0 /* ViewModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307CFA4E2428FCCE00DE0DC0 /* ViewModifiers.swift */; };
 		30811AB3238875D60095B3BA /* PlayerListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30811AB2238875D60095B3BA /* PlayerListItemView.swift */; };
 		30811AC023888CBB0095B3BA /* ButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30811ABF23888CBB0095B3BA /* ButtonStyles.swift */; };
 		30A13BF32383F09F001C43CA /* TeamAppCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A13BF22383F09F001C43CA /* TeamAppCore.swift */; };
@@ -66,6 +67,7 @@
 		307A6ABF23ECB9B40094DFD4 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		307A6AC023ECB9B40094DFD4 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = es; path = es.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		307A6AC123ECB9B40094DFD4 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		307CFA4E2428FCCE00DE0DC0 /* ViewModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModifiers.swift; sourceTree = "<group>"; };
 		30811AB2238875D60095B3BA /* PlayerListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerListItemView.swift; sourceTree = "<group>"; };
 		30811ABF23888CBB0095B3BA /* ButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyles.swift; sourceTree = "<group>"; };
 		30A13BF22383F09F001C43CA /* TeamAppCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamAppCore.swift; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 			children = (
 				30811ABF23888CBB0095B3BA /* ButtonStyles.swift */,
 				30472DFF238980630032FEC0 /* Formatters+Extension.swift */,
+				307CFA4E2428FCCE00DE0DC0 /* ViewModifiers.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -307,6 +310,7 @@
 				30C02E292385EDE9009CC2DF /* CreatePlayerView.swift in Sources */,
 				30811AB3238875D60095B3BA /* PlayerListItemView.swift in Sources */,
 				3014EAD2235D4C5D004F428F /* SceneDelegate.swift in Sources */,
+				307CFA4F2428FCCE00DE0DC0 /* ViewModifiers.swift in Sources */,
 				30811AC023888CBB0095B3BA /* ButtonStyles.swift in Sources */,
 				30472E00238980630032FEC0 /* Formatters+Extension.swift in Sources */,
 				30045BBC2390355D00B48D1D /* TeamHeaderView.swift in Sources */,

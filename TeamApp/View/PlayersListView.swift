@@ -112,6 +112,7 @@ struct PlayersListView: View {
 					selectedPlayersBinding.wrappedValue.removeAll()
 				}) {
 					Image(systemName: "arrow.clockwise")
+						.modifier(BetterTappableIcon(alignment: .leading))
 				}
 				.opacity(selectedPlayersBinding.wrappedValue.isEmpty ? 0 : 1)
 				,trailing:
@@ -132,6 +133,7 @@ struct PlayersListView: View {
 							self.shouldShowCreatePlayerSheet = true
 					}) {
 						Image(systemName: "plus.circle.fill")
+							.modifier(BetterTappableIcon(alignment: .trailing))
 					}
 				}
 		)

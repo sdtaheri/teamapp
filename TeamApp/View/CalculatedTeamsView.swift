@@ -90,12 +90,12 @@ struct CalculatedTeamsView: View {
 			Group {
 				if self.playersCount >= 2 {
 					if horizontalSizeClass == .regular {
-						ShareButton(shouldShowShareSheet: $shouldShowShareSheet)
+						ShareButton(alignment: .trailing, shouldShowShareSheet: $shouldShowShareSheet)
 							.popover(isPresented: $shouldShowShareSheet) {
 								ShareSheet(activityItems: [TeamAppCore.textualRepresentation(of: self.core.teams)])
 						}
 					} else {
-						ShareButton(shouldShowShareSheet: $shouldShowShareSheet)
+						ShareButton(alignment: .trailing, shouldShowShareSheet: $shouldShowShareSheet)
 							.sheet(isPresented: $shouldShowShareSheet) {
 								ShareSheet(activityItems: [TeamAppCore.textualRepresentation(of: self.core.teams)])
 						}
