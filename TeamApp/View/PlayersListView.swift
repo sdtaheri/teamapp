@@ -123,6 +123,7 @@ struct PlayersListView: View {
 				HStack {
 					#if DEBUG
 					Button(action: {
+						selectedPlayersBinding.wrappedValue.removeAll()
 						DispatchQueue.main.async {
 							Player.deleteAll(from: self.viewContext)
 						}
