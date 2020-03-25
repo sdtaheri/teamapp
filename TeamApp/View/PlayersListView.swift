@@ -49,46 +49,46 @@ struct PlayersListView: View {
 			} else {
 				ZStack(alignment: .bottomTrailing) {
 					List {
-						Section(header: horizontalSizeClass == .compact ? Text("tap_to_select_players") : Text(""),
-								footer: Text("player_count \(players.count)")) {
-							ForEach(players, id: \.id) { player in
-								PlayerListItemViewSelectable(player: player, selectedItems: selectedPlayersBinding)
-									.contextMenu {
-										Button(action: {
-											self.playerToEdit = player
-											self.shouldShowCreatePlayerSheet = true
-										}) {
-											Text("edit")
-											Image(systemName: "pencil")
-												.imageScale(.large)
-										}
-
-										Button(action: {
-											if let index = self.players.firstIndex(of: player) {
-												selectedPlayersBinding.wrappedValue.remove(player)
-												DispatchQueue.main.async {
-													self.players[index].delete(from: self.viewContext)
+						Section(header: horizontalSizeClass == .compact ? Text("tap_to_select_players") : nil,
+								footer: Text("player_count \(players.count)").font(Font.footnote)) {
+									ForEach(players, id: \.id) { player in
+										PlayerListItemViewSelectable(player: player, selectedItems: selectedPlayersBinding)
+											.contextMenu {
+												Button(action: {
+													self.playerToEdit = player
+													self.shouldShowCreatePlayerSheet = true
+												}) {
+													Text("edit")
+													Image(systemName: "pencil")
+														.imageScale(.large)
 												}
-											}
-										}) {
-											Text("delete")
-											Image(systemName: "trash")
-												.imageScale(.large)
+
+												Button(action: {
+													if let index = self.players.firstIndex(of: player) {
+														selectedPlayersBinding.wrappedValue.remove(player)
+														DispatchQueue.main.async {
+															self.players[index].delete(from: self.viewContext)
+														}
+													}
+												}) {
+													Text("delete")
+													Image(systemName: "trash")
+														.imageScale(.large)
+												}
 										}
-								}
-								.listRowBackground(selectedPlayersBinding.wrappedValue.contains(player) ? Color(UIColor.tertiarySystemFill) : nil)
-							}.onDelete { indices in
-								for index in indices {
-									let player = self.players[index]
-									selectedPlayersBinding.wrappedValue.remove(player)
-								}
-								DispatchQueue.main.async {
-									self.players.delete(at: indices, from: self.viewContext)
-								}
-							}
+										.listRowBackground(selectedPlayersBinding.wrappedValue.contains(player) ? Color(UIColor.tertiarySystemFill) : nil)
+									}.onDelete { indices in
+										for index in indices {
+											let player = self.players[index]
+											selectedPlayersBinding.wrappedValue.remove(player)
+										}
+										DispatchQueue.main.async {
+											self.players.delete(at: indices, from: self.viewContext)
+										}
+									}
 						}
 					}
-					.listStyle(GroupedListStyle())
+					.listStyle(self.adaptiveListStyle())
 
 					NavigationLink(destination:
 						CalculatedTeamsView(core: self.core,
@@ -133,11 +133,11 @@ struct PlayersListView: View {
 					}
 
 					Button(action: {
-							for i in 0..<5 {
-								Player.create(name: "Player \(i + 1)",
-									rating: Double((0...20).randomElement() ?? 0),
-									in: self.viewContext)
-							}
+						for i in 0..<5 {
+							Player.create(name: "Player \(i + 1)",
+								rating: Double((0...20).randomElement() ?? 0),
+								in: self.viewContext)
+						}
 					}) {
 						Image(systemName: "text.badge.plus")
 							.modifier(BetterTappableIcon(alignment: .center))
@@ -155,11 +155,19 @@ struct PlayersListView: View {
 					}
 				}
 		)
-		.animation(Animation.default)
-		.sheet(isPresented: self.$shouldShowCreatePlayerSheet) {
-			CreatePlayerView(player: self.playerToEdit)
-				.environment(\.managedObjectContext, self.viewContext)
+			.animation(Animation.default)
+			.sheet(isPresented: self.$shouldShowCreatePlayerSheet) {
+				CreatePlayerView(player: self.playerToEdit)
+					.environment(\.managedObjectContext, self.viewContext)
 		}
+	}
+
+	private func adaptiveListStyle() -> some ListStyle {
+		#if targetEnvironment(macCatalyst)
+		return DefaultListStyle()
+		#else
+		return GroupedListStyle()
+		#endif
 	}
 }
 

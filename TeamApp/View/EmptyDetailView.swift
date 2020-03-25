@@ -10,10 +10,7 @@ import SwiftUI
 
 struct EmptyDetailView: View {
     var body: some View {
-		NavigationView {
-			BigImageInfoView(systemImageName: "arrowshape.turn.up.left", localizedStringKey: "choose_from_left_column")
-				.navigationBarTitle(Text(""), displayMode: .inline)
-		}.navigationViewStyle(StackNavigationViewStyle())
+		BigImageInfoView(systemImageName: "arrowshape.turn.up.left", localizedStringKey: "choose_from_left_column")
     }
 }
 

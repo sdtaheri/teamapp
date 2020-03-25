@@ -83,19 +83,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 extension AppDelegate {
 	private func setNavigationBarsFont() {
+
+		let appearance = UINavigationBarAppearance()
+
+		#if targetEnvironment(macCatalyst)
+		appearance.configureWithOpaqueBackground()
+		appearance.backgroundColor = .systemBackground
+		#else
+		appearance.configureWithDefaultBackground()
+		#endif
+
 		let largeTitleFontSize = CGFloat(38)
 		let largeTitleFont = UIFont.systemFont(ofSize: largeTitleFontSize, weight: .bold)
 		if let descriptor = largeTitleFont.fontDescriptor.withDesign(.rounded) {
 			let largeTitleFont = UIFont(descriptor: descriptor, size: largeTitleFontSize)
-			UINavigationBar.appearance().largeTitleTextAttributes = [.font: largeTitleFont]
+			appearance.largeTitleTextAttributes = [.font: largeTitleFont]
 		}
 
 		let titleFontSize = CGFloat(18)
 		let titleFont = UIFont.systemFont(ofSize: titleFontSize, weight: .semibold)
 		if let descriptor = titleFont.fontDescriptor.withDesign(.rounded) {
 			let titleFont = UIFont(descriptor: descriptor, size: titleFontSize)
-			UINavigationBar.appearance().titleTextAttributes = [.font: titleFont]
+			appearance.titleTextAttributes = [.font: titleFont]
 		}
+
+		UINavigationBar.appearance().standardAppearance = appearance
+		UINavigationBar.appearance().scrollEdgeAppearance = appearance
 	}
 }
 
