@@ -36,9 +36,9 @@ struct CalculatedTeamsView: View {
 					List {
 						ForEach(core.teams, id: \.self.0) { index, team in
 							Section(header: TeamHeaderView(index: index, players: team)) {
-										ForEach(team) {
-											PlayerListItemView(player: $0)
-										}
+								ForEach(team) {
+									PlayerListItemView(player: $0)
+								}
 							}
 						}
 					}
@@ -89,17 +89,29 @@ struct CalculatedTeamsView: View {
 		.navigationBarItems(trailing:
 			Group {
 				if self.playersCount >= 2 {
+					#if targetEnvironment(macCatalyst)
+					Button(action: {
+						let pasteboard = UIPasteboard.general
+						pasteboard.string = TeamAppCore.textualRepresentation(of: self.core.teams)
+					}) {
+						Image(systemName: "doc.on.doc")
+							.modifier(BetterTappableIcon(alignment: .leading))
+					}
+					#else
 					if horizontalSizeClass == .regular {
 						ShareButton(alignment: .trailing, shouldShowShareSheet: $shouldShowShareSheet)
 							.popover(isPresented: $shouldShowShareSheet) {
 								ShareSheet(activityItems: [TeamAppCore.textualRepresentation(of: self.core.teams)])
+									.frame(minWidth: 375.0, minHeight: 375.0)
 						}
 					} else {
 						ShareButton(alignment: .trailing, shouldShowShareSheet: $shouldShowShareSheet)
 							.sheet(isPresented: $shouldShowShareSheet) {
 								ShareSheet(activityItems: [TeamAppCore.textualRepresentation(of: self.core.teams)])
+									.frame(minWidth: 375.0, minHeight: 375.0)
 						}
 					}
+					#endif
 				} else {
 					EmptyView()
 				}

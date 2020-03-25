@@ -11,6 +11,7 @@ import SwiftUI
 struct ShareSheet: UIViewControllerRepresentable {
     typealias Callback = (_ activityType: UIActivity.ActivityType?, _ completed: Bool, _ returnedItems: [Any]?, _ error: Error?) -> Void
 
+	@Environment(\.presentationMode) private var presentationMode
     let activityItems: [Any]
     let applicationActivities: [UIActivity]? = nil
     let excludedActivityTypes: [UIActivity.ActivityType]? = nil
@@ -21,7 +22,10 @@ struct ShareSheet: UIViewControllerRepresentable {
             activityItems: activityItems,
             applicationActivities: applicationActivities)
         controller.excludedActivityTypes = excludedActivityTypes
-        controller.completionWithItemsHandler = callback
+		controller.completionWithItemsHandler = { (activityType, completed, returnedItems, error) in
+			self.callback?(activityType, completed, returnedItems, error)
+			self.presentationMode.wrappedValue.dismiss()
+        }
         return controller
     }
 
