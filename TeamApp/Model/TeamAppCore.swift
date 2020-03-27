@@ -12,12 +12,6 @@ extension Collection where Element: BinaryFloatingPoint {
 	}
 }
 
-extension Player: Identifiable {
-	public var id: UUID {
-		return uuid ?? UUID()
-	}
-}
-
 typealias IndexedTeam = (index: Int, players: [Player])
 
 final class TeamAppCore: ObservableObject {

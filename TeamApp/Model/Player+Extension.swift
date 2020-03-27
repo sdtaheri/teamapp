@@ -8,13 +8,6 @@
 
 import CoreData
 
-struct PlayerValueWrapper: Identifiable {
-	let wrappedValue: Player
-	var id: UUID {
-		wrappedValue.id
-	}
-}
-
 extension Player {
 	static func create(name: String, rating: Double, in managedObjectContext: NSManagedObjectContext) {
 		let newPlayer = self.init(context: managedObjectContext)
