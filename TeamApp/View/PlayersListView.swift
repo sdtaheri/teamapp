@@ -102,7 +102,7 @@ struct PlayersListView: View {
 						}
 						.font(.system(.headline, design: .rounded))
 					}
-					.buttonStyle(ActionButtonBackgroundStyle())
+					.modifier(ActionButtonModifier())
 					.opacity(selectedPlayersBinding.wrappedValue.isEmpty ? 0 : 1)
 					.blur(radius: selectedPlayersBinding.wrappedValue.isEmpty ? 10 : 0)
 					.padding(.vertical)
@@ -116,11 +116,12 @@ struct PlayersListView: View {
 					selectedPlayersBinding.wrappedValue.removeAll()
 				}) {
 					Image(systemName: "arrow.clockwise")
-						.modifier(BetterTappableIcon(alignment: .leading))
 				}
+				.modifier(BetterTappableIcon())
 				.opacity(selectedPlayersBinding.wrappedValue.isEmpty ? 0 : 1)
+
 				, trailing:
-				HStack {
+				HStack(alignment: .center) {
 					#if DEBUG
 					Button(action: {
 						selectedPlayersBinding.wrappedValue.removeAll()
@@ -129,8 +130,8 @@ struct PlayersListView: View {
 						}
 					}) {
 						Image(systemName: "text.badge.xmark")
-							.modifier(BetterTappableIcon(alignment: .leading))
 					}
+					.modifier(BetterTappableIcon())
 
 					Button(action: {
 						for i in 0..<5 {
@@ -140,19 +141,19 @@ struct PlayersListView: View {
 						}
 					}) {
 						Image(systemName: "text.badge.plus")
-							.modifier(BetterTappableIcon(alignment: .center))
 					}
+					.modifier(BetterTappableIcon())
 
 					#endif
-
+					
 					Button(
 						action: {
 							self.playerToEdit = nil
 							self.shouldShowCreatePlayerSheet = true
 					}) {
 						Image(systemName: "plus.circle.fill")
-							.modifier(BetterTappableIcon(alignment: .trailing))
 					}
+					.modifier(BetterTappableIcon())
 				}
 		)
 			.animation(Animation.default)

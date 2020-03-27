@@ -8,7 +8,31 @@
 
 import SwiftUI
 
-struct ActionButtonBackgroundStyle: ButtonStyle {
+struct ActionButtonModifier: ViewModifier {
+	@State private var isHovered = false
+
+	func body(content: Content) -> some View {
+		content
+			.buttonStyle(ActionButtonBackgroundStyle())
+			.scaleEffect(self.isHovered ? 1.05 : 1)
+			.animation(.default)
+			.onHover {
+				self.isHovered = $0
+		}
+	}
+}
+
+struct BetterTappableIcon: ViewModifier {
+	func body(content: Content) -> some View {
+		content
+			.imageScale(.large)
+			.frame(minWidth: 36.0, minHeight: 36.0)
+			.contentShape(Rectangle())
+			.hoverEffect()
+	}
+}
+
+private struct ActionButtonBackgroundStyle: ButtonStyle {
 	func makeBody(configuration: Self.Configuration) -> some View {
 		configuration.label
 			.padding()

@@ -32,15 +32,15 @@ struct CreatePlayerView: View {
 					}
 				}
 			}
-			.navigationBarTitle("add_player")
+			.navigationBarTitle(self.player != nil ? "edit_player" : "add_player", displayMode: .inline)
 			.navigationBarItems(
 				leading:
 				Button(action: {
 					self.presentationMode.wrappedValue.dismiss()
 				}) {
 					Image(systemName: "xmark.circle")
-						.modifier(BetterTappableIcon(alignment: .leading))
 				}
+				.modifier(BetterTappableIcon())
 				, trailing:
 				Button(action: {
 					if let player = self.player {
@@ -51,14 +51,16 @@ struct CreatePlayerView: View {
 					self.presentationMode.wrappedValue.dismiss()
 				}) {
 					Text("save").fontWeight(.bold)
-				}.disabled(name.isEmpty)
+				}
+				.modifier(BetterTappableIcon())
+				.disabled(name.isEmpty)
 			)
 		}.navigationViewStyle(StackNavigationViewStyle())
-		.onAppear {
-			if let player = self.player {
-				self.name = player.name ?? ""
-				self.rating = player.rating
-			}
+			.onAppear {
+				if let player = self.player {
+					self.name = player.name ?? ""
+					self.rating = player.rating
+				}
 		}
 		
 	}

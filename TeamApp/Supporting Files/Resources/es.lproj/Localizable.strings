@@ -8,6 +8,7 @@
 
 "app_name" = "TeamApp⁺";
 "add_player" = "Agregar jugador";
+"edit_player" = "Editar jugador";
 "name" = "Nombre";
 "save" = "Listo";
 "delete" = "Eliminar";

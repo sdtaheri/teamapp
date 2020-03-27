@@ -8,6 +8,7 @@
 
 "app_name" = "TeamApp⁺";
 "add_player" = "Add Player";
+"edit_player" = "Edit Player";
 "name" = "Name";
 "save" = "Save";
 "delete" = "Delete";

@@ -63,7 +63,7 @@ struct CalculatedTeamsView: View {
 									.fontWeight(.medium)
 									.font(.system(.headline, design: .rounded))
 							}
-							.buttonStyle(ActionButtonBackgroundStyle())
+							.modifier(ActionButtonModifier())
 
 							Spacer()
 
@@ -95,8 +95,8 @@ struct CalculatedTeamsView: View {
 						pasteboard.string = TeamAppCore.textualRepresentation(of: self.core.teams)
 					}) {
 						Image(systemName: "doc.on.doc")
-							.modifier(BetterTappableIcon(alignment: .leading))
 					}
+					.modifier(BetterTappableIcon())
 					#else
 					if horizontalSizeClass == .regular {
 						ShareButton(alignment: .trailing, shouldShowShareSheet: $shouldShowShareSheet)

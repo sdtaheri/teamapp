@@ -18,8 +18,8 @@ struct ShareButton: View {
 			self.shouldShowShareSheet = true
 		}) {
 			Image(systemName: "square.and.arrow.up")
-				.modifier(BetterTappableIcon(alignment: alignment))
 		}
+		.modifier(BetterTappableIcon())
 	}
 }
 
