@@ -1,17 +1,6 @@
 import Foundation
 import Combine
 
-extension Collection where Element: Numeric {
-	var sum: Element { return reduce(0, +) }
-}
-
-extension Collection where Element: BinaryFloatingPoint {
-	/// Returns the average of all elements in the array
-	var average: Double {
-		return isEmpty ? 0 : Double(sum) / Double(count)
-	}
-}
-
 typealias IndexedTeam = (index: Int, players: [PlayerManagedObject])
 
 final class TeamAppCore: ObservableObject {

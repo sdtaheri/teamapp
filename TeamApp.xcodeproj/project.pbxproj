@@ -36,6 +36,8 @@
 		30C02E262385ED72009CC2DF /* PlayersListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C02E252385ED72009CC2DF /* PlayersListView.swift */; };
 		30C02E292385EDE9009CC2DF /* CreatePlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C02E282385EDE9009CC2DF /* CreatePlayerView.swift */; };
 		30DE86C2238735CD00ED0B6D /* RingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DE86C1238735CD00ED0B6D /* RingView.swift */; };
+		30E313472438E56800A75129 /* Collection+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E313462438E56800A75129 /* Collection+Extension.swift */; };
+		30E313492438E5B200A75129 /* Database+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E313482438E5B200A75129 /* Database+SwiftUI.swift */; };
 		30FDD63D242E2238009B0D8D /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30FDD63C242E2238009B0D8D /* Database.swift */; };
 		30FDD63F242E22DC009B0D8D /* PlayerConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30FDD63E242E22DC009B0D8D /* PlayerConvertible.swift */; };
 		30FDD641242E2527009B0D8D /* Database+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30FDD640242E2527009B0D8D /* Database+CoreData.swift */; };
@@ -85,6 +87,8 @@
 		30DE86C1238735CD00ED0B6D /* RingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingView.swift; sourceTree = "<group>"; };
 		30E2E78723EC984400390488 /* fa */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fa; path = fa.lproj/Localizable.strings; sourceTree = "<group>"; };
 		30E2E78823EC984400390488 /* fa */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = fa; path = fa.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
+		30E313462438E56800A75129 /* Collection+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Extension.swift"; sourceTree = "<group>"; };
+		30E313482438E5B200A75129 /* Database+SwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Database+SwiftUI.swift"; sourceTree = "<group>"; };
 		30FDD63C242E2238009B0D8D /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		30FDD63E242E22DC009B0D8D /* PlayerConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerConvertible.swift; sourceTree = "<group>"; };
 		30FDD640242E2527009B0D8D /* Database+CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Database+CoreData.swift"; sourceTree = "<group>"; };
@@ -161,6 +165,7 @@
 			children = (
 				30811ABF23888CBB0095B3BA /* ButtonStyles.swift */,
 				30472DFF238980630032FEC0 /* Formatters+Extension.swift */,
+				30E313462438E56800A75129 /* Collection+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -169,6 +174,7 @@
 			isa = PBXGroup;
 			children = (
 				30FDD63C242E2238009B0D8D /* Database.swift */,
+				30E313482438E5B200A75129 /* Database+SwiftUI.swift */,
 				30A50C282438D277008EF07F /* CoreData */,
 			);
 			path = Database;
@@ -326,6 +332,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30E313492438E5B200A75129 /* Database+SwiftUI.swift in Sources */,
 				3037CE3023901E6F0099844A /* ShareButton.swift in Sources */,
 				30DE86C2238735CD00ED0B6D /* RingView.swift in Sources */,
 				30C02E192385E444009CC2DF /* LegacyPlayer+Extension.swift in Sources */,
@@ -351,6 +358,7 @@
 				30472E00238980630032FEC0 /* Formatters+Extension.swift in Sources */,
 				30045BBC2390355D00B48D1D /* TeamHeaderView.swift in Sources */,
 				30472DFC238946920032FEC0 /* PlayerListItemViewSelectable.swift in Sources */,
+				30E313472438E56800A75129 /* Collection+Extension.swift in Sources */,
 				30C02E262385ED72009CC2DF /* PlayersListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
