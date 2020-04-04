@@ -49,6 +49,7 @@ struct PlayerListItemViewSelectable: View {
 	}
 }
 
+#if DEBUG
 struct PlayerListItemViewSelectable_Previews: PreviewProvider {
 	static var previews: some View {
 		let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -58,3 +59,4 @@ struct PlayerListItemViewSelectable_Previews: PreviewProvider {
 											selectedItems: selectedBinding)
 	}
 }
+#endif

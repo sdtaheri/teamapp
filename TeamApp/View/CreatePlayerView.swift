@@ -66,9 +66,11 @@ struct CreatePlayerView: View {
 	}
 }
 
+#if DEBUG
 struct CreatePlayerView_Previews: PreviewProvider {
 	static var previews: some View {
 		let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 		return CreatePlayerView().environment(\.managedObjectContext, context)
 	}
 }
+#endif

@@ -56,6 +56,23 @@ struct CalculatedTeamsView: View {
 						}
 
 						HStack {
+							Stepper(value: $desiredTeamCount,
+									in: 2...self.playersCount,
+									onEditingChanged: { didEdit in
+										if !didEdit {
+											self.generateNewTeams(originatingFromStepper: true)
+										}
+							}) {
+								EmptyView()
+							}
+							.padding(.leading)
+							.fixedSize()
+
+							Text("team_count \(desiredTeamCount)")
+								.font(.system(.body, design: .rounded))
+
+							Spacer()
+
 							Button(action: {
 								self.generateNewTeams()
 							}) {
@@ -64,21 +81,6 @@ struct CalculatedTeamsView: View {
 									.font(.system(.headline, design: .rounded))
 							}
 							.modifier(ActionButtonModifier())
-
-							Spacer()
-
-							Stepper(value: $desiredTeamCount,
-									in: 2...self.playersCount,
-									onEditingChanged: { didEdit in
-										if !didEdit {
-											self.generateNewTeams(originatingFromStepper: true)
-										}
-							}) {
-								Text("team_count \(desiredTeamCount)")
-									.font(.system(.body, design: .rounded))
-							}
-							.padding(.horizontal)
-							.fixedSize()
 						}
 					}
 					.padding(.vertical)
@@ -99,13 +101,13 @@ struct CalculatedTeamsView: View {
 					.modifier(BetterTappableIcon())
 					#else
 					if horizontalSizeClass == .regular {
-						ShareButton(alignment: .trailing, shouldShowShareSheet: $shouldShowShareSheet)
+						ShareButton(shouldShowShareSheet: $shouldShowShareSheet)
 							.popover(isPresented: $shouldShowShareSheet) {
 								ShareSheet(activityItems: [TeamAppCore.textualRepresentation(of: self.core.teams)])
 									.frame(minWidth: 375.0, minHeight: 375.0)
 						}
 					} else {
-						ShareButton(alignment: .trailing, shouldShowShareSheet: $shouldShowShareSheet)
+						ShareButton(shouldShowShareSheet: $shouldShowShareSheet)
 							.sheet(isPresented: $shouldShowShareSheet) {
 								ShareSheet(activityItems: [TeamAppCore.textualRepresentation(of: self.core.teams)])
 									.frame(minWidth: 375.0, minHeight: 375.0)
@@ -131,6 +133,7 @@ struct CalculatedTeamsView: View {
 	}
 }
 
+#if DEBUG
 struct CalculatedTeamsView_Previews: PreviewProvider {
 	static var previews: some View {
 		let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -143,3 +146,4 @@ struct CalculatedTeamsView_Previews: PreviewProvider {
 								   players: Binding.constant(Set([player1, player2])))
 	}
 }
+#endif

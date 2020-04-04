@@ -32,6 +32,7 @@ struct PlayerListItemView: View {
 	}
 }
 
+#if DEBUG
 struct PlayerListItemView_Previews: PreviewProvider {
 	static var previews: some View {
 		let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -39,3 +40,4 @@ struct PlayerListItemView_Previews: PreviewProvider {
 		return PlayerListItemView(player: player)
 	}
 }
+#endif

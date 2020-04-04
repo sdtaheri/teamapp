@@ -19,7 +19,7 @@ struct PlayersListView: View {
 	@Environment(\.horizontalSizeClass) private var horizontalSizeClass
 	@EnvironmentObject var core: TeamAppCore
 
-	@State private var shouldShowCreatePlayerSheet: Bool = false
+	@State private var shouldShowCreatePlayerSheet = false
 	@State private var selectedPlayers = Set<PlayerManagedObject>()
 	@State private var desiredTeamCount = 2
 
@@ -172,6 +172,7 @@ struct PlayersListView: View {
 	}
 }
 
+#if DEBUG
 struct PlayersListView_Previews: PreviewProvider {
 	static var previews: some View {
 		let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -181,3 +182,4 @@ struct PlayersListView_Previews: PreviewProvider {
 			.environmentObject(core)
 	}
 }
+#endif

@@ -88,7 +88,7 @@ extension AppDelegate {
 
 		#if targetEnvironment(macCatalyst)
 		appearance.configureWithOpaqueBackground()
-		appearance.backgroundColor = .systemBackground
+		appearance.backgroundColor = .secondarySystemBackground
 		#else
 		appearance.configureWithDefaultBackground()
 		#endif

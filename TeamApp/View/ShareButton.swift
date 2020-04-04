@@ -10,7 +10,6 @@ import SwiftUI
 
 struct ShareButton: View {
 
-	let alignment: Alignment
 	@Binding var shouldShowShareSheet: Bool
 
 	var body: some View {
@@ -23,8 +22,10 @@ struct ShareButton: View {
 	}
 }
 
+#if DEBUG
 struct ShareButton_Previews: PreviewProvider {
     static var previews: some View {
-		ShareButton(alignment: .center, shouldShowShareSheet: Binding.constant(true))
+		ShareButton(shouldShowShareSheet: Binding.constant(true))
     }
 }
+#endif

@@ -31,6 +31,7 @@ struct TeamHeaderView: View {
 	}
 }
 
+#if DEBUG
 struct TeamHeaderView_Previews: PreviewProvider {
 	static var previews: some View {
 		let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -40,3 +41,4 @@ struct TeamHeaderView_Previews: PreviewProvider {
 							  players: [player])
 	}
 }
+#endif

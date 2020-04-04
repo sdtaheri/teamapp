@@ -26,6 +26,7 @@ struct BigImageInfoView: View {
 	}
 }
 
+#if DEBUG
 struct BigImageInfoView_Previews: PreviewProvider {
     static var previews: some View {
 		BigImageInfoView(
@@ -34,3 +35,4 @@ struct BigImageInfoView_Previews: PreviewProvider {
 		)
     }
 }
+#endif
