@@ -16,3 +16,12 @@ extension NumberFormatter {
 		return formatter
 	}()
 }
+
+extension DateFormatter {
+	static let shortTime: DateFormatter = {
+		let formatter = DateFormatter()
+		formatter.dateStyle = .none
+		formatter.timeStyle = .short
+		return formatter
+	}()
+}

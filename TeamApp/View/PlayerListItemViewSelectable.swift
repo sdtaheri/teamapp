@@ -10,13 +10,10 @@ import SwiftUI
 
 struct PlayerListItemViewSelectable: View {
 
-	@ObservedObject var player: PlayerManagedObject
-	@Binding var selectedItems: Set<PlayerManagedObject>
+	@ObservedObject var player: Player
+	@Binding var selectedItems: Set<Player>
 
 	private var isSelected: Bool {
-		guard player.uuid != nil else {
-			return false
-		}
 		return selectedItems.contains(player)
 	}
 
@@ -39,7 +36,6 @@ struct PlayerListItemViewSelectable: View {
 		}
 		.contentShape(Rectangle())
 		.onTapGesture {
-			guard self.player.uuid != nil else { return }
 			if self.isSelected {
 				self.selectedItems.remove(self.player)
 			} else {
@@ -52,8 +48,7 @@ struct PlayerListItemViewSelectable: View {
 #if DEBUG
 struct PlayerListItemViewSelectable_Previews: PreviewProvider {
 	static var previews: some View {
-		let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-		let player = PlayerManagedObject.dummyPlayer(in: context)
+		let player = Player.dummy()
 		let selectedBinding = Binding.constant(Set([player]))
 		return PlayerListItemViewSelectable(player: player,
 											selectedItems: selectedBinding)

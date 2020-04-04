@@ -9,13 +9,13 @@
 import SwiftUI
 
 struct CreatePlayerView: View {
-	@Environment(\.managedObjectContext) private var viewContext
+	@Environment(\.writableDatabase) private var database
 	@Environment(\.presentationMode) private var presentationMode
 	
 	@State private var name: String = ""
 	@State private var rating: Double = 5
 
-	var player: PlayerManagedObject?
+	var player: Player?
 
 	var body: some View {
 		NavigationView {
@@ -44,9 +44,9 @@ struct CreatePlayerView: View {
 				, trailing:
 				Button(action: {
 					if let player = self.player {
-						player.edit(name: self.name, rating: self.rating, in: self.viewContext)
+						self.database.update(Player(name: self.name, rating: self.rating, id: player.id))
 					} else {
-						PlayerManagedObject.create(name: self.name, rating: self.rating, in: self.viewContext)
+						self.database.create(name: self.name, rating: self.rating)
 					}
 					self.presentationMode.wrappedValue.dismiss()
 				}) {
@@ -69,8 +69,7 @@ struct CreatePlayerView: View {
 #if DEBUG
 struct CreatePlayerView_Previews: PreviewProvider {
 	static var previews: some View {
-		let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-		return CreatePlayerView().environment(\.managedObjectContext, context)
+		return CreatePlayerView()
 	}
 }
 #endif

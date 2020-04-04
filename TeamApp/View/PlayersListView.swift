@@ -10,24 +10,26 @@ import SwiftUI
 
 struct PlayersListView: View {
 
-	@FetchRequest(
-		sortDescriptors: [NSSortDescriptor(key: "name", ascending: true, selector:#selector(NSString.localizedStandardCompare))],
-		animation: .default)
-	private var players: FetchedResults<PlayerManagedObject>
+//	@FetchRequest(
+//		sortDescriptors: [NSSortDescriptor(key: "name", ascending: true, selector:#selector(NSString.localizedStandardCompare))],
+//		animation: .default)
+//	private var players: FetchedResults<Player>
 
-	@Environment(\.managedObjectContext) private var viewContext
+	private var players = [Player]()
+
+	@Environment(\.database) private var database
 	@Environment(\.horizontalSizeClass) private var horizontalSizeClass
 	@EnvironmentObject var core: TeamAppCore
 
 	@State private var shouldShowCreatePlayerSheet = false
-	@State private var selectedPlayers = Set<PlayerManagedObject>()
+	@State private var selectedPlayers = Set<Player>()
 	@State private var desiredTeamCount = 2
 
-	@State private var playerToEdit: PlayerManagedObject?
+	@State private var playerToEdit: Player?
 
 	var body: some View {
 
-		let selectedPlayersBinding = Binding<Set<PlayerManagedObject>>(get: {
+		let selectedPlayersBinding = Binding<Set<Player>>(get: {
 			self.selectedPlayers
 		}) {
 			self.selectedPlayers = $0
@@ -67,7 +69,7 @@ struct PlayersListView: View {
 													if let index = self.players.firstIndex(of: player) {
 														selectedPlayersBinding.wrappedValue.remove(player)
 														DispatchQueue.main.async {
-															self.players[index].delete(from: self.viewContext)
+															self.database.remove(self.players[index])
 														}
 													}
 												}) {
@@ -83,7 +85,7 @@ struct PlayersListView: View {
 											selectedPlayersBinding.wrappedValue.remove(player)
 										}
 										DispatchQueue.main.async {
-											self.players.delete(at: indices, from: self.viewContext)
+											self.players.remove(at: indices, from: self.database)
 										}
 									}
 						}
@@ -126,7 +128,7 @@ struct PlayersListView: View {
 					Button(action: {
 						selectedPlayersBinding.wrappedValue.removeAll()
 						DispatchQueue.main.async {
-							PlayerManagedObject.deleteAll(from: self.viewContext)
+							self.database.removeAll()
 						}
 					}) {
 						Image(systemName: "text.badge.xmark")
@@ -134,10 +136,8 @@ struct PlayersListView: View {
 					.modifier(BetterTappableIcon())
 
 					Button(action: {
-						for i in 0..<5 {
-							PlayerManagedObject.create(name: "Player \(i + 1)",
-								rating: Double((0...20).randomElement() ?? 0),
-								in: self.viewContext)
+						for _ in 0..<5 {
+							self.database.create(Player.dummy())
 						}
 					}) {
 						Image(systemName: "text.badge.plus")
@@ -159,7 +159,7 @@ struct PlayersListView: View {
 			.animation(Animation.default)
 			.sheet(isPresented: self.$shouldShowCreatePlayerSheet) {
 				CreatePlayerView(player: self.playerToEdit)
-					.environment(\.managedObjectContext, self.viewContext)
+					.environment(\.writableDatabase, self.database)
 		}
 	}
 

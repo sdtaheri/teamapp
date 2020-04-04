@@ -1,15 +1,15 @@
 import Foundation
 import Combine
 
-typealias IndexedTeam = (index: Int, players: [PlayerManagedObject])
+typealias IndexedTeam = (index: Int, players: [Player])
 
 final class TeamAppCore: ObservableObject {
 
 	@Published var teams = [IndexedTeam]()
 
-	func makeTeams(count: Int, from players: Set<PlayerManagedObject>, bestFirst: Bool, averageBased: Bool) {
+	func makeTeams(count: Int, from players: Set<Player>, bestFirst: Bool, averageBased: Bool) {
 		DispatchQueue(label: "core_making_team").async {
-			var result = Array(repeating: (index: 0, players: [PlayerManagedObject]()), count: count)
+			var result = Array(repeating: (index: 0, players: [Player]()), count: count)
 
 			let playersCount = players.count
 
@@ -96,8 +96,8 @@ final class TeamAppCore: ObservableObject {
 		var teamsAreTheSame = false
 
 		if lhs.count == rhs.count {
-			let new = lhs.map { $0.players }.flatMap { $0 }.compactMap { $0.uuid }
-			let old = rhs.map { $0.players }.flatMap { $0 }.compactMap { $0.uuid }
+			let new = lhs.map { $0.players }.flatMap { $0 }.compactMap { $0.id }
+			let old = rhs.map { $0.players }.flatMap { $0 }.compactMap { $0.id }
 			teamsAreTheSame = (new == old)
 		}
 

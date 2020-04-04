@@ -75,7 +75,7 @@ extension NSManagedObjectContext: Database {
 
 		do {
 			let results = (try self.fetch(request) as? [PlayerManagedObject]) ?? []
-			results.forEach { $0.delete(from: self) }
+			results.forEach { self.delete($0) }
 		} catch {
 			print("Failed removing provided objects")
 			return

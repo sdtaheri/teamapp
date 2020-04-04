@@ -12,7 +12,7 @@ struct CalculatedTeamsView: View {
 
 	@ObservedObject var core: TeamAppCore
 	@Binding var desiredTeamCount: Int
-	@Binding var players: Set<PlayerManagedObject>
+	@Binding var players: Set<Player>
 
 	@Environment(\.horizontalSizeClass) private var horizontalSizeClass
 
@@ -136,9 +136,8 @@ struct CalculatedTeamsView: View {
 #if DEBUG
 struct CalculatedTeamsView_Previews: PreviewProvider {
 	static var previews: some View {
-		let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-		let player1 = PlayerManagedObject.dummyPlayer(in: context)
-		let player2 = PlayerManagedObject.dummyPlayer(in: context)
+		let player1 = Player.dummy()
+		let player2 = Player.dummy()
 		let core = TeamAppCore()
 
 		return CalculatedTeamsView(core: core,

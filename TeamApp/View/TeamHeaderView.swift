@@ -10,13 +10,13 @@ import SwiftUI
 
 struct TeamHeaderView: View {
 	let index: Int
-	let players: [PlayerManagedObject]
+	let players: [Player]
 
 	private var teamAverage: Double {
 		players.map { $0.rating }.average
 	}
 
-    var body: some View {
+	var body: some View {
 		GeometryReader { proxy in
 			HStack {
 				Text("team_index \(self.index + 1)")
@@ -34,9 +34,7 @@ struct TeamHeaderView: View {
 #if DEBUG
 struct TeamHeaderView_Previews: PreviewProvider {
 	static var previews: some View {
-		let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-		let player = PlayerManagedObject.dummyPlayer(in: context)
-
+		let player = Player.dummy()
 		return TeamHeaderView(index: 1,
 							  players: [player])
 	}
