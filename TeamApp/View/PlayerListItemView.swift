@@ -10,7 +10,7 @@ import SwiftUI
 
 struct PlayerListItemView: View {
 
-	@ObservedObject var player: Player
+	@ObservedObject var player: PlayerManagedObject
 
 	private var ratingBinding: Binding<Double> {
 		Binding(get: {
@@ -35,7 +35,7 @@ struct PlayerListItemView: View {
 struct PlayerListItemView_Previews: PreviewProvider {
 	static var previews: some View {
 		let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-		let player = Player.dummyPlayer(in: context)
+		let player = PlayerManagedObject.dummyPlayer(in: context)
 		return PlayerListItemView(player: player)
 	}
 }

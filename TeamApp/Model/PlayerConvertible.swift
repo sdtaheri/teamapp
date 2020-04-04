@@ -1,5 +1,5 @@
 //
-//  PlayerProtocol.swift
+//  PlayerConvertible.swift
 //  TeamApp
 //
 //  Created by Saeed Taheri on 3/27/20.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol PlayerProtocol: Identifiable {
+protocol PlayerConvertible: Identifiable {
 	var name: String? { get }
 	var rating: Double { get }
 	var id: UUID { get }

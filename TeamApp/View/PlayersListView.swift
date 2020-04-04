@@ -13,21 +13,21 @@ struct PlayersListView: View {
 	@FetchRequest(
 		sortDescriptors: [NSSortDescriptor(key: "name", ascending: true, selector:#selector(NSString.localizedStandardCompare))],
 		animation: .default)
-	private var players: FetchedResults<Player>
+	private var players: FetchedResults<PlayerManagedObject>
 
 	@Environment(\.managedObjectContext) private var viewContext
 	@Environment(\.horizontalSizeClass) private var horizontalSizeClass
 	@EnvironmentObject var core: TeamAppCore
 
 	@State private var shouldShowCreatePlayerSheet: Bool = false
-	@State private var selectedPlayers = Set<Player>()
+	@State private var selectedPlayers = Set<PlayerManagedObject>()
 	@State private var desiredTeamCount = 2
 
-	@State private var playerToEdit: Player?
+	@State private var playerToEdit: PlayerManagedObject?
 
 	var body: some View {
 
-		let selectedPlayersBinding = Binding<Set<Player>>(get: {
+		let selectedPlayersBinding = Binding<Set<PlayerManagedObject>>(get: {
 			self.selectedPlayers
 		}) {
 			self.selectedPlayers = $0
@@ -126,7 +126,7 @@ struct PlayersListView: View {
 					Button(action: {
 						selectedPlayersBinding.wrappedValue.removeAll()
 						DispatchQueue.main.async {
-							Player.deleteAll(from: self.viewContext)
+							PlayerManagedObject.deleteAll(from: self.viewContext)
 						}
 					}) {
 						Image(systemName: "text.badge.xmark")
@@ -135,7 +135,7 @@ struct PlayersListView: View {
 
 					Button(action: {
 						for i in 0..<5 {
-							Player.create(name: "Player \(i + 1)",
+							PlayerManagedObject.create(name: "Player \(i + 1)",
 								rating: Double((0...20).randomElement() ?? 0),
 								in: self.viewContext)
 						}

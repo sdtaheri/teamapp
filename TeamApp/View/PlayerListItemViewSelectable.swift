@@ -10,8 +10,8 @@ import SwiftUI
 
 struct PlayerListItemViewSelectable: View {
 
-	@ObservedObject var player: Player
-	@Binding var selectedItems: Set<Player>
+	@ObservedObject var player: PlayerManagedObject
+	@Binding var selectedItems: Set<PlayerManagedObject>
 
 	private var isSelected: Bool {
 		guard player.uuid != nil else {
@@ -52,7 +52,7 @@ struct PlayerListItemViewSelectable: View {
 struct PlayerListItemViewSelectable_Previews: PreviewProvider {
 	static var previews: some View {
 		let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-		let player = Player.dummyPlayer(in: context)
+		let player = PlayerManagedObject.dummyPlayer(in: context)
 		let selectedBinding = Binding.constant(Set([player]))
 		return PlayerListItemViewSelectable(player: player,
 											selectedItems: selectedBinding)

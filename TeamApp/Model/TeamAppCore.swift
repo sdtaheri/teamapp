@@ -12,15 +12,15 @@ extension Collection where Element: BinaryFloatingPoint {
 	}
 }
 
-typealias IndexedTeam = (index: Int, players: [Player])
+typealias IndexedTeam = (index: Int, players: [PlayerManagedObject])
 
 final class TeamAppCore: ObservableObject {
 
 	@Published var teams = [IndexedTeam]()
 
-	func makeTeams(count: Int, from players: Set<Player>, bestFirst: Bool, averageBased: Bool) {
+	func makeTeams(count: Int, from players: Set<PlayerManagedObject>, bestFirst: Bool, averageBased: Bool) {
 		DispatchQueue(label: "core_making_team").async {
-			var result = Array(repeating: (index: 0, players: [Player]()), count: count)
+			var result = Array(repeating: (index: 0, players: [PlayerManagedObject]()), count: count)
 
 			let playersCount = players.count
 

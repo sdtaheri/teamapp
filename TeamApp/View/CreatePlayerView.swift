@@ -15,7 +15,7 @@ struct CreatePlayerView: View {
 	@State private var name: String = ""
 	@State private var rating: Double = 5
 
-	var player: Player?
+	var player: PlayerManagedObject?
 
 	var body: some View {
 		NavigationView {
@@ -46,7 +46,7 @@ struct CreatePlayerView: View {
 					if let player = self.player {
 						player.edit(name: self.name, rating: self.rating, in: self.viewContext)
 					} else {
-						Player.create(name: self.name, rating: self.rating, in: self.viewContext)
+						PlayerManagedObject.create(name: self.name, rating: self.rating, in: self.viewContext)
 					}
 					self.presentationMode.wrappedValue.dismiss()
 				}) {

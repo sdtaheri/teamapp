@@ -8,7 +8,7 @@
 
 import CoreData
 
-extension Player {
+extension PlayerManagedObject {
 	static func create(name: String, rating: Double, in managedObjectContext: NSManagedObjectContext) {
 		let newPlayer = self.init(context: managedObjectContext)
 		newPlayer.uuid = UUID()
@@ -25,7 +25,7 @@ extension Player {
 		}
 	}
 
-	static func dummyPlayer(in managedObjectContext: NSManagedObjectContext) -> Player {
+	static func dummyPlayer(in managedObjectContext: NSManagedObjectContext) -> PlayerManagedObject {
 		let newPlayer = self.init(context: managedObjectContext)
 		newPlayer.uuid = UUID()
 		newPlayer.name = "John Doe + \(Date())"
@@ -90,7 +90,7 @@ extension Player {
 	}
 }
 
-extension Collection where Element == Player, Index == Int {
+extension Collection where Element == PlayerManagedObject, Index == Int {
 	func delete(at indices: IndexSet, from managedObjectContext: NSManagedObjectContext) {
 		for index in indices {
 			managedObjectContext.delete(self[index])

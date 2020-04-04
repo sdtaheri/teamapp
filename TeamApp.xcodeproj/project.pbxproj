@@ -10,7 +10,6 @@
 		30045BBA23902DAE00B48D1D /* ProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30045BB923902DAE00B48D1D /* ProgressBarView.swift */; };
 		30045BBC2390355D00B48D1D /* TeamHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30045BBB2390355D00B48D1D /* TeamHeaderView.swift */; };
 		3014EACD235D4C5D004F428F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3014EACC235D4C5D004F428F /* AppDelegate.swift */; };
-		3014EAD0235D4C5D004F428F /* TeamApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3014EACE235D4C5D004F428F /* TeamApp.xcdatamodeld */; };
 		3014EAD2235D4C5D004F428F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3014EAD1235D4C5D004F428F /* SceneDelegate.swift */; };
 		3014EAD6235D4C5D004F428F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3014EAD5235D4C5D004F428F /* ContentView.swift */; };
 		3014EAD8235D4C5E004F428F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3014EAD7235D4C5E004F428F /* Assets.xcassets */; };
@@ -29,15 +28,18 @@
 		30811AB3238875D60095B3BA /* PlayerListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30811AB2238875D60095B3BA /* PlayerListItemView.swift */; };
 		30811AC023888CBB0095B3BA /* ButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30811ABF23888CBB0095B3BA /* ButtonStyles.swift */; };
 		30A13BF32383F09F001C43CA /* TeamAppCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A13BF22383F09F001C43CA /* TeamAppCore.swift */; };
+		30A50C212438C73D008EF07F /* PlayerManagedObject+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A50C1F2438C73D008EF07F /* PlayerManagedObject+CoreDataClass.swift */; };
+		30A50C222438C73D008EF07F /* PlayerManagedObject+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A50C202438C73D008EF07F /* PlayerManagedObject+CoreDataProperties.swift */; };
+		30A50C262438CBA9008EF07F /* TeamApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 30A50C232438CBA9008EF07F /* TeamApp.xcdatamodeld */; };
 		30C02E192385E444009CC2DF /* Player+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C02E182385E444009CC2DF /* Player+Extension.swift */; };
 		30C02E222385EC8D009CC2DF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 30C02E242385EC8D009CC2DF /* Localizable.strings */; };
 		30C02E262385ED72009CC2DF /* PlayersListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C02E252385ED72009CC2DF /* PlayersListView.swift */; };
 		30C02E292385EDE9009CC2DF /* CreatePlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C02E282385EDE9009CC2DF /* CreatePlayerView.swift */; };
 		30DE86C2238735CD00ED0B6D /* RingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DE86C1238735CD00ED0B6D /* RingView.swift */; };
 		30FDD63D242E2238009B0D8D /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30FDD63C242E2238009B0D8D /* Database.swift */; };
-		30FDD63F242E22DC009B0D8D /* PlayerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30FDD63E242E22DC009B0D8D /* PlayerProtocol.swift */; };
+		30FDD63F242E22DC009B0D8D /* PlayerConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30FDD63E242E22DC009B0D8D /* PlayerConvertible.swift */; };
 		30FDD641242E2527009B0D8D /* Database+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30FDD640242E2527009B0D8D /* Database+CoreData.swift */; };
-		30FDD643242E31F7009B0D8D /* ConcretePlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30FDD642242E31F7009B0D8D /* ConcretePlayer.swift */; };
+		30FDD643242E31F7009B0D8D /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30FDD642242E31F7009B0D8D /* Player.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,7 +47,6 @@
 		30045BBB2390355D00B48D1D /* TeamHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamHeaderView.swift; sourceTree = "<group>"; };
 		3014EAC9235D4C5D004F428F /* TeamApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TeamApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3014EACC235D4C5D004F428F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		3014EACF235D4C5D004F428F /* TeamApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TeamApp.xcdatamodel; sourceTree = "<group>"; };
 		3014EAD1235D4C5D004F428F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		3014EAD5235D4C5D004F428F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		3014EAD7235D4C5E004F428F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -73,18 +74,21 @@
 		30811AB2238875D60095B3BA /* PlayerListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerListItemView.swift; sourceTree = "<group>"; };
 		30811ABF23888CBB0095B3BA /* ButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyles.swift; sourceTree = "<group>"; };
 		30A13BF22383F09F001C43CA /* TeamAppCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamAppCore.swift; sourceTree = "<group>"; };
+		30A50C1F2438C73D008EF07F /* PlayerManagedObject+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlayerManagedObject+CoreDataClass.swift"; sourceTree = "<group>"; };
+		30A50C202438C73D008EF07F /* PlayerManagedObject+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlayerManagedObject+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		30A50C242438CBA9008EF07F /* TeamApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TeamApp.xcdatamodel; sourceTree = "<group>"; };
+		30A50C252438CBA9008EF07F /* v2.rating.20.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = v2.rating.20.xcdatamodel; sourceTree = "<group>"; };
 		30C02E182385E444009CC2DF /* Player+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Player+Extension.swift"; sourceTree = "<group>"; };
 		30C02E232385EC8D009CC2DF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		30C02E252385ED72009CC2DF /* PlayersListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayersListView.swift; sourceTree = "<group>"; };
 		30C02E282385EDE9009CC2DF /* CreatePlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePlayerView.swift; sourceTree = "<group>"; };
 		30DE86C1238735CD00ED0B6D /* RingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingView.swift; sourceTree = "<group>"; };
-		30E2E78423EC729300390488 /* v2.rating.20.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = v2.rating.20.xcdatamodel; sourceTree = "<group>"; };
 		30E2E78723EC984400390488 /* fa */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fa; path = fa.lproj/Localizable.strings; sourceTree = "<group>"; };
 		30E2E78823EC984400390488 /* fa */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = fa; path = fa.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		30FDD63C242E2238009B0D8D /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
-		30FDD63E242E22DC009B0D8D /* PlayerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerProtocol.swift; sourceTree = "<group>"; };
+		30FDD63E242E22DC009B0D8D /* PlayerConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerConvertible.swift; sourceTree = "<group>"; };
 		30FDD640242E2527009B0D8D /* Database+CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Database+CoreData.swift"; sourceTree = "<group>"; };
-		30FDD642242E31F7009B0D8D /* ConcretePlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcretePlayer.swift; sourceTree = "<group>"; };
+		30FDD642242E31F7009B0D8D /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,13 +180,15 @@
 		30C02E1D2385EB98009CC2DF /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				30FDD642242E31F7009B0D8D /* ConcretePlayer.swift */,
+				30A50C1F2438C73D008EF07F /* PlayerManagedObject+CoreDataClass.swift */,
+				30A50C202438C73D008EF07F /* PlayerManagedObject+CoreDataProperties.swift */,
+				30FDD642242E31F7009B0D8D /* Player.swift */,
 				30FDD63C242E2238009B0D8D /* Database.swift */,
 				30FDD640242E2527009B0D8D /* Database+CoreData.swift */,
 				30C02E182385E444009CC2DF /* Player+Extension.swift */,
-				30FDD63E242E22DC009B0D8D /* PlayerProtocol.swift */,
+				30FDD63E242E22DC009B0D8D /* PlayerConvertible.swift */,
 				30A13BF22383F09F001C43CA /* TeamAppCore.swift */,
-				3014EACE235D4C5D004F428F /* TeamApp.xcdatamodeld */,
+				30A50C232438CBA9008EF07F /* TeamApp.xcdatamodeld */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -308,20 +314,22 @@
 				30DE86C2238735CD00ED0B6D /* RingView.swift in Sources */,
 				30C02E192385E444009CC2DF /* Player+Extension.swift in Sources */,
 				3014EAD6235D4C5D004F428F /* ContentView.swift in Sources */,
-				30FDD63F242E22DC009B0D8D /* PlayerProtocol.swift in Sources */,
+				30FDD63F242E22DC009B0D8D /* PlayerConvertible.swift in Sources */,
 				30472DFA2389391A0032FEC0 /* CalculatedTeamsView.swift in Sources */,
+				30A50C262438CBA9008EF07F /* TeamApp.xcdatamodeld in Sources */,
 				30045BBA23902DAE00B48D1D /* ProgressBarView.swift in Sources */,
 				30472E08238998620032FEC0 /* ShareSheet.swift in Sources */,
-				3014EAD0235D4C5D004F428F /* TeamApp.xcdatamodeld in Sources */,
 				30FDD641242E2527009B0D8D /* Database+CoreData.swift in Sources */,
 				30A13BF32383F09F001C43CA /* TeamAppCore.swift in Sources */,
 				301F7B56238A2AE00049CCF2 /* BigImageInfoView.swift in Sources */,
 				3014EACD235D4C5D004F428F /* AppDelegate.swift in Sources */,
 				301F7B54238A2A0B0049CCF2 /* EmptyDetailView.swift in Sources */,
+				30A50C212438C73D008EF07F /* PlayerManagedObject+CoreDataClass.swift in Sources */,
 				30FDD63D242E2238009B0D8D /* Database.swift in Sources */,
-				30FDD643242E31F7009B0D8D /* ConcretePlayer.swift in Sources */,
+				30FDD643242E31F7009B0D8D /* Player.swift in Sources */,
 				30C02E292385EDE9009CC2DF /* CreatePlayerView.swift in Sources */,
 				30811AB3238875D60095B3BA /* PlayerListItemView.swift in Sources */,
+				30A50C222438C73D008EF07F /* PlayerManagedObject+CoreDataProperties.swift in Sources */,
 				3014EAD2235D4C5D004F428F /* SceneDelegate.swift in Sources */,
 				30811AC023888CBB0095B3BA /* ButtonStyles.swift in Sources */,
 				30472E00238980630032FEC0 /* Formatters+Extension.swift in Sources */,
@@ -571,13 +579,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		3014EACE235D4C5D004F428F /* TeamApp.xcdatamodeld */ = {
+		30A50C232438CBA9008EF07F /* TeamApp.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				30E2E78423EC729300390488 /* v2.rating.20.xcdatamodel */,
-				3014EACF235D4C5D004F428F /* TeamApp.xcdatamodel */,
+				30A50C242438CBA9008EF07F /* TeamApp.xcdatamodel */,
+				30A50C252438CBA9008EF07F /* v2.rating.20.xcdatamodel */,
 			);
-			currentVersion = 30E2E78423EC729300390488 /* v2.rating.20.xcdatamodel */;
+			currentVersion = 30A50C252438CBA9008EF07F /* v2.rating.20.xcdatamodel */;
 			path = TeamApp.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

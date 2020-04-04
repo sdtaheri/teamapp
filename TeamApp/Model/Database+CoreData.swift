@@ -8,14 +8,16 @@
 
 import CoreData
 
+fileprivate let playerEntity = "Player"
+
 extension NSManagedObjectContext: Database {
 
-	func read<T>(with id: String) -> T? where T : PlayerProtocol {
-		let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Player")
+	func read<T>(with id: String) -> T? where T : PlayerConvertible {
+		let request = NSFetchRequest<NSFetchRequestResult>(entityName: playerEntity)
 		request.predicate = NSPredicate(format: "id = %@", id)
 
 		do {
-			let results = try self.fetch(request) as? [Player]
+			let results = try self.fetch(request) as? [PlayerManagedObject]
 			return results?.first as? T
 		} catch {
 			print("Failed fetching Player with id: \(id)")
@@ -23,20 +25,20 @@ extension NSManagedObjectContext: Database {
 		}
 	}
 
-	func readAll<T>(using sortDescriptors: [NSSortDescriptor]) -> [T] where T : PlayerProtocol {
-		let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Player")
+	func readAll<T>(using sortDescriptors: [NSSortDescriptor]) -> [T] where T : PlayerConvertible {
+		let request = NSFetchRequest<NSFetchRequestResult>(entityName: playerEntity)
 		request.sortDescriptors = sortDescriptors
 
 		do {
-			return ((try self.fetch(request) as? [Player]) ?? []) as [T]
+			return ((try self.fetch(request) as? [PlayerManagedObject]) ?? []) as [T]
 		} catch {
 			print("Failed fetching all Players")
 			return []
 		}
 	}
 
-	func create<T>(_ object: T) where T : PlayerProtocol {
-		let newPlayer = Player(context: self)
+	func create<T>(_ object: T) where T : PlayerConvertible {
+		let newPlayer = PlayerManagedObject(context: self)
 		newPlayer.uuid = object.id
 		newPlayer.name = object.name
 		newPlayer.rating = object.rating
@@ -44,8 +46,8 @@ extension NSManagedObjectContext: Database {
 		saveContext()
 	}
 
-	func update<T>(_ object: T) where T : PlayerProtocol {
-		if let player: Player = read(with: object.id.uuidString) {
+	func update<T>(_ object: T) where T : PlayerConvertible {
+		if let player: PlayerManagedObject = read(with: object.id.uuidString) {
 			player.name = object.name
 			player.rating = object.rating
 		} else {
@@ -56,9 +58,9 @@ extension NSManagedObjectContext: Database {
 		saveContext()
 	}
 
-	func remove<T>(_ object: T) where T : PlayerProtocol {
-		if let player: Player = read(with: object.id.uuidString) {
-			player.delete(from: self)
+	func remove<T>(_ object: T) where T : PlayerConvertible {
+		if let player: PlayerManagedObject = read(with: object.id.uuidString) {
+			self.delete(player)
 		} else {
 			print("Player with id: \(object.id) does not exist.")
 			return
@@ -67,12 +69,12 @@ extension NSManagedObjectContext: Database {
 		saveContext()
 	}
 
-	func remove<T>(_ objects: [T]) where T : PlayerProtocol {
-		let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Player")
+	func remove<T>(_ objects: [T]) where T : PlayerConvertible {
+		let request = NSFetchRequest<NSFetchRequestResult>(entityName: playerEntity)
 		request.predicate = NSPredicate(format: "id IN %@", objects.map {$0.id.uuidString})
 
 		do {
-			let results = (try self.fetch(request) as? [Player]) ?? []
+			let results = (try self.fetch(request) as? [PlayerManagedObject]) ?? []
 			results.forEach { $0.delete(from: self) }
 		} catch {
 			print("Failed removing provided objects")
@@ -83,7 +85,7 @@ extension NSManagedObjectContext: Database {
 	}
 
 	func removeAll() {
-		let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Player")
+		let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: playerEntity)
 		fetchRequest.includesPropertyValues = false
 
 		let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
@@ -124,7 +126,7 @@ extension NSManagedObjectContext {
 	}
 }
 
-extension Player: PlayerProtocol {
+extension PlayerManagedObject: PlayerConvertible {
 	public var id: UUID {
 		return uuid ?? UUID()
 	}

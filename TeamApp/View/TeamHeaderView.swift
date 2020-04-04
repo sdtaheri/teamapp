@@ -10,7 +10,7 @@ import SwiftUI
 
 struct TeamHeaderView: View {
 	let index: Int
-	let players: [Player]
+	let players: [PlayerManagedObject]
 
 	private var teamAverage: Double {
 		players.map { $0.rating }.average
@@ -34,7 +34,7 @@ struct TeamHeaderView: View {
 struct TeamHeaderView_Previews: PreviewProvider {
 	static var previews: some View {
 		let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-		let player = Player.dummyPlayer(in: context)
+		let player = PlayerManagedObject.dummyPlayer(in: context)
 
 		return TeamHeaderView(index: 1,
 							  players: [player])
