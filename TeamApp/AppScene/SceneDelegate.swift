@@ -8,7 +8,6 @@
 
 import UIKit
 import SwiftUI
-import CoreData
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -19,7 +18,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 	func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
 
 		let contentView = ContentView()
-			.environment(\.managedObjectContext, database as! NSManagedObjectContext)
 			.environment(\.database, database)
 
 		if let windowScene = scene as? UIWindowScene {

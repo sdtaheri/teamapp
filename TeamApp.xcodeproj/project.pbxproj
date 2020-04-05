@@ -30,6 +30,9 @@
 		30A13BF32383F09F001C43CA /* TeamAppCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A13BF22383F09F001C43CA /* TeamAppCore.swift */; };
 		30A50C212438C73D008EF07F /* PlayerManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A50C1F2438C73D008EF07F /* PlayerManagedObject.swift */; };
 		30A50C262438CBA9008EF07F /* TeamApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 30A50C232438CBA9008EF07F /* TeamApp.xcdatamodeld */; };
+		30B16F54243A1D2F0063B837 /* PlayersListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B16F53243A1D2F0063B837 /* PlayersListViewModel.swift */; };
+		30B16F56243A22E30063B837 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B16F55243A22E30063B837 /* Model.swift */; };
+		30B16F58243A3A1B0063B837 /* Notification+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B16F57243A3A1B0063B837 /* Notification+Extension.swift */; };
 		30C02E222385EC8D009CC2DF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 30C02E242385EC8D009CC2DF /* Localizable.strings */; };
 		30C02E262385ED72009CC2DF /* PlayersListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C02E252385ED72009CC2DF /* PlayersListView.swift */; };
 		30C02E292385EDE9009CC2DF /* CreatePlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C02E282385EDE9009CC2DF /* CreatePlayerView.swift */; };
@@ -37,7 +40,6 @@
 		30E313472438E56800A75129 /* Collection+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E313462438E56800A75129 /* Collection+Extension.swift */; };
 		30E313492438E5B200A75129 /* Database+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E313482438E5B200A75129 /* Database+SwiftUI.swift */; };
 		30FDD63D242E2238009B0D8D /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30FDD63C242E2238009B0D8D /* Database.swift */; };
-		30FDD63F242E22DC009B0D8D /* PlayerConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30FDD63E242E22DC009B0D8D /* PlayerConvertible.swift */; };
 		30FDD641242E2527009B0D8D /* Database+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30FDD640242E2527009B0D8D /* Database+CoreData.swift */; };
 		30FDD643242E31F7009B0D8D /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30FDD642242E31F7009B0D8D /* Player.swift */; };
 /* End PBXBuildFile section */
@@ -77,6 +79,9 @@
 		30A50C1F2438C73D008EF07F /* PlayerManagedObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerManagedObject.swift; sourceTree = "<group>"; };
 		30A50C242438CBA9008EF07F /* TeamApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TeamApp.xcdatamodel; sourceTree = "<group>"; };
 		30A50C252438CBA9008EF07F /* v2.rating.20.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = v2.rating.20.xcdatamodel; sourceTree = "<group>"; };
+		30B16F53243A1D2F0063B837 /* PlayersListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayersListViewModel.swift; sourceTree = "<group>"; };
+		30B16F55243A22E30063B837 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		30B16F57243A3A1B0063B837 /* Notification+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Extension.swift"; sourceTree = "<group>"; };
 		30C02E232385EC8D009CC2DF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		30C02E252385ED72009CC2DF /* PlayersListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayersListView.swift; sourceTree = "<group>"; };
 		30C02E282385EDE9009CC2DF /* CreatePlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePlayerView.swift; sourceTree = "<group>"; };
@@ -86,7 +91,6 @@
 		30E313462438E56800A75129 /* Collection+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Extension.swift"; sourceTree = "<group>"; };
 		30E313482438E5B200A75129 /* Database+SwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Database+SwiftUI.swift"; sourceTree = "<group>"; };
 		30FDD63C242E2238009B0D8D /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
-		30FDD63E242E22DC009B0D8D /* PlayerConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerConvertible.swift; sourceTree = "<group>"; };
 		30FDD640242E2527009B0D8D /* Database+CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Database+CoreData.swift"; sourceTree = "<group>"; };
 		30FDD642242E31F7009B0D8D /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -123,11 +127,12 @@
 		3014EACB235D4C5D004F428F /* TeamApp */ = {
 			isa = PBXGroup;
 			children = (
-				30C02E272385ED7F009CC2DF /* View */,
 				30C02E1E2385EBAD009CC2DF /* AppScene */,
 				30C02E1D2385EB98009CC2DF /* Model */,
 				3014EAD9235D4C5E004F428F /* Preview Content */,
 				30C02E1C2385EB86009CC2DF /* Supporting Files */,
+				30C02E272385ED7F009CC2DF /* View */,
+				30B16F52243A1D110063B837 /* ViewModel */,
 			);
 			path = TeamApp;
 			sourceTree = "<group>";
@@ -162,6 +167,7 @@
 				30811ABF23888CBB0095B3BA /* ButtonStyles.swift */,
 				30472DFF238980630032FEC0 /* Formatters+Extension.swift */,
 				30E313462438E56800A75129 /* Collection+Extension.swift */,
+				30B16F57243A3A1B0063B837 /* Notification+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -186,6 +192,14 @@
 			path = CoreData;
 			sourceTree = "<group>";
 		};
+		30B16F52243A1D110063B837 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				30B16F53243A1D2F0063B837 /* PlayersListViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		30C02E1C2385EB86009CC2DF /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -201,10 +215,10 @@
 		30C02E1D2385EB98009CC2DF /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				30A50C272438D266008EF07F /* Database */,
+				30B16F55243A22E30063B837 /* Model.swift */,
 				30FDD642242E31F7009B0D8D /* Player.swift */,
-				30FDD63E242E22DC009B0D8D /* PlayerConvertible.swift */,
 				30A13BF22383F09F001C43CA /* TeamAppCore.swift */,
+				30A50C272438D266008EF07F /* Database */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -330,9 +344,9 @@
 				3037CE3023901E6F0099844A /* ShareButton.swift in Sources */,
 				30DE86C2238735CD00ED0B6D /* RingView.swift in Sources */,
 				3014EAD6235D4C5D004F428F /* ContentView.swift in Sources */,
-				30FDD63F242E22DC009B0D8D /* PlayerConvertible.swift in Sources */,
 				30472DFA2389391A0032FEC0 /* CalculatedTeamsView.swift in Sources */,
 				30A50C262438CBA9008EF07F /* TeamApp.xcdatamodeld in Sources */,
+				30B16F56243A22E30063B837 /* Model.swift in Sources */,
 				30045BBA23902DAE00B48D1D /* ProgressBarView.swift in Sources */,
 				30472E08238998620032FEC0 /* ShareSheet.swift in Sources */,
 				30FDD641242E2527009B0D8D /* Database+CoreData.swift in Sources */,
@@ -344,6 +358,8 @@
 				30FDD63D242E2238009B0D8D /* Database.swift in Sources */,
 				30FDD643242E31F7009B0D8D /* Player.swift in Sources */,
 				30C02E292385EDE9009CC2DF /* CreatePlayerView.swift in Sources */,
+				30B16F58243A3A1B0063B837 /* Notification+Extension.swift in Sources */,
+				30B16F54243A1D2F0063B837 /* PlayersListViewModel.swift in Sources */,
 				30811AB3238875D60095B3BA /* PlayerListItemView.swift in Sources */,
 				3014EAD2235D4C5D004F428F /* SceneDelegate.swift in Sources */,
 				30811AC023888CBB0095B3BA /* ButtonStyles.swift in Sources */,

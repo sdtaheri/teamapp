@@ -9,15 +9,15 @@
 import Foundation
 
 protocol ReadableDatabase {
-	func read<T: PlayerConvertible>(with id: String) -> T?
-	func readAll<T: PlayerConvertible>(using sortDescriptors: [NSSortDescriptor]) -> [T]
+	func read<T: Model>(with id: String) -> T?
+	func readAll<T: Model>(using sortDescriptors: [NSSortDescriptor]) -> [T]
 }
 
 protocol WritableDatabase {
-	func create<T: PlayerConvertible>(_ object: T)
-	func update<T: PlayerConvertible>(_ object: T)
-	func remove<T: PlayerConvertible>(_ object: T)
-	func remove<T: PlayerConvertible>(_ objects: [T])
+	func create<T: Model>(_ object: T)
+	func update<T: Model>(_ object: T)
+	func remove<T: Model>(_ object: T)
+	func remove<T: Model>(_ objects: [T])
 	func removeAll()
 
 	func cleanup()

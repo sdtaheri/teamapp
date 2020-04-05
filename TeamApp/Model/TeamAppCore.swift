@@ -96,8 +96,8 @@ final class TeamAppCore: ObservableObject {
 		var teamsAreTheSame = false
 
 		if lhs.count == rhs.count {
-			let new = lhs.map { $0.players }.flatMap { $0 }.compactMap { $0.id }
-			let old = rhs.map { $0.players }.flatMap { $0 }.compactMap { $0.id }
+			let new = lhs.map { $0.players }.flatMap { $0 }.compactMap { $0.hashValue }
+			let old = rhs.map { $0.players }.flatMap { $0 }.compactMap { $0.hashValue }
 			teamsAreTheSame = (new == old)
 		}
 
@@ -116,7 +116,7 @@ final class TeamAppCore: ObservableObject {
 			result += ")\n"
 
 			for player in team.players {
-				result += "\(player.name ?? ""): \(Int(player.rating))\n"
+				result += "\(player.name): \(Int(player.rating))\n"
 			}
 
 			result += "\n"

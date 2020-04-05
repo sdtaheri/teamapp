@@ -48,6 +48,7 @@ struct CreatePlayerView: View {
 					} else {
 						self.database.create(name: self.name, rating: self.rating)
 					}
+					NotificationCenter.default.post(name: Notification.Name.DatabaseUpdated, object: nil)
 					self.presentationMode.wrappedValue.dismiss()
 				}) {
 					Text("save").fontWeight(.bold)
@@ -58,7 +59,7 @@ struct CreatePlayerView: View {
 		}.navigationViewStyle(StackNavigationViewStyle())
 			.onAppear {
 				if let player = self.player {
-					self.name = player.name ?? ""
+					self.name = player.name
 					self.rating = player.rating
 				}
 		}

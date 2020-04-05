@@ -28,6 +28,6 @@ extension PlayerManagedObject {
 
 extension Player {
 	convenience init(player: PlayerManagedObject) {
-		self.init(name: player.name, rating: player.rating, id: player.id)
+		self.init(name: player.name ?? "", rating: player.rating, id: player.uuid ?? UUID())
 	}
 }

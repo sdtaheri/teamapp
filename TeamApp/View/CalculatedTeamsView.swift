@@ -138,9 +138,8 @@ struct CalculatedTeamsView_Previews: PreviewProvider {
 	static var previews: some View {
 		let player1 = Player.dummy()
 		let player2 = Player.dummy()
-		let core = TeamAppCore()
 
-		return CalculatedTeamsView(core: core,
+		return CalculatedTeamsView(core: TeamAppCore(),
 								   desiredTeamCount: Binding.constant(2),
 								   players: Binding.constant(Set([player1, player2])))
 	}

@@ -10,16 +10,10 @@ import SwiftUI
 
 struct PlayersListView: View {
 
-//	@FetchRequest(
-//		sortDescriptors: [NSSortDescriptor(key: "name", ascending: true, selector:#selector(NSString.localizedStandardCompare))],
-//		animation: .default)
-//	private var players: FetchedResults<Player>
-
-	private var players = [Player]()
-
-	@Environment(\.database) private var database
 	@Environment(\.horizontalSizeClass) private var horizontalSizeClass
-	@EnvironmentObject var core: TeamAppCore
+	@EnvironmentObject private var core: TeamAppCore
+
+	@ObservedObject var viewModel: PlayersListViewModel
 
 	@State private var shouldShowCreatePlayerSheet = false
 	@State private var selectedPlayers = Set<Player>()
@@ -34,14 +28,11 @@ struct PlayersListView: View {
 		}) {
 			self.selectedPlayers = $0
 			self.desiredTeamCount = min(max(2, $0.count), self.desiredTeamCount)
-			self.core.makeTeams(count: self.desiredTeamCount,
-								from: $0,
-								bestFirst: Bool.random(),
-								averageBased: Bool.random())
+			self.viewModel.makeTeams(count: self.desiredTeamCount, with: $0)
 		}
 
 		return Group {
-			if players.isEmpty {
+			if viewModel.allPlayers.isEmpty {
 				Button(action: {
 					self.shouldShowCreatePlayerSheet = true
 				}) {
@@ -52,11 +43,12 @@ struct PlayersListView: View {
 				ZStack(alignment: .bottomTrailing) {
 					List {
 						Section(header: horizontalSizeClass == .compact ? Text("tap_to_select_players") : nil,
-								footer: Text("player_count \(players.count)").font(Font.footnote)) {
-									ForEach(players, id: \.id) { player in
+								footer: Text("player_count \(viewModel.allPlayers.count)").font(Font.footnote)) {
+									ForEach(viewModel.allPlayers, id: \.id) { player in
 										PlayerListItemViewSelectable(player: player, selectedItems: selectedPlayersBinding)
 											.contextMenu {
 												Button(action: {
+													selectedPlayersBinding.wrappedValue.remove(player)
 													self.playerToEdit = player
 													self.shouldShowCreatePlayerSheet = true
 												}) {
@@ -66,10 +58,10 @@ struct PlayersListView: View {
 												}
 
 												Button(action: {
-													if let index = self.players.firstIndex(of: player) {
+													if let index = self.viewModel.allPlayers.firstIndex(of: player) {
 														selectedPlayersBinding.wrappedValue.remove(player)
 														DispatchQueue.main.async {
-															self.database.remove(self.players[index])
+															self.viewModel.removePlayer(at: index)
 														}
 													}
 												}) {
@@ -81,11 +73,11 @@ struct PlayersListView: View {
 										.listRowBackground(selectedPlayersBinding.wrappedValue.contains(player) ? Color(UIColor.tertiarySystemFill) : nil)
 									}.onDelete { indices in
 										for index in indices {
-											let player = self.players[index]
+											let player = self.viewModel.allPlayers[index]
 											selectedPlayersBinding.wrappedValue.remove(player)
 										}
 										DispatchQueue.main.async {
-											self.players.remove(at: indices, from: self.database)
+											self.viewModel.removePlayers(at: indices)
 										}
 									}
 						}
@@ -112,7 +104,7 @@ struct PlayersListView: View {
 			}
 		}
 		.navigationBarTitle(Text("app_name"),
-							displayMode: players.isEmpty ? .inline : .large)
+							displayMode: viewModel.allPlayers.isEmpty ? .inline : .large)
 			.navigationBarItems(leading:
 				Button(action: {
 					selectedPlayersBinding.wrappedValue.removeAll()
@@ -128,7 +120,7 @@ struct PlayersListView: View {
 					Button(action: {
 						selectedPlayersBinding.wrappedValue.removeAll()
 						DispatchQueue.main.async {
-							self.database.removeAll()
+							self.viewModel.removeAllPlayers()
 						}
 					}) {
 						Image(systemName: "text.badge.xmark")
@@ -136,9 +128,7 @@ struct PlayersListView: View {
 					.modifier(BetterTappableIcon())
 
 					Button(action: {
-						for _ in 0..<5 {
-							self.database.create(Player.dummy())
-						}
+						self.viewModel.createDummyPlayers(count: 5)
 					}) {
 						Image(systemName: "text.badge.plus")
 					}
@@ -159,7 +149,7 @@ struct PlayersListView: View {
 			.animation(Animation.default)
 			.sheet(isPresented: self.$shouldShowCreatePlayerSheet) {
 				CreatePlayerView(player: self.playerToEdit)
-					.environment(\.writableDatabase, self.database)
+					.environment(\.writableDatabase, self.viewModel.database)
 		}
 	}
 
@@ -176,10 +166,8 @@ struct PlayersListView: View {
 struct PlayersListView_Previews: PreviewProvider {
 	static var previews: some View {
 		let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-		let core = TeamAppCore()
-		return PlayersListView()
-			.environment(\.managedObjectContext, context)
-			.environmentObject(core)
+
+		return PlayersListView(viewModel: PlayersListViewModel(database: context, core: TeamAppCore()))
 	}
 }
 #endif

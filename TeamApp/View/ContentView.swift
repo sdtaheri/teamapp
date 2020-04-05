@@ -9,12 +9,14 @@
 import SwiftUI
 
 struct ContentView: View {
-	@Environment(\.managedObjectContext) private var viewContext
+	@Environment(\.database) private var database
+
+	private let core = TeamAppCore()
 
 	var body: some View {
 		NavigationView {
-			PlayersListView()
-				.environmentObject(TeamAppCore())
+			PlayersListView(viewModel: PlayersListViewModel(database: database, core: core))
+				.environmentObject(core)
 			EmptyDetailView()
 		}.navigationViewStyle(DoubleColumnNavigationViewStyle())
 	}

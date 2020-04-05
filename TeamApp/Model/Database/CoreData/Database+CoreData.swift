@@ -12,66 +12,88 @@ fileprivate let playerEntity = "Player"
 
 extension NSManagedObjectContext: Database {
 
-	func read<T>(with id: String) -> T? where T : PlayerConvertible {
-		let request = NSFetchRequest<NSFetchRequestResult>(entityName: playerEntity)
-		request.predicate = NSPredicate(format: "id = %@", id)
-
-		do {
-			let results = try self.fetch(request) as? [PlayerManagedObject]
-			return results?.first as? T
-		} catch {
-			print("Failed fetching Player with id: \(id)")
+	func read<T>(with id: String) -> T? where T : Model {
+		guard T.self is Player.Type else {
 			return nil
 		}
+
+		if let mop = readPlayer(id: id) {
+			return Player(player: mop) as? T
+		}
+
+		return nil
 	}
 
-	func readAll<T>(using sortDescriptors: [NSSortDescriptor]) -> [T] where T : PlayerConvertible {
+	func readAll<T>(using sortDescriptors: [NSSortDescriptor]) -> [T] where T : Model {
+		guard T.self is Player.Type else {
+			return []
+		}
+
 		let request = NSFetchRequest<NSFetchRequestResult>(entityName: playerEntity)
 		request.sortDescriptors = sortDescriptors
 
 		do {
-			return ((try self.fetch(request) as? [PlayerManagedObject]) ?? []) as [T]
+			if let players = try self.fetch(request) as? [PlayerManagedObject] {
+				return players.map(Player.init) as! [T]
+			}
 		} catch {
 			print("Failed fetching all Players")
-			return []
 		}
+
+		return []
 	}
 
-	func create<T>(_ object: T) where T : PlayerConvertible {
+	func create<T>(_ object: T) where T : Model {
+		guard let player = object as? Player else {
+			return
+		}
+
 		let newPlayer = PlayerManagedObject(context: self)
-		newPlayer.uuid = object.id
-		newPlayer.name = object.name
-		newPlayer.rating = object.rating
+		newPlayer.uuid = player.id
+		newPlayer.name = player.name
+		newPlayer.rating = player.rating
 
 		saveContext()
 	}
 
-	func update<T>(_ object: T) where T : PlayerConvertible {
-		if let player: PlayerManagedObject = read(with: object.id.uuidString) {
-			player.name = object.name
-			player.rating = object.rating
+	func update<T>(_ object: T) where T : Model {
+		guard let o = object as? Player else {
+			return
+		}
+
+		if let player = readPlayer(id: o.id.uuidString) {
+			player.name = o.name
+			player.rating = o.rating
 		} else {
-			print("Player with id: \(object.id) does not exist.")
+			print("Player with id: \(o.id) does not exist.")
 			return
 		}
 
 		saveContext()
 	}
 
-	func remove<T>(_ object: T) where T : PlayerConvertible {
-		if let player: PlayerManagedObject = read(with: object.id.uuidString) {
+	func remove<T>(_ object: T) where T : Model {
+		guard let o = object as? Player else {
+			return
+		}
+
+		if let player = readPlayer(id: o.id.uuidString) {
 			self.delete(player)
 		} else {
-			print("Player with id: \(object.id) does not exist.")
+			print("Player with id: \(o.id) does not exist.")
 			return
 		}
 
 		saveContext()
 	}
 
-	func remove<T>(_ objects: [T]) where T : PlayerConvertible {
+	func remove<T>(_ objects: [T]) where T : Model {
+		guard T.self is Player.Type else {
+			return
+		}
+
 		let request = NSFetchRequest<NSFetchRequestResult>(entityName: playerEntity)
-		request.predicate = NSPredicate(format: "id IN %@", objects.map {$0.id.uuidString})
+		request.predicate = NSPredicate(format: "uuid IN %@", objects.map {($0 as! Player).id.uuidString})
 
 		do {
 			let results = (try self.fetch(request) as? [PlayerManagedObject]) ?? []
@@ -124,10 +146,18 @@ extension NSManagedObjectContext {
 			fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
 		}
 	}
-}
 
-extension PlayerManagedObject: PlayerConvertible {
-	public var id: UUID {
-		return uuid ?? UUID()
+	private func readPlayer(id: String) -> PlayerManagedObject? {
+		let request = NSFetchRequest<NSFetchRequestResult>(entityName: playerEntity)
+		request.predicate = NSPredicate(format: "uuid = %@", id)
+
+		do {
+			let results = try self.fetch(request) as? [PlayerManagedObject]
+			return results?.first
+		} catch {
+			print("Failed fetching Player with id: \(id)")
+		}
+
+		return nil
 	}
 }

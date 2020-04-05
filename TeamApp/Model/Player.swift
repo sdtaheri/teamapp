@@ -9,12 +9,12 @@
 import Foundation
 import CoreData
 
-final class Player: PlayerConvertible {
-	let name: String?
+final class Player: Model {
+	let name: String
 	let rating: Double
 	let id: UUID
 
-	init(name: String?, rating: Double, id: UUID = UUID()) {
+	init(name: String, rating: Double, id: UUID = UUID()) {
 		self.name = name
 		self.rating = rating
 		self.id = id
@@ -23,7 +23,7 @@ final class Player: PlayerConvertible {
 
 extension Player: Equatable {
 	static func == (lhs: Player, rhs: Player) -> Bool {
-		return lhs.id == rhs.id
+		return lhs.hashValue == rhs.hashValue
 	}
 }
 
@@ -35,9 +35,7 @@ extension Player: Hashable {
 	}
 }
 
-extension Player: ObservableObject {
-	
-}
+extension Player: ObservableObject {}
 
 extension Player {
 	static func dummy() -> Player {

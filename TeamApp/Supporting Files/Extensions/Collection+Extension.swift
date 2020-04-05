@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension Collection where Element: PlayerConvertible, Index == Int {
+extension Collection where Element: Player, Index == Int {
 	func remove(at indices: IndexSet, from writableDatabase: WritableDatabase) {
 		var result = [Element]()
 		for index in indices {
