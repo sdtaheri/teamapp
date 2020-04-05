@@ -11,11 +11,7 @@ import Combine
 
 final class PlayersListViewModel: ObservableObject {
 
-	@Published private(set) var allPlayers: [Player] {
-		didSet {
-			dump(allPlayers)
-		}
-	}
+	@Published private(set) var allPlayers: [Player]
 	let database: Database
 	private let core: TeamAppCore
 

@@ -18,6 +18,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		setNavigationBarsFont()
 		UIApplication.shared.registerForRemoteNotifications()
 
+		if let remoteNotification = launchOptions?[UIApplication.LaunchOptionsKey.remoteNotification] as? [AnyHashable : Any] {
+			self.application(application, didReceiveRemoteNotification: remoteNotification,
+							 fetchCompletionHandler:  { (result) in
+			})
+		}
+
 		return true
 	}
 
