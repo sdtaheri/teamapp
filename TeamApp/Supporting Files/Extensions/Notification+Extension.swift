@@ -9,5 +9,5 @@
 import Foundation
 
 extension Notification.Name {
-	static let DatabaseUpdated = Notification.Name(#function)
+	static let databaseUpdated = Notification.Name("com.saeedtaheri.teamapp.notification.databaseupdated")
 }

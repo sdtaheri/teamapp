@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import CloudKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,6 +19,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		UIApplication.shared.registerForRemoteNotifications()
 
 		return true
+	}
+
+	func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+		if CKNotification(fromRemoteNotificationDictionary: userInfo) != nil {
+			NotificationCenter.default.post(name: .databaseUpdated, object: nil)
+		}
 	}
 
 	// MARK: UISceneSession Lifecycle
@@ -41,7 +48,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 extension AppDelegate {
 	private func setNavigationBarsFont() {
-
+		
 		let appearance = UINavigationBarAppearance()
 
 		#if targetEnvironment(macCatalyst)

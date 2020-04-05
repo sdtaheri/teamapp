@@ -48,7 +48,7 @@ struct CreatePlayerView: View {
 					} else {
 						self.database.create(name: self.name, rating: self.rating)
 					}
-					NotificationCenter.default.post(name: Notification.Name.DatabaseUpdated, object: nil)
+					NotificationCenter.default.post(name: .databaseUpdated, object: nil)
 					self.presentationMode.wrappedValue.dismiss()
 				}) {
 					Text("save").fontWeight(.bold)

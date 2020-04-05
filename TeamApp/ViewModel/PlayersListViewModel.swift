@@ -26,11 +26,11 @@ final class PlayersListViewModel: ObservableObject {
 		self.core = core
 		self.allPlayers = self.database.readAll(using: sortDescriptors)
 
-		NotificationCenter.default.addObserver(self, selector: #selector(setNeedsFetch), name: .DatabaseUpdated, object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(setNeedsFetch), name: .databaseUpdated, object: nil)
 	}
 
 	deinit {
-		NotificationCenter.default.removeObserver(self, name: .DatabaseUpdated, object: nil)
+		NotificationCenter.default.removeObserver(self, name: .databaseUpdated, object: nil)
 	}
 
 	func removePlayer(at index: Int) {
