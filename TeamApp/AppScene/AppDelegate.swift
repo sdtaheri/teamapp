@@ -83,3 +83,19 @@ extension AppDelegate {
 	}
 }
 
+extension AppDelegate {
+	override func buildMenu(with builder: UIMenuBuilder) {
+		super.buildMenu(with: builder)
+
+		guard builder.system == .main else { return }
+
+		builder.remove(menu: .format)
+
+		builder.replaceChildren(ofMenu: .help) {
+			var newChildren = $0
+			newChildren.removeFirst() //Removes TeamApp Help since it spawns an error message stating it's not available.
+			return newChildren
+		}
+	}
+}
+
