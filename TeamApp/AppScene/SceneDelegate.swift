@@ -21,6 +21,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 			.environment(\.database, database)
 
 		if let windowScene = scene as? UIWindowScene {
+
+			#if targetEnvironment(macCatalyst)
+			windowScene.titlebar?.titleVisibility = .hidden
+			windowScene.titlebar?.toolbar = nil
+			#endif
+
 			let window = UIWindow(windowScene: windowScene)
 			window.rootViewController = UIHostingController(rootView: contentView)
 			self.window = window
