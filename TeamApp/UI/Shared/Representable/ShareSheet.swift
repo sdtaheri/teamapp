@@ -16,7 +16,7 @@ struct ShareSheet: UIViewControllerRepresentable {
     let activityItems: [Any]
     let applicationActivities: [UIActivity]? = nil
     let excludedActivityTypes: [UIActivity.ActivityType]? = nil
-    let callback: Callback? = nil
+    let callback: Callback?
 
     func makeUIViewController(context: Context) -> UIActivityViewController {
         let controller = UIActivityViewController(
@@ -25,7 +25,6 @@ struct ShareSheet: UIViewControllerRepresentable {
         controller.excludedActivityTypes = excludedActivityTypes
 		controller.completionWithItemsHandler = { activityType, completed, returnedItems, error in
 			self.callback?(activityType, completed, returnedItems, error)
-			self.presentationMode.wrappedValue.dismiss()
         }
         return controller
     }

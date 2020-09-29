@@ -116,50 +116,49 @@ struct PlayersListView: View {
 			}
 		}
 		.navigationBarTitle(
-			Text("app_name"),
-			displayMode: viewModel.allPlayers.isEmpty ? .inline : .large
+			Text("app_name")
 		)
-		.navigationBarItems(
-			leading:
+		.toolbar {
+			ToolbarItem(placement: .navigationBarLeading) {
 				Button {
 					selectedPlayersBinding.wrappedValue.removeAll()
 				} label: {
 					Image(systemName: "arrow.clockwise")
 				}
-				.modifier(BetterTappableIcon())
 				.opacity(
-					selectedPlayersBinding.wrappedValue.isEmpty ? 0 : 1),
-			trailing:
-				HStack(alignment: .center) {
-					#if DEBUG
-					Button {
+					selectedPlayersBinding.wrappedValue.isEmpty ? 0 : 1)
+			}
+
+			ToolbarItemGroup(placement: .navigationBarTrailing) {
+				#if DEBUG
+				Button {
+					withAnimation {
 						selectedPlayersBinding.wrappedValue.removeAll()
 						DispatchQueue.main.async {
 							self.viewModel.removeAllPlayers()
 						}
-					} label: {
-						Image(systemName: "text.badge.xmark")
 					}
-					.modifier(BetterTappableIcon())
-
-					Button {
-						viewModel.createDummyPlayers(count: 5)
-					} label: {
-						Image(systemName: "text.badge.plus")
-					}
-					.modifier(BetterTappableIcon())
-
-					#endif
-
-					Button {
-						self.playerToEdit = nil
-						self.shouldShowCreatePlayerSheet = true
-					} label: {
-						Image(systemName: "plus.circle.fill")
-					}
-					.modifier(BetterTappableIcon())
+				} label: {
+					Image(systemName: "text.badge.xmark")
 				}
-		)
+
+				Button {
+					withAnimation {
+						viewModel.createDummyPlayers(count: 5)
+					}
+				} label: {
+					Image(systemName: "text.badge.plus")
+				}
+				#endif
+
+				Button {
+					self.playerToEdit = nil
+					self.shouldShowCreatePlayerSheet = true
+				} label: {
+					Image(systemName: "plus.circle.fill")
+				}
+			}
+		}
 		.sheet(isPresented: self.$shouldShowCreatePlayerSheet) {
 			CreatePlayerView(player: self.playerToEdit)
 				.environment(\.writableDatabase, self.viewModel.database)

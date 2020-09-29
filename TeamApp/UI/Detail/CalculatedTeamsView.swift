@@ -13,13 +13,9 @@ struct CalculatedTeamsView: View {
 	@Binding var desiredTeamCount: Int
 	@Binding var players: Set<Player>
 
-	@Environment(\.horizontalSizeClass) private var horizontalSizeClass
-
 	private var playersCount: Int {
 		return self.players.count
 	}
-
-	@State private var shouldShowShareSheet = false
 
 	var body: some View {
 		Group {
@@ -93,9 +89,9 @@ struct CalculatedTeamsView: View {
 				}
 			}
 		}
-		.navigationBarItems(
-			trailing:
-				Group {
+		.toolbar {
+			ToolbarItem(
+				placement: .navigationBarTrailing) {
 					if self.playersCount >= 2 {
 						#if targetEnvironment(macCatalyst)
 						Button {
@@ -104,27 +100,18 @@ struct CalculatedTeamsView: View {
 						} label: {
 							Image(systemName: "doc.on.doc")
 						}
-						.modifier(BetterTappableIcon())
 						#else
-						if horizontalSizeClass == .regular {
-							ShareButton(shouldShowShareSheet: $shouldShowShareSheet)
-								.popover(isPresented: $shouldShowShareSheet) {
-									ShareSheet(activityItems: [TeamAppCore.textualRepresentation(of: self.core.teams)])
-										.frame(minWidth: 375.0, minHeight: 375.0)
-								}
-						} else {
-							ShareButton(shouldShowShareSheet: $shouldShowShareSheet)
-								.sheet(isPresented: $shouldShowShareSheet) {
-									ShareSheet(activityItems: [TeamAppCore.textualRepresentation(of: self.core.teams)])
-										.frame(minWidth: 375.0, minHeight: 375.0)
-								}
-						}
+						ShareButton(
+							activityItems: [
+								TeamAppCore.textualRepresentation(of: core.teams)
+							]
+						)
 						#endif
 					} else {
 						EmptyView()
 					}
-				}
-		)
+			}
+		}
 	}
 
 	private func generateNewTeams(originatingFromStepper: Bool = false) {

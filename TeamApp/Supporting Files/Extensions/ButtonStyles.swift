@@ -22,16 +22,6 @@ struct ActionButtonModifier: ViewModifier {
 	}
 }
 
-struct BetterTappableIcon: ViewModifier {
-	func body(content: Content) -> some View {
-		content
-			.imageScale(.large)
-			.frame(minWidth: 36.0, minHeight: 36.0)
-			.contentShape(Rectangle())
-			.hoverEffect()
-	}
-}
-
 private struct ActionButtonBackgroundStyle: ButtonStyle {
 	func makeBody(configuration: Self.Configuration) -> some View {
 		configuration.label

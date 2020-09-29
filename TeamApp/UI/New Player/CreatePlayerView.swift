@@ -33,15 +33,15 @@ struct CreatePlayerView: View {
 				}
 			}
 			.navigationBarTitle(self.player != nil ? "edit_player" : "add_player", displayMode: .inline)
-			.navigationBarItems(
-				leading:
+			.toolbar {
+				ToolbarItem(placement: .cancellationAction) {
 					Button {
 						self.presentationMode.wrappedValue.dismiss()
 					} label: {
 						Image(systemName: "xmark.circle")
 					}
-					.modifier(BetterTappableIcon()),
-				trailing:
+				}
+				ToolbarItem(placement: .confirmationAction) {
 					Button {
 						if let player = self.player {
 							self.database.update(Player(name: self.name, rating: self.rating, id: player.id))
@@ -54,9 +54,9 @@ struct CreatePlayerView: View {
 						Text("save")
 							.fontWeight(.bold)
 					}
-					.modifier(BetterTappableIcon())
 					.disabled(name.isEmpty)
-			)
+				}
+			}
 		}
 		.navigationViewStyle(StackNavigationViewStyle())
 		.onAppear {

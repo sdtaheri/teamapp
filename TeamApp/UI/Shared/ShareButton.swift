@@ -9,7 +9,9 @@
 import SwiftUI
 
 struct ShareButton: View {
-	@Binding var shouldShowShareSheet: Bool
+	let activityItems: [Any]
+
+	@State private var shouldShowShareSheet = false
 
 	var body: some View {
 		Button {
@@ -17,13 +19,17 @@ struct ShareButton: View {
 		} label: {
 			Image(systemName: "square.and.arrow.up")
 		}
-		.modifier(BetterTappableIcon())
+		.sheet(isPresented: $shouldShowShareSheet) {
+			ShareSheet(activityItems: activityItems) { _, _, _, _ in
+				shouldShowShareSheet = false
+			}
+		}
 	}
 }
 
 struct ShareButton_Previews: PreviewProvider {
     static var previews: some View {
-		ShareButton(shouldShowShareSheet: Binding.constant(true))
+		ShareButton(activityItems: [])
 			.previewLayout(PreviewLayout.sizeThatFits)
     }
 }
