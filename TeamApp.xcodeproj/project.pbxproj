@@ -131,8 +131,7 @@
 				30C02E1D2385EB98009CC2DF /* Model */,
 				3014EAD9235D4C5E004F428F /* Preview Content */,
 				30C02E1C2385EB86009CC2DF /* Supporting Files */,
-				30C02E272385ED7F009CC2DF /* View */,
-				30B16F52243A1D110063B837 /* ViewModel */,
+				30C02E272385ED7F009CC2DF /* UI */,
 			);
 			path = TeamApp;
 			sourceTree = "<group>";
@@ -192,14 +191,6 @@
 			path = CoreData;
 			sourceTree = "<group>";
 		};
-		30B16F52243A1D110063B837 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				30B16F53243A1D2F0063B837 /* PlayersListViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
 		30C02E1C2385EB86009CC2DF /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -243,24 +234,57 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		30C02E272385ED7F009CC2DF /* View */ = {
+		30C02E272385ED7F009CC2DF /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				301F7B55238A2AE00049CCF2 /* BigImageInfoView.swift */,
-				30472DF92389391A0032FEC0 /* CalculatedTeamsView.swift */,
 				3014EAD5235D4C5D004F428F /* ContentView.swift */,
-				30C02E282385EDE9009CC2DF /* CreatePlayerView.swift */,
-				301F7B53238A2A0B0049CCF2 /* EmptyDetailView.swift */,
+				30F252F025234A5200E47DD2 /* Players List */,
+				30F252F325234AA500E47DD2 /* Detail */,
+				30F252F525234AB300E47DD2 /* New Player */,
+				30F252EE25234A3B00E47DD2 /* Shared */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		30F252EE25234A3B00E47DD2 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				30472E062389984C0032FEC0 /* Representable */,
+				301F7B55238A2AE00049CCF2 /* BigImageInfoView.swift */,
 				30811AB2238875D60095B3BA /* PlayerListItemView.swift */,
-				30472DFB238946920032FEC0 /* PlayerListItemViewSelectable.swift */,
-				30C02E252385ED72009CC2DF /* PlayersListView.swift */,
 				30045BB923902DAE00B48D1D /* ProgressBarView.swift */,
 				30DE86C1238735CD00ED0B6D /* RingView.swift */,
 				3037CE2F23901E6F0099844A /* ShareButton.swift */,
-				30045BBB2390355D00B48D1D /* TeamHeaderView.swift */,
-				30472E062389984C0032FEC0 /* Representable */,
 			);
-			path = View;
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		30F252F025234A5200E47DD2 /* Players List */ = {
+			isa = PBXGroup;
+			children = (
+				30B16F53243A1D2F0063B837 /* PlayersListViewModel.swift */,
+				30472DFB238946920032FEC0 /* PlayerListItemViewSelectable.swift */,
+				30C02E252385ED72009CC2DF /* PlayersListView.swift */,
+			);
+			path = "Players List";
+			sourceTree = "<group>";
+		};
+		30F252F325234AA500E47DD2 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				30472DF92389391A0032FEC0 /* CalculatedTeamsView.swift */,
+				301F7B53238A2A0B0049CCF2 /* EmptyDetailView.swift */,
+				30045BBB2390355D00B48D1D /* TeamHeaderView.swift */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		30F252F525234AB300E47DD2 /* New Player */ = {
+			isa = PBXGroup;
+			children = (
+				30C02E282385EDE9009CC2DF /* CreatePlayerView.swift */,
+			);
+			path = "New Player";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
