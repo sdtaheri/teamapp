@@ -6,27 +6,33 @@ typealias IndexedTeam = (index: Int, players: [Player])
 final class TeamAppCore: ObservableObject {
 	@Published var teams = [IndexedTeam]()
 
-	func makeTeams(count: Int, from players: Set<Player>, bestFirst: Bool, averageBased: Bool) {
-		DispatchQueue(label: "core_making_team").async {
+	private var players: Set<Player>
+
+	init(players: Set<Player>) {
+		self.players = players
+	}
+
+	func makeTeams(count: Int, bestFirst: Bool, averageBased: Bool) {
+		DispatchQueue(label: "core_making_team").async { [weak self] in
 			var result = Array(repeating: (index: 0, players: [Player]()), count: count)
 
-			let playersCount = players.count
+			let playersCount = self?.players.count ?? 0
 
 			if playersCount < count {
 				print("Can't make \(count) teams from \(playersCount) players.")
 				DispatchQueue.main.async {
-					self.teams = []
+					self?.teams = []
 				}
 				return
 			}
 
-			let sortedPlayers = players.sorted {
+			let sortedPlayers = self?.players.sorted {
 				if $0.rating == $1.rating {
 					return Bool.random()
 				} else {
 					return bestFirst ? $0.rating > $1.rating : $0.rating < $1.rating
 				}
-			}
+			} ?? []
 
 			for player in sortedPlayers {
 				let counts = result.map { $0.players.count }
@@ -69,9 +75,9 @@ final class TeamAppCore: ObservableObject {
 				}
 			}
 
-			if self.areTeamsTheSame(lhs: result, rhs: self.teams) {
+			if self?.areTeamsTheSame(lhs: result, rhs: self?.teams ?? []) == true {
 				var shuffledArray = result.shuffled()
-				if self.areTeamsTheSame(lhs: result, rhs: shuffledArray) {
+				if self?.areTeamsTheSame(lhs: result, rhs: shuffledArray) == true {
 					if let last = shuffledArray.popLast() {
 						shuffledArray.insert(last, at: 0)
 					}
@@ -80,11 +86,11 @@ final class TeamAppCore: ObservableObject {
 					shuffledArray[i].index = i
 				}
 				DispatchQueue.main.async {
-					self.teams = shuffledArray
+					self?.teams = shuffledArray
 				}
 			} else {
 				DispatchQueue.main.async {
-					self.teams = result
+					self?.teams = result
 				}
 			}
 		}

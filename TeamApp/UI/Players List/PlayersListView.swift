@@ -9,33 +9,19 @@
 import SwiftUI
 
 struct PlayersListView: View {
+	@StateObject var viewModel: PlayersListViewModel
+
 	@Environment(\.horizontalSizeClass) private var horizontalSizeClass
 	@EnvironmentObject private var core: TeamAppCore
-
-	@ObservedObject var viewModel: PlayersListViewModel
-
 	@State private var shouldShowCreatePlayerSheet = false
 	@State private var selectedPlayers = Set<Player>()
-	@State private var desiredTeamCount = 2
-
 	@State private var playerToEdit: Player?
 
 	var body: some View {
-		let selectedPlayersBinding = Binding<Set<Player>>(
-			get: {
-				self.selectedPlayers
-			},
-			set: {
-				self.selectedPlayers = $0
-				self.desiredTeamCount = min(max(2, $0.count), self.desiredTeamCount)
-				self.viewModel.makeTeams(count: self.desiredTeamCount, with: $0)
-			}
-		)
-
-		return Group {
+		Group {
 			if viewModel.allPlayers.isEmpty {
 				Button {
-					self.shouldShowCreatePlayerSheet = true
+					shouldShowCreatePlayerSheet = true
 				} label: {
 					BigImageInfoView(
 						systemImageName: "plus.circle",
@@ -43,76 +29,75 @@ struct PlayersListView: View {
 					)
 				}
 			} else {
-				ZStack(alignment: .bottomTrailing) {
-					List {
-						Section(
-							header: horizontalSizeClass == .compact ? Text("tap_to_select_players") : nil,
-							footer: Text("player_count \(viewModel.allPlayers.count)").font(Font.footnote)
-						) {
-							ForEach(viewModel.allPlayers, id: \.id) { player in
-								PlayerListItemViewSelectable(player: player, selectedItems: selectedPlayersBinding)
-									.contextMenu {
-										Button {
-											selectedPlayersBinding.wrappedValue.remove(player)
-											self.playerToEdit = player
-											self.shouldShowCreatePlayerSheet = true
-										} label: {
-											Text("edit")
-											Image(systemName: "pencil")
-												.imageScale(.large)
-										}
-
-										Button {
-											if let index = self.viewModel.allPlayers.firstIndex(of: player) {
-												selectedPlayersBinding.wrappedValue.remove(player)
-												DispatchQueue.main.async {
-													self.viewModel.removePlayer(at: index)
-												}
-											}
-										} label: {
-											Text("delete")
-											Image(systemName: "trash")
-												.imageScale(.large)
-										}
+				List {
+					Section(
+						header: horizontalSizeClass == .compact ? Text("tap_to_select_players") : nil,
+						footer: Text("player_count \(viewModel.allPlayers.count)").font(Font.footnote)
+					) {
+						ForEach(viewModel.allPlayers, id: \.id) { player in
+							PlayerListItemViewSelectable(player: player, selectedItems: $selectedPlayers)
+								.contextMenu {
+									Button {
+										selectedPlayers.remove(player)
+										playerToEdit = player
+										shouldShowCreatePlayerSheet = true
+									} label: {
+										Text("edit")
+										Image(systemName: "pencil")
+											.imageScale(.large)
 									}
-									.listRowBackground(
-										selectedPlayersBinding.wrappedValue.contains(player) ?
-											Color(UIColor.secondarySystemFill) :
-											Color(UIColor.systemBackground)
-									)
-							}.onDelete { indices in
-								for index in indices {
-									let player = self.viewModel.allPlayers[index]
-									selectedPlayersBinding.wrappedValue.remove(player)
+
+									Button {
+										if let index = viewModel.allPlayers.firstIndex(of: player) {
+											selectedPlayers.remove(player)
+											DispatchQueue.main.async {
+												viewModel.removePlayer(at: index)
+											}
+										}
+									} label: {
+										Text("delete")
+										Image(systemName: "trash")
+											.imageScale(.large)
+									}
 								}
-								DispatchQueue.main.async {
-									self.viewModel.removePlayers(at: indices)
-								}
+								.listRowBackground(
+									selectedPlayers.contains(player) ?
+										Color(UIColor.secondarySystemFill) :
+										Color(UIColor.systemBackground)
+								)
+						}.onDelete { indices in
+							for index in indices {
+								let player = viewModel.allPlayers[index]
+								selectedPlayers.remove(player)
+							}
+							DispatchQueue.main.async {
+								viewModel.removePlayers(at: indices)
 							}
 						}
 					}
-					.listStyle(self.adaptiveListStyle())
-
+				}
+				.listStyle(adaptiveListStyle())
+				.overlay(
 					NavigationLink(
 						destination:
 							CalculatedTeamsView(
-								core: self.core,
-								desiredTeamCount: self.$desiredTeamCount,
-								players: selectedPlayersBinding
+								players: selectedPlayers
 							)
 					) {
 						HStack {
 							Text("lets_teamup")
 								.fontWeight(.medium)
-							Image(systemName: "\(selectedPlayersBinding.wrappedValue.count).circle.fill")
+							Image(systemName: "\(selectedPlayers.count).circle.fill")
 						}
 						.font(.system(.headline, design: .rounded))
 					}
 					.modifier(ActionButtonModifier())
-					.opacity(selectedPlayersBinding.wrappedValue.isEmpty ? 0 : 1)
-					.blur(radius: selectedPlayersBinding.wrappedValue.isEmpty ? 10 : 0)
-					.padding(.vertical)
-				}
+					.animation(.default)
+					.opacity(selectedPlayers.isEmpty ? 0 : 1)
+					.blur(radius: selectedPlayers.isEmpty ? 10 : 0)
+					.padding(.vertical),
+					alignment: .bottomTrailing
+				)
 			}
 		}
 		.navigationBarTitle(
@@ -121,21 +106,23 @@ struct PlayersListView: View {
 		.toolbar {
 			ToolbarItem(placement: .navigationBarLeading) {
 				Button {
-					selectedPlayersBinding.wrappedValue.removeAll()
+					withAnimation {
+						selectedPlayers.removeAll()
+					}
 				} label: {
 					Image(systemName: "arrow.clockwise")
 				}
 				.opacity(
-					selectedPlayersBinding.wrappedValue.isEmpty ? 0 : 1)
+					selectedPlayers.isEmpty ? 0 : 1)
 			}
 
 			ToolbarItemGroup(placement: .navigationBarTrailing) {
 				#if DEBUG
 				Button {
 					withAnimation {
-						selectedPlayersBinding.wrappedValue.removeAll()
+						selectedPlayers.removeAll()
 						DispatchQueue.main.async {
-							self.viewModel.removeAllPlayers()
+							viewModel.removeAllPlayers()
 						}
 					}
 				} label: {
@@ -152,16 +139,17 @@ struct PlayersListView: View {
 				#endif
 
 				Button {
-					self.playerToEdit = nil
-					self.shouldShowCreatePlayerSheet = true
+					playerToEdit = nil
+					shouldShowCreatePlayerSheet = true
 				} label: {
 					Image(systemName: "plus.circle.fill")
 				}
 			}
 		}
-		.sheet(isPresented: self.$shouldShowCreatePlayerSheet) {
-			CreatePlayerView(player: self.playerToEdit)
-				.environment(\.writableDatabase, self.viewModel.database)
+		.ignoresSafeArea(.keyboard)
+		.sheet(isPresented: $shouldShowCreatePlayerSheet) {
+			CreatePlayerView(player: playerToEdit)
+				.environment(\.writableDatabase, viewModel.database)
 		}
 	}
 
@@ -180,6 +168,6 @@ struct PlayersListView_Previews: PreviewProvider {
 		let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 		// swiftlint:enable force_cast
 
-		return PlayersListView(viewModel: PlayersListViewModel(database: context, core: TeamAppCore()))
+		return PlayersListView(viewModel: PlayersListViewModel(database: context))
 	}
 }

@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-final class Player: Model {
+struct Player: Model {
 	let name: String
 	let rating: Double
 	let id: UUID
@@ -34,8 +34,6 @@ extension Player: Hashable {
 		hasher.combine(id)
 	}
 }
-
-extension Player: ObservableObject {}
 
 extension Player {
 	static func dummy() -> Player {

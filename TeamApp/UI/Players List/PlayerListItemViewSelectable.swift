@@ -9,40 +9,34 @@
 import SwiftUI
 
 struct PlayerListItemViewSelectable: View {
-	@ObservedObject var player: Player
+	let player: Player
 	@Binding var selectedItems: Set<Player>
 
 	private var isSelected: Bool {
 		return selectedItems.contains(player)
 	}
 
-	private var ratingBinding: Binding<Double> {
-		Binding(
-			get: {
-				player.rating
-			},
-			set: { _ in
-			}
-		)
-	}
-
 	var body: some View {
-		HStack {
-			PlayerListItemView(player: player)
-			if isSelected {
-				Image(systemName: "checkmark.seal.fill")
-					.foregroundColor(Color.accentColor)
-					.font(Font.system(.body))
+		Button {
+			withAnimation {
+				if isSelected {
+					selectedItems.remove(player)
+				} else {
+					selectedItems.insert(player)
+				}
 			}
-		}
-		.contentShape(Rectangle())
-		.onTapGesture {
-			if self.isSelected {
-				self.selectedItems.remove(self.player)
-			} else {
-				self.selectedItems.insert(self.player)
+		} label: {
+			HStack {
+				PlayerListItemView(player: player)
+				if isSelected {
+					Image(systemName: "checkmark.seal.fill")
+						.foregroundColor(Color.accentColor)
+						.font(Font.system(.body))
+				}
 			}
+			.contentShape(Rectangle())
 		}
+		.buttonStyle(PlainButtonStyle())
 	}
 }
 

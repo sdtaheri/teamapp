@@ -14,10 +14,11 @@ struct ActionButtonModifier: ViewModifier {
 	func body(content: Content) -> some View {
 		content
 			.buttonStyle(ActionButtonBackgroundStyle())
-			.scaleEffect(self.isHovered ? 1.05 : 1)
-			.animation(.default)
-			.onHover {
-				self.isHovered = $0
+			.scaleEffect(isHovered ? 1.05 : 1)
+			.onHover { isHovered in
+				withAnimation {
+					self.isHovered = isHovered
+				}
 			}
 	}
 }
@@ -32,5 +33,6 @@ private struct ActionButtonBackgroundStyle: ButtonStyle {
 			.padding([.horizontal])
 			.shadow(radius: configuration.isPressed ? 2.0 : 6.0)
 			.scaleEffect(configuration.isPressed ? 0.95 : 1)
+			.animation(.default)
 	}
 }

@@ -12,7 +12,6 @@ import Combine
 final class PlayersListViewModel: ObservableObject {
 	@Published private(set) var allPlayers: [Player]
 	let database: Database
-	private let core: TeamAppCore
 
 	private let sortDescriptors = [
 		NSSortDescriptor(
@@ -22,9 +21,8 @@ final class PlayersListViewModel: ObservableObject {
 		)
 	]
 
-	init(database: Database, core: TeamAppCore) {
+	init(database: Database) {
 		self.database = database
-		self.core = core
 		self.allPlayers = self.database.readAll(using: sortDescriptors)
 
 		NotificationCenter.default.addObserver(self, selector: #selector(setNeedsFetch), name: .databaseUpdated, object: nil)
@@ -51,15 +49,6 @@ final class PlayersListViewModel: ObservableObject {
 			self.database.create(Player.dummy())
 		}
 		setNeedsFetch()
-	}
-
-	func makeTeams(count: Int, with players: Set<Player>) {
-		core.makeTeams(
-			count: count,
-			from: players,
-			bestFirst: Bool.random(),
-			averageBased: Bool.random()
-		)
 	}
 
 	@objc private func setNeedsFetch() {

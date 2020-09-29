@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct PlayerListItemView: View {
-	@ObservedObject var player: Player
+	let player: Player
 
 	private var ratingBinding: Binding<Double> {
 		Binding(
