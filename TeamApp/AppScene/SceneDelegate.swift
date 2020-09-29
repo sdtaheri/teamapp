@@ -9,19 +9,19 @@
 import UIKit
 import SwiftUI
 
-class SceneDelegate: UIResponder, UIWindowSceneDelegate {
-
+final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 	var window: UIWindow?
 
+	// swiftlint:disable force_cast
 	private lazy var database: Database = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+	// swiftlint:enable force_cast
 
 	func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-
 		let contentView = ContentView()
 			.environment(\.database, database)
+			.environmentObject(TeamAppCore())
 
 		if let windowScene = scene as? UIWindowScene {
-
 			#if targetEnvironment(macCatalyst)
 			windowScene.titlebar?.titleVisibility = .hidden
 			windowScene.titlebar?.toolbar = nil
@@ -35,10 +35,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 		}
 	}
 
-
 	func sceneDidEnterBackground(_ scene: UIScene) {
 		database.cleanup()
 	}
-
 }
-

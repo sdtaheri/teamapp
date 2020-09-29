@@ -8,11 +8,10 @@
 
 import CoreData
 
-fileprivate let playerEntity = "Player"
+private let playerEntity = "Player"
 
 extension NSManagedObjectContext: Database {
-
-	func read<T>(with id: String) -> T? where T : Model {
+	func read<T>(with id: String) -> T? where T: Model {
 		guard T.self is Player.Type else {
 			return nil
 		}
@@ -24,7 +23,7 @@ extension NSManagedObjectContext: Database {
 		return nil
 	}
 
-	func readAll<T>(using sortDescriptors: [NSSortDescriptor]) -> [T] where T : Model {
+	func readAll<T>(using sortDescriptors: [NSSortDescriptor]) -> [T] where T: Model {
 		guard T.self is Player.Type else {
 			return []
 		}
@@ -34,7 +33,9 @@ extension NSManagedObjectContext: Database {
 
 		do {
 			if let players = try self.fetch(request) as? [PlayerManagedObject] {
+				// swiftlint:disable force_cast
 				return players.map(Player.init) as! [T]
+				// swiftlint:enable force_cast
 			}
 		} catch {
 			print("Failed fetching all Players")
@@ -43,7 +44,7 @@ extension NSManagedObjectContext: Database {
 		return []
 	}
 
-	func create<T>(_ object: T) where T : Model {
+	func create<T>(_ object: T) where T: Model {
 		guard let player = object as? Player else {
 			return
 		}
@@ -56,44 +57,46 @@ extension NSManagedObjectContext: Database {
 		saveContext()
 	}
 
-	func update<T>(_ object: T) where T : Model {
-		guard let o = object as? Player else {
+	func update<T>(_ object: T) where T: Model {
+		guard let obj = object as? Player else {
 			return
 		}
 
-		if let player = readPlayer(id: o.id.uuidString) {
-			player.name = o.name
-			player.rating = o.rating
+		if let player = readPlayer(id: obj.id.uuidString) {
+			player.name = obj.name
+			player.rating = obj.rating
 		} else {
-			print("Player with id: \(o.id) does not exist.")
+			print("Player with id: \(obj.id) does not exist.")
 			return
 		}
 
 		saveContext()
 	}
 
-	func remove<T>(_ object: T) where T : Model {
-		guard let o = object as? Player else {
+	func remove<T>(_ object: T) where T: Model {
+		guard let obj = object as? Player else {
 			return
 		}
 
-		if let player = readPlayer(id: o.id.uuidString) {
+		if let player = readPlayer(id: obj.id.uuidString) {
 			self.delete(player)
 		} else {
-			print("Player with id: \(o.id) does not exist.")
+			print("Player with id: \(obj.id) does not exist.")
 			return
 		}
 
 		saveContext()
 	}
 
-	func remove<T>(_ objects: [T]) where T : Model {
+	func remove<T>(_ objects: [T]) where T: Model {
 		guard T.self is Player.Type else {
 			return
 		}
 
 		let request = NSFetchRequest<NSFetchRequestResult>(entityName: playerEntity)
-		request.predicate = NSPredicate(format: "uuid IN %@", objects.map {($0 as! Player).id.uuidString})
+		// swiftlint:disable force_cast
+		request.predicate = NSPredicate(format: "uuid IN %@", objects.map { ($0 as! Player).id.uuidString })
+		// swiftlint:enable force_cast
 
 		do {
 			let results = (try self.fetch(request) as? [PlayerManagedObject]) ?? []
@@ -117,7 +120,7 @@ extension NSManagedObjectContext: Database {
 			let result = try self.execute(deleteRequest) as? NSBatchDeleteResult
 			let objectIDArray = result?.result as? [NSManagedObjectID]
 			if let array = objectIDArray, !array.isEmpty {
-				let changes = [NSDeletedObjectsKey : array]
+				let changes = [NSDeletedObjectsKey: array]
 				NSManagedObjectContext.mergeChanges(fromRemoteContextSave: changes, into: [self])
 			}
 		} catch {
@@ -126,14 +129,14 @@ extension NSManagedObjectContext: Database {
 	}
 
 	func cleanup() {
-	    if self.hasChanges {
-	        do {
-	            try self.save()
-	        } catch {
-	            let nserror = error as NSError
-	            fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
-	        }
-	    }
+		if self.hasChanges {
+			do {
+				try self.save()
+			} catch {
+				let nserror = error as NSError
+				fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+			}
+		}
 	}
 }
 

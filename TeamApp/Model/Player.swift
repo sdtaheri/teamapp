@@ -39,7 +39,10 @@ extension Player: ObservableObject {}
 
 extension Player {
 	static func dummy() -> Player {
-		let player = Player(name: "John Doe at \(DateFormatter.shortTime.string(from: Date()))", rating: Double(Int.random(in: 0...20)))
+		let player = Player(
+			name: "John Doe at \(DateFormatter.shortTime.string(from: Date()))",
+			rating: Double(Int.random(in: 0...20))
+		)
 		return player
 	}
 }

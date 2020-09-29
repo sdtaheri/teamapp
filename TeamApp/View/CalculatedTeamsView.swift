@@ -8,8 +8,7 @@
 
 import SwiftUI
 
-struct CalculatedTeamsView: View {	
-
+struct CalculatedTeamsView: View {
 	@ObservedObject var core: TeamAppCore
 	@Binding var desiredTeamCount: Int
 	@Binding var players: Set<Player>
@@ -28,9 +27,11 @@ struct CalculatedTeamsView: View {
 				EmptyDetailView()
 					.navigationBarTitle(Text(""), displayMode: .inline)
 			} else if playersCount == 1 {
-				BigImageInfoView(systemImageName: "person.badge.minus",
-								 localizedStringKey: "you_seem_very_lonely")
-					.navigationBarTitle(Text(""), displayMode: .inline)
+				BigImageInfoView(
+					systemImageName: "person.badge.minus",
+					localizedStringKey: "you_seem_very_lonely"
+				)
+				.navigationBarTitle(Text(""), displayMode: .inline)
 			} else {
 				VStack(spacing: 0) {
 					List {
@@ -42,7 +43,8 @@ struct CalculatedTeamsView: View {
 							}
 						}
 					}
-					.listStyle(GroupedListStyle())
+					.listStyle(InsetGroupedListStyle())
+					.animation(.default)
 
 					Divider()
 
@@ -56,15 +58,18 @@ struct CalculatedTeamsView: View {
 						}
 
 						HStack {
-							Stepper(value: $desiredTeamCount,
-									in: 2...self.playersCount,
-									onEditingChanged: { didEdit in
-										if !didEdit {
-											self.generateNewTeams(originatingFromStepper: true)
-										}
-							}) {
-								EmptyView()
-							}
+							Stepper(
+								value: $desiredTeamCount,
+								in: 2...self.playersCount,
+								onEditingChanged: { didEdit in
+									if !didEdit {
+										self.generateNewTeams(originatingFromStepper: true)
+									}
+								},
+								label: {
+									EmptyView()
+								}
+							)
 							.padding(.leading)
 							.fixedSize()
 
@@ -73,9 +78,9 @@ struct CalculatedTeamsView: View {
 
 							Spacer()
 
-							Button(action: {
+							Button {
 								self.generateNewTeams()
-							}) {
+							} label: {
 								Text("again")
 									.fontWeight(.medium)
 									.font(.system(.headline, design: .rounded))
@@ -88,36 +93,37 @@ struct CalculatedTeamsView: View {
 				}
 			}
 		}
-		.navigationBarItems(trailing:
-			Group {
-				if self.playersCount >= 2 {
-					#if targetEnvironment(macCatalyst)
-					Button(action: {
-						let pasteboard = UIPasteboard.general
-						pasteboard.string = TeamAppCore.textualRepresentation(of: self.core.teams)
-					}) {
-						Image(systemName: "doc.on.doc")
-					}
-					.modifier(BetterTappableIcon())
-					#else
-					if horizontalSizeClass == .regular {
-						ShareButton(shouldShowShareSheet: $shouldShowShareSheet)
-							.popover(isPresented: $shouldShowShareSheet) {
-								ShareSheet(activityItems: [TeamAppCore.textualRepresentation(of: self.core.teams)])
-									.frame(minWidth: 375.0, minHeight: 375.0)
+		.navigationBarItems(
+			trailing:
+				Group {
+					if self.playersCount >= 2 {
+						#if targetEnvironment(macCatalyst)
+						Button {
+							let pasteboard = UIPasteboard.general
+							pasteboard.string = TeamAppCore.textualRepresentation(of: self.core.teams)
+						} label: {
+							Image(systemName: "doc.on.doc")
 						}
+						.modifier(BetterTappableIcon())
+						#else
+						if horizontalSizeClass == .regular {
+							ShareButton(shouldShowShareSheet: $shouldShowShareSheet)
+								.popover(isPresented: $shouldShowShareSheet) {
+									ShareSheet(activityItems: [TeamAppCore.textualRepresentation(of: self.core.teams)])
+										.frame(minWidth: 375.0, minHeight: 375.0)
+								}
+						} else {
+							ShareButton(shouldShowShareSheet: $shouldShowShareSheet)
+								.sheet(isPresented: $shouldShowShareSheet) {
+									ShareSheet(activityItems: [TeamAppCore.textualRepresentation(of: self.core.teams)])
+										.frame(minWidth: 375.0, minHeight: 375.0)
+								}
+						}
+						#endif
 					} else {
-						ShareButton(shouldShowShareSheet: $shouldShowShareSheet)
-							.sheet(isPresented: $shouldShowShareSheet) {
-								ShareSheet(activityItems: [TeamAppCore.textualRepresentation(of: self.core.teams)])
-									.frame(minWidth: 375.0, minHeight: 375.0)
-						}
+						EmptyView()
 					}
-					#endif
-				} else {
-					EmptyView()
 				}
-			}
 		)
 	}
 
@@ -126,22 +132,24 @@ struct CalculatedTeamsView: View {
 			return
 		}
 
-		core.makeTeams(count: desiredTeamCount,
-					   from: players,
-					   bestFirst: Bool.random(),
-					   averageBased: Bool.random())
+		core.makeTeams(
+			count: desiredTeamCount,
+			from: players,
+			bestFirst: Bool.random(),
+			averageBased: Bool.random()
+		)
 	}
 }
 
-#if DEBUG
 struct CalculatedTeamsView_Previews: PreviewProvider {
 	static var previews: some View {
 		let player1 = Player.dummy()
 		let player2 = Player.dummy()
 
-		return CalculatedTeamsView(core: TeamAppCore(),
-								   desiredTeamCount: Binding.constant(2),
-								   players: Binding.constant(Set([player1, player2])))
+		return CalculatedTeamsView(
+			core: TeamAppCore(),
+			desiredTeamCount: Binding.constant(2),
+			players: Binding.constant(Set([player1, player2]))
+		)
 	}
 }
-#endif

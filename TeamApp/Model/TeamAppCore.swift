@@ -4,7 +4,6 @@ import Combine
 typealias IndexedTeam = (index: Int, players: [Player])
 
 final class TeamAppCore: ObservableObject {
-
 	@Published var teams = [IndexedTeam]()
 
 	func makeTeams(count: Int, from players: Set<Player>, bestFirst: Bool, averageBased: Bool) {
@@ -51,7 +50,6 @@ final class TeamAppCore: ObservableObject {
 						result[indexOfMinAverage].index = indexOfMinAverage
 						result[indexOfMinAverage].players.append(player)
 					}
-
 				} else {
 					let sums = result.map { subset in
 						subset.players.map { $0.rating }.sum
@@ -110,9 +108,15 @@ final class TeamAppCore: ObservableObject {
 		for team in teams {
 			result += String.localizedStringWithFormat(NSLocalizedString("team_index %lld", comment: ""), (team.index + 1))
 			result += ": ("
-			result += String.localizedStringWithFormat(NSLocalizedString("team_total %lld", comment: ""), Int(team.players.map { $0.rating }.sum))
+			result += String.localizedStringWithFormat(
+				NSLocalizedString("team_total %lld", comment: ""),
+				Int(team.players.map { $0.rating }.sum)
+			)
 			result += " - "
-			result += String.localizedStringWithFormat(NSLocalizedString("team_average %@", comment: ""), NumberFormatter.singleDecimal.string(from: NSNumber(value: team.players.map { $0.rating }.average)) ?? "0")
+			result += String.localizedStringWithFormat(
+				NSLocalizedString("team_average %@", comment: ""),
+				NumberFormatter.singleDecimal.string(from: NSNumber(value: team.players.map { $0.rating }.average)) ?? "0"
+			)
 			result += ")\n"
 
 			for player in team.players {

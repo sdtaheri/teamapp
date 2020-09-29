@@ -11,7 +11,7 @@ import SwiftUI
 struct CreatePlayerView: View {
 	@Environment(\.writableDatabase) private var database
 	@Environment(\.presentationMode) private var presentationMode
-	
+
 	@State private var name: String = ""
 	@State private var rating: Double = 5
 
@@ -35,42 +35,41 @@ struct CreatePlayerView: View {
 			.navigationBarTitle(self.player != nil ? "edit_player" : "add_player", displayMode: .inline)
 			.navigationBarItems(
 				leading:
-				Button(action: {
-					self.presentationMode.wrappedValue.dismiss()
-				}) {
-					Image(systemName: "xmark.circle")
-				}
-				.modifier(BetterTappableIcon())
-				, trailing:
-				Button(action: {
-					if let player = self.player {
-						self.database.update(Player(name: self.name, rating: self.rating, id: player.id))
-					} else {
-						self.database.create(name: self.name, rating: self.rating)
+					Button {
+						self.presentationMode.wrappedValue.dismiss()
+					} label: {
+						Image(systemName: "xmark.circle")
 					}
-					NotificationCenter.default.post(name: .databaseUpdated, object: nil)
-					self.presentationMode.wrappedValue.dismiss()
-				}) {
-					Text("save").fontWeight(.bold)
-				}
-				.modifier(BetterTappableIcon())
-				.disabled(name.isEmpty)
+					.modifier(BetterTappableIcon()),
+				trailing:
+					Button {
+						if let player = self.player {
+							self.database.update(Player(name: self.name, rating: self.rating, id: player.id))
+						} else {
+							self.database.create(name: self.name, rating: self.rating)
+						}
+						NotificationCenter.default.post(name: .databaseUpdated, object: nil)
+						self.presentationMode.wrappedValue.dismiss()
+					} label: {
+						Text("save")
+							.fontWeight(.bold)
+					}
+					.modifier(BetterTappableIcon())
+					.disabled(name.isEmpty)
 			)
-		}.navigationViewStyle(StackNavigationViewStyle())
-			.onAppear {
-				if let player = self.player {
-					self.name = player.name
-					self.rating = player.rating
-				}
 		}
-		
+		.navigationViewStyle(StackNavigationViewStyle())
+		.onAppear {
+			if let player = self.player {
+				self.name = player.name
+				self.rating = player.rating
+			}
+		}
 	}
 }
 
-#if DEBUG
 struct CreatePlayerView_Previews: PreviewProvider {
 	static var previews: some View {
 		return CreatePlayerView()
 	}
 }
-#endif

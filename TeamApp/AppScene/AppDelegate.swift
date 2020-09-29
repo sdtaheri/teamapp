@@ -10,30 +10,29 @@ import UIKit
 import CoreData
 import CloudKit
 
-@UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
-
+@main
+final class AppDelegate: UIResponder, UIApplicationDelegate {
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-
 		setNavigationBarsFont()
 		UIApplication.shared.registerForRemoteNotifications()
 
-		if let remoteNotification = launchOptions?[UIApplication.LaunchOptionsKey.remoteNotification] as? [AnyHashable : Any] {
-			self.application(application, didReceiveRemoteNotification: remoteNotification,
-							 fetchCompletionHandler:  { (result) in
-			})
+		if let remoteNotification = launchOptions?[UIApplication.LaunchOptionsKey.remoteNotification] as? [AnyHashable: Any] {
+			self.application(
+				application,
+				didReceiveRemoteNotification: remoteNotification
+			) { _ in }
 		}
 
 		return true
 	}
 
-	func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+	func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
 		if CKNotification(fromRemoteNotificationDictionary: userInfo) != nil {
 			NotificationCenter.default.post(name: .databaseUpdated, object: nil)
 		}
 	}
 
-	// MARK: UISceneSession Lifecycle
+	// MARK: - UISceneSession Lifecycle
 
 	func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
 		return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
@@ -43,18 +42,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	lazy var persistentContainer: NSPersistentCloudKitContainer = {
 		let container = NSPersistentCloudKitContainer(name: "TeamApp")
-		container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+		container.loadPersistentStores { _, error in
 			if let error = error as NSError? {
 				fatalError("Unresolved error \(error), \(error.userInfo)")
 			}
-		})
+		}
 		return container
 	}()
 }
 
 extension AppDelegate {
 	private func setNavigationBarsFont() {
-		
 		let appearance = UINavigationBarAppearance()
 
 		#if targetEnvironment(macCatalyst)
@@ -98,4 +96,3 @@ extension AppDelegate {
 		}
 	}
 }
-

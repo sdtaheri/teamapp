@@ -9,23 +9,20 @@
 import SwiftUI
 
 struct ShareButton: View {
-
 	@Binding var shouldShowShareSheet: Bool
 
 	var body: some View {
-		Button(action: {
-			self.shouldShowShareSheet = true
-		}) {
+		Button {
+			shouldShowShareSheet = true
+		} label: {
 			Image(systemName: "square.and.arrow.up")
 		}
 		.modifier(BetterTappableIcon())
 	}
 }
 
-#if DEBUG
 struct ShareButton_Previews: PreviewProvider {
     static var previews: some View {
 		ShareButton(shouldShowShareSheet: Binding.constant(true))
     }
 }
-#endif

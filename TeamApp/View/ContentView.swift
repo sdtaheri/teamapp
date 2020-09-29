@@ -10,8 +10,7 @@ import SwiftUI
 
 struct ContentView: View {
 	@Environment(\.database) private var database
-
-	private let core = TeamAppCore()
+	@EnvironmentObject private var core: TeamAppCore
 
 	var body: some View {
 		NavigationView {
@@ -22,10 +21,8 @@ struct ContentView: View {
 	}
 }
 
-#if DEBUG
 struct ContentView_Previews: PreviewProvider {
 	static var previews: some View {
 		return ContentView()
 	}
 }
-#endif

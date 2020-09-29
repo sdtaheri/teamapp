@@ -9,7 +9,6 @@
 import SwiftUI
 
 struct PlayerListItemViewSelectable: View {
-
 	@ObservedObject var player: Player
 	@Binding var selectedItems: Set<Player>
 
@@ -18,10 +17,13 @@ struct PlayerListItemViewSelectable: View {
 	}
 
 	private var ratingBinding: Binding<Double> {
-		Binding(get: {
-			self.player.rating
-		}) { _ in
-		}
+		Binding(
+			get: {
+				player.rating
+			},
+			set: { _ in
+			}
+		)
 	}
 
 	var body: some View {
@@ -31,7 +33,6 @@ struct PlayerListItemViewSelectable: View {
 				Image(systemName: "checkmark.seal.fill")
 					.foregroundColor(Color.accentColor)
 					.font(Font.system(.body))
-
 			}
 		}
 		.contentShape(Rectangle())
@@ -45,13 +46,13 @@ struct PlayerListItemViewSelectable: View {
 	}
 }
 
-#if DEBUG
 struct PlayerListItemViewSelectable_Previews: PreviewProvider {
 	static var previews: some View {
 		let player = Player.dummy()
 		let selectedBinding = Binding.constant(Set([player]))
-		return PlayerListItemViewSelectable(player: player,
-											selectedItems: selectedBinding)
+		return PlayerListItemViewSelectable(
+			player: player,
+			selectedItems: selectedBinding
+		)
 	}
 }
-#endif

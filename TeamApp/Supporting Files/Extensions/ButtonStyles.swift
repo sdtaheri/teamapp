@@ -18,7 +18,7 @@ struct ActionButtonModifier: ViewModifier {
 			.animation(.default)
 			.onHover {
 				self.isHovered = $0
-		}
+			}
 	}
 }
 

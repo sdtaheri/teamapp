@@ -31,12 +31,12 @@ struct TeamHeaderView: View {
 	}
 }
 
-#if DEBUG
 struct TeamHeaderView_Previews: PreviewProvider {
 	static var previews: some View {
 		let player = Player.dummy()
-		return TeamHeaderView(index: 1,
-							  players: [player])
+		return TeamHeaderView(
+			index: 1,
+			players: [player]
+		)
 	}
 }
-#endif

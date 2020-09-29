@@ -9,7 +9,6 @@
 import SwiftUI
 
 struct RingView: View {
-
 	@Environment(\.layoutDirection) private var layoutDirection
 
     @Binding var rating: Double
@@ -34,7 +33,7 @@ struct RingView: View {
                     lineJoin: .round))
                 .fill(Color.gray)
 				.blur(radius: round(0.075 * ringWidth))
-				.animation(Animation.default)
+				.animation(.default)
 
             Circle()
                 .trim(from: 0, to: CGFloat(rating) / 20.0)
@@ -43,18 +42,24 @@ struct RingView: View {
                     lineCap: .round,
                     lineJoin: .round))
 				.fill(Color("Color\(Int((rating / 2.0).rounded()))"))
-				.animation(Animation.default)
+				.animation(.default)
 			Text(String(Int(rating.rounded())))
-				.font(Font.system(size: round(ringWidth * 3 - 8.5),
-                                  weight: .bold,
-                                  design: .rounded))
+				.font(
+					Font.system(
+						size: round(ringWidth * 3 - 8.5),
+						weight: .bold,
+						design: .rounded
+					)
+				)
                 .rotationEffect(layoutDirection == .rightToLeft ? .degrees(270) : .degrees(90))
                 .foregroundColor(Color.primary)
         }
 		.rotationEffect(layoutDirection == .rightToLeft ? .degrees(90) : .degrees(270))
         .padding(round(ringWidth * 0.8))
-        .frame(width: round(ringWidth * 6.5),
-               height: round(ringWidth * 6.5))
+        .frame(
+			width: round(ringWidth * 6.5),
+			height: round(ringWidth * 6.5)
+		)
 		.gesture(DragGesture()
 			.onChanged { value in
 				let newValue = self.newRating - Double(value.translation.height / 20.0)
@@ -64,7 +69,7 @@ struct RingView: View {
 				let newValue = self.newRating - Double(value.translation.height / 20.0)
 				self.rating = max(0, min(20, newValue))
 				self.newRating = self.rating
-		})
+			})
 		.onAppear {
 			self.newRating = self.rating
 		}

@@ -9,22 +9,23 @@
 import SwiftUI
 
 struct PlayerListItemView: View {
-
 	@ObservedObject var player: Player
 
 	private var ratingBinding: Binding<Double> {
-		Binding(get: {
-			self.player.rating
-		}) { _ in
-		}
+		Binding(
+			get: {
+				player.rating
+			},
+			set: { _ in
+			}
+		)
 	}
 
 	var body: some View {
 		HStack {
 			RingView(rating: ratingBinding, ringWidth: 8)
 			Text(player.name)
-				.font(Font.system(.body,
-								  design: .rounded))
+				.font(Font.system(.body, design: .rounded))
 				.padding()
 				.foregroundColor(Color.primary)
 			Spacer()
@@ -32,11 +33,9 @@ struct PlayerListItemView: View {
 	}
 }
 
-#if DEBUG
 struct PlayerListItemView_Previews: PreviewProvider {
 	static var previews: some View {
 		let player = Player.dummy()
 		return PlayerListItemView(player: player)
 	}
 }
-#endif
