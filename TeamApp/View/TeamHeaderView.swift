@@ -38,5 +38,6 @@ struct TeamHeaderView_Previews: PreviewProvider {
 			index: 1,
 			players: [player]
 		)
+		.previewLayout(PreviewLayout.sizeThatFits)
 	}
 }

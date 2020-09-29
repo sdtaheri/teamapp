@@ -37,5 +37,6 @@ struct PlayerListItemView_Previews: PreviewProvider {
 	static var previews: some View {
 		let player = Player.dummy()
 		return PlayerListItemView(player: player)
+			.previewLayout(PreviewLayout.sizeThatFits)
 	}
 }

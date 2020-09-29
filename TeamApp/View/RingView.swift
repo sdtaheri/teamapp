@@ -76,11 +76,10 @@ struct RingView: View {
     }
 }
 
-#if DEBUG
 struct RingView_Previews: PreviewProvider {
 	static var previews: some View {
 		RingView(rating: Binding.constant(5))
 			.environment(\.layoutDirection, .leftToRight)
+			.previewLayout(PreviewLayout.sizeThatFits)
 	}
 }
-#endif

@@ -54,5 +54,6 @@ struct PlayerListItemViewSelectable_Previews: PreviewProvider {
 			player: player,
 			selectedItems: selectedBinding
 		)
+		.previewLayout(PreviewLayout.sizeThatFits)
 	}
 }

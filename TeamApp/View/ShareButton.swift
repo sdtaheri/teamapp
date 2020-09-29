@@ -24,5 +24,6 @@ struct ShareButton: View {
 struct ShareButton_Previews: PreviewProvider {
     static var previews: some View {
 		ShareButton(shouldShowShareSheet: Binding.constant(true))
+			.previewLayout(PreviewLayout.sizeThatFits)
     }
 }

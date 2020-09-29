@@ -14,10 +14,8 @@ struct EmptyDetailView: View {
     }
 }
 
-#if DEBUG
 struct EmptyDetailView_Previews: PreviewProvider {
     static var previews: some View {
         EmptyDetailView()
     }
 }
-#endif

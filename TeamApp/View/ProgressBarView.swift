@@ -46,10 +46,10 @@ struct ProgressBarView: View {
 	}
 }
 
-#if DEBUG
 struct ProgressBarView_Previews: PreviewProvider {
 	static var previews: some View {
 		ProgressBarView(height: 30, progress: Binding.constant(0.8))
+			.padding()
+			.previewLayout(PreviewLayout.sizeThatFits)
 	}
 }
-#endif
