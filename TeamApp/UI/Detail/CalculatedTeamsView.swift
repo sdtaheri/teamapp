@@ -35,6 +35,9 @@ struct CalculatedTeamsView: View {
 			VStack(spacing: 0) {
 				if core.teams.isEmpty {
 					Spacer()
+						.onAppear {
+							desiredTeamCount = 2
+						}
 				} else {
 					List {
 						ForEach(core.teams, id: \.self.0) { index, team in
