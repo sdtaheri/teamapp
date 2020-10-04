@@ -13,9 +13,11 @@ struct PlayersListView: View {
 
 	@Environment(\.horizontalSizeClass) private var horizontalSizeClass
 	@EnvironmentObject private var core: TeamAppCore
+
 	@State private var shouldShowCreatePlayerSheet = false
 	@State private var selectedPlayers = Set<Player>()
 	@State private var playerToEdit: Player?
+	@State private var shouldNavigate = false
 
 	var body: some View {
 		Group {
@@ -31,7 +33,7 @@ struct PlayersListView: View {
 			} else {
 				List {
 					Section(
-						header: horizontalSizeClass == .compact ? Text("tap_to_select_players") : nil,
+						header: horizontalSizeClass == .compact ? Text("tap_to_select_players") : Text(""),
 						footer: Text("player_count \(viewModel.allPlayers.count)").font(Font.footnote)
 					) {
 						ForEach(viewModel.allPlayers, id: \.id) { player in
@@ -78,27 +80,40 @@ struct PlayersListView: View {
 				}
 				.listStyle(adaptiveListStyle())
 				.overlay(
-					NavigationLink(
-						destination:
-							CalculatedTeamsView(
-								players: selectedPlayers
-							)
-					) {
-						HStack {
-							Text("lets_teamup")
-								.fontWeight(.medium)
-							Image(systemName: "\(selectedPlayers.count).circle.fill")
+					HStack {
+						Button {
+							shouldNavigate = true
+						} label: {
+							HStack {
+								Text("lets_teamup")
+									.fontWeight(.medium)
+								Image(systemName: "\(selectedPlayers.count).circle.fill")
+							}
+							.font(.system(.headline, design: .rounded))
 						}
-						.font(.system(.headline, design: .rounded))
-					}
-					.modifier(ActionButtonModifier())
-					.animation(.default)
-					.opacity(selectedPlayers.isEmpty ? 0 : 1)
-					.blur(radius: selectedPlayers.isEmpty ? 10 : 0)
-					.padding(.vertical),
+						.modifier(ActionButtonModifier())
+						.animation(.default)
+						.opacity(selectedPlayers.isEmpty ? 0 : 1)
+						.blur(radius: selectedPlayers.isEmpty ? 10 : 0)
+						.padding(.vertical)
+
+						NavigationLink(
+							destination:
+								CalculatedTeamsView(
+									players: selectedPlayers
+								),
+							isActive: $shouldNavigate
+						) {
+							EmptyView()
+						}
+					},
+
 					alignment: .bottomTrailing
 				)
 			}
+		}
+		.onAppear {
+			shouldNavigate = false
 		}
 		.navigationBarTitle(
 			Text("app_name")

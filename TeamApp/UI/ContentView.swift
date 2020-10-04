@@ -10,10 +10,12 @@ import SwiftUI
 
 struct ContentView: View {
 	@Environment(\.database) private var database
+	@Environment(\.horizontalSizeClass) private var horizontalSizeClass
 
 	var body: some View {
 		NavigationView {
 			PlayersListView(viewModel: PlayersListViewModel(database: database))
+				.environment(\.horizontalSizeClass, horizontalSizeClass)
 			EmptyDetailView()
 		}.navigationViewStyle(DoubleColumnNavigationViewStyle())
 	}
