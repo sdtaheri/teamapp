@@ -24,12 +24,20 @@
 		30472E032389887F0032FEC0 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 30472E052389887F0032FEC0 /* Localizable.stringsdict */; };
 		30472E08238998620032FEC0 /* ShareSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30472E07238998620032FEC0 /* ShareSheet.swift */; };
 		3078EF532366F9A400CB94D9 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3078EF522366F9A400CB94D9 /* CloudKit.framework */; };
-		307A6AB823ECB47E0094DFD4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 307A6ABA23ECB47E0094DFD4 /* InfoPlist.strings */; };
 		30811AB3238875D60095B3BA /* PlayerListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30811AB2238875D60095B3BA /* PlayerListItemView.swift */; };
 		30811AC023888CBB0095B3BA /* ButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30811ABF23888CBB0095B3BA /* ButtonStyles.swift */; };
 		30A13BF32383F09F001C43CA /* TeamAppCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A13BF22383F09F001C43CA /* TeamAppCore.swift */; };
 		30A50C212438C73D008EF07F /* PlayerManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A50C1F2438C73D008EF07F /* PlayerManagedObject.swift */; };
 		30A50C262438CBA9008EF07F /* TeamApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 30A50C232438CBA9008EF07F /* TeamApp.xcdatamodeld */; };
+		30A6D1612572F70900208C8D /* TeamApp_MacApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A6D1602572F70900208C8D /* TeamApp_MacApp.swift */; };
+		30A6D1632572F70900208C8D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A6D1622572F70900208C8D /* ContentView.swift */; };
+		30A6D1682572F70A00208C8D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 30A6D1672572F70A00208C8D /* Preview Assets.xcassets */; };
+		30A6D16A2572F70A00208C8D /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A6D1692572F70A00208C8D /* Persistence.swift */; };
+		30A6D16D2572F70A00208C8D /* TeamApp_Mac.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 30A6D16B2572F70A00208C8D /* TeamApp_Mac.xcdatamodeld */; };
+		30A6D17A2572F8F500208C8D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3014EAD7235D4C5E004F428F /* Assets.xcassets */; };
+		30A6D17D2572F8F900208C8D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 30C02E242385EC8D009CC2DF /* Localizable.strings */; };
+		30A6D17E2572F8FD00208C8D /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 30472E052389887F0032FEC0 /* Localizable.stringsdict */; };
+		30A6D1942572F9E600208C8D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 30A6D1922572F9E600208C8D /* InfoPlist.strings */; };
 		30B16F54243A1D2F0063B837 /* PlayersListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B16F53243A1D2F0063B837 /* PlayersListViewModel.swift */; };
 		30B16F56243A22E30063B837 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B16F55243A22E30063B837 /* Model.swift */; };
 		30B16F58243A3A1B0063B837 /* Notification+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B16F57243A3A1B0063B837 /* Notification+Extension.swift */; };
@@ -65,20 +73,28 @@
 		30472E07238998620032FEC0 /* ShareSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSheet.swift; sourceTree = "<group>"; };
 		3078EF502366F99500CB94D9 /* TeamApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TeamApp.entitlements; sourceTree = "<group>"; };
 		3078EF522366F9A400CB94D9 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
-		307A6AB923ECB47E0094DFD4 /* fa */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fa; path = fa.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		307A6ABB23ECB4920094DFD4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		307A6ABC23ECB5150094DFD4 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		307A6ABD23ECB5150094DFD4 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = fr; path = fr.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
-		307A6ABE23ECB5150094DFD4 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		307A6ABF23ECB9B40094DFD4 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		307A6AC023ECB9B40094DFD4 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = es; path = es.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
-		307A6AC123ECB9B40094DFD4 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		30811AB2238875D60095B3BA /* PlayerListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerListItemView.swift; sourceTree = "<group>"; };
 		30811ABF23888CBB0095B3BA /* ButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyles.swift; sourceTree = "<group>"; };
 		30A13BF22383F09F001C43CA /* TeamAppCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamAppCore.swift; sourceTree = "<group>"; };
 		30A50C1F2438C73D008EF07F /* PlayerManagedObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerManagedObject.swift; sourceTree = "<group>"; };
 		30A50C242438CBA9008EF07F /* TeamApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TeamApp.xcdatamodel; sourceTree = "<group>"; };
 		30A50C252438CBA9008EF07F /* v2.rating.20.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = v2.rating.20.xcdatamodel; sourceTree = "<group>"; };
+		30A6D15E2572F70900208C8D /* TeamApp Mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TeamApp Mac.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		30A6D1602572F70900208C8D /* TeamApp_MacApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamApp_MacApp.swift; sourceTree = "<group>"; };
+		30A6D1622572F70900208C8D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		30A6D1672572F70A00208C8D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		30A6D1692572F70A00208C8D /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		30A6D16C2572F70A00208C8D /* TeamApp_Mac.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TeamApp_Mac.xcdatamodel; sourceTree = "<group>"; };
+		30A6D16E2572F70A00208C8D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		30A6D16F2572F70A00208C8D /* TeamApp_Mac.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TeamApp_Mac.entitlements; sourceTree = "<group>"; };
+		30A6D1932572F9E600208C8D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		30A6D1972572F9EC00208C8D /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		30A6D1982572F9EE00208C8D /* fa */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fa; path = fa.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		30A6D1992572F9F000208C8D /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		30B16F53243A1D2F0063B837 /* PlayersListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayersListViewModel.swift; sourceTree = "<group>"; };
 		30B16F55243A22E30063B837 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		30B16F57243A3A1B0063B837 /* Notification+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Extension.swift"; sourceTree = "<group>"; };
@@ -104,13 +120,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		30A6D15B2572F70900208C8D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		3014EAC0235D4C5D004F428F = {
 			isa = PBXGroup;
 			children = (
-				3014EACB235D4C5D004F428F /* TeamApp */,
+				30A6D1792572F8D200208C8D /* Shared */,
+				3014EACB235D4C5D004F428F /* TeamApp iOS */,
+				30A6D15F2572F70900208C8D /* TeamApp Mac */,
 				3014EACA235D4C5D004F428F /* Products */,
 				3078EF512366F9A400CB94D9 /* Frameworks */,
 			);
@@ -120,11 +145,12 @@
 			isa = PBXGroup;
 			children = (
 				3014EAC9235D4C5D004F428F /* TeamApp.app */,
+				30A6D15E2572F70900208C8D /* TeamApp Mac.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		3014EACB235D4C5D004F428F /* TeamApp */ = {
+		3014EACB235D4C5D004F428F /* TeamApp iOS */ = {
 			isa = PBXGroup;
 			children = (
 				30C02E1E2385EBAD009CC2DF /* AppScene */,
@@ -133,7 +159,7 @@
 				30C02E1C2385EB86009CC2DF /* Supporting Files */,
 				30C02E272385ED7F009CC2DF /* UI */,
 			);
-			path = TeamApp;
+			path = "TeamApp iOS";
 			sourceTree = "<group>";
 		};
 		3014EAD9235D4C5E004F428F /* Preview Content */ = {
@@ -191,12 +217,50 @@
 			path = CoreData;
 			sourceTree = "<group>";
 		};
+		30A6D15F2572F70900208C8D /* TeamApp Mac */ = {
+			isa = PBXGroup;
+			children = (
+				30A6D1602572F70900208C8D /* TeamApp_MacApp.swift */,
+				30A6D1622572F70900208C8D /* ContentView.swift */,
+				30A6D1692572F70A00208C8D /* Persistence.swift */,
+				30A6D16E2572F70A00208C8D /* Info.plist */,
+				30A6D16F2572F70A00208C8D /* TeamApp_Mac.entitlements */,
+				30A6D16B2572F70A00208C8D /* TeamApp_Mac.xcdatamodeld */,
+				30A6D1662572F70A00208C8D /* Preview Content */,
+			);
+			path = "TeamApp Mac";
+			sourceTree = "<group>";
+		};
+		30A6D1662572F70A00208C8D /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				30A6D1672572F70A00208C8D /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		30A6D1792572F8D200208C8D /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				30C02E1F2385EC3E009CC2DF /* Resources */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		30A6D1842572F96300208C8D /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				30A6D1922572F9E600208C8D /* InfoPlist.strings */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		30C02E1C2385EB86009CC2DF /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				30A6D1842572F96300208C8D /* Resources */,
 				3078EF502366F99500CB94D9 /* TeamApp.entitlements */,
 				3014EADF235D4C5E004F428F /* Info.plist */,
-				30C02E1F2385EC3E009CC2DF /* Resources */,
 				3014EADC235D4C5E004F428F /* LaunchScreen.storyboard */,
 				30811AB6238880A70095B3BA /* Extensions */,
 			);
@@ -229,7 +293,6 @@
 				3014EAD7235D4C5E004F428F /* Assets.xcassets */,
 				30C02E242385EC8D009CC2DF /* Localizable.strings */,
 				30472E052389887F0032FEC0 /* Localizable.stringsdict */,
-				307A6ABA23ECB47E0094DFD4 /* InfoPlist.strings */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -308,18 +371,38 @@
 			productReference = 3014EAC9235D4C5D004F428F /* TeamApp.app */;
 			productType = "com.apple.product-type.application";
 		};
+		30A6D15D2572F70900208C8D /* TeamApp Mac */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 30A6D1722572F70A00208C8D /* Build configuration list for PBXNativeTarget "TeamApp Mac" */;
+			buildPhases = (
+				30A6D15A2572F70900208C8D /* Sources */,
+				30A6D15B2572F70900208C8D /* Frameworks */,
+				30A6D15C2572F70900208C8D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "TeamApp Mac";
+			productName = "TeamApp Mac";
+			productReference = 30A6D15E2572F70900208C8D /* TeamApp Mac.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		3014EAC1235D4C5D004F428F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1110;
+				LastSwiftUpdateCheck = 1220;
 				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = "Saeed Taheri";
 				TargetAttributes = {
 					3014EAC8235D4C5D004F428F = {
 						CreatedOnToolsVersion = 11.1;
+					};
+					30A6D15D2572F70900208C8D = {
+						CreatedOnToolsVersion = 12.2;
 					};
 				};
 			};
@@ -340,6 +423,7 @@
 			projectRoot = "";
 			targets = (
 				3014EAC8235D4C5D004F428F /* TeamApp */,
+				30A6D15D2572F70900208C8D /* TeamApp Mac */,
 			);
 		};
 /* End PBXProject section */
@@ -350,11 +434,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				3014EADE235D4C5E004F428F /* LaunchScreen.storyboard in Resources */,
-				307A6AB823ECB47E0094DFD4 /* InfoPlist.strings in Resources */,
+				30A6D1942572F9E600208C8D /* InfoPlist.strings in Resources */,
 				30C02E222385EC8D009CC2DF /* Localizable.strings in Resources */,
 				3014EADB235D4C5E004F428F /* Preview Assets.xcassets in Resources */,
 				30472E032389887F0032FEC0 /* Localizable.stringsdict in Resources */,
 				3014EAD8235D4C5E004F428F /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		30A6D15C2572F70900208C8D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				30A6D17A2572F8F500208C8D /* Assets.xcassets in Resources */,
+				30A6D17E2572F8FD00208C8D /* Localizable.stringsdict in Resources */,
+				30A6D17D2572F8F900208C8D /* Localizable.strings in Resources */,
+				30A6D1682572F70A00208C8D /* Preview Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -417,6 +512,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		30A6D15A2572F70900208C8D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				30A6D16D2572F70A00208C8D /* TeamApp_Mac.xcdatamodeld in Sources */,
+				30A6D16A2572F70A00208C8D /* Persistence.swift in Sources */,
+				30A6D1632572F70900208C8D /* ContentView.swift in Sources */,
+				30A6D1612572F70900208C8D /* TeamApp_MacApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
@@ -439,17 +545,16 @@
 			name = Localizable.stringsdict;
 			sourceTree = "<group>";
 		};
-		307A6ABA23ECB47E0094DFD4 /* InfoPlist.strings */ = {
+		30A6D1922572F9E600208C8D /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				307A6AB923ECB47E0094DFD4 /* fa */,
-				307A6ABB23ECB4920094DFD4 /* en */,
-				307A6ABE23ECB5150094DFD4 /* fr */,
-				307A6AC123ECB9B40094DFD4 /* es */,
+				30A6D1932572F9E600208C8D /* en */,
+				30A6D1972572F9EC00208C8D /* fr */,
+				30A6D1982572F9EE00208C8D /* fa */,
+				30A6D1992572F9F000208C8D /* es */,
 			);
 			name = InfoPlist.strings;
-			path = "TeamApp/Supporting Files/Resources";
-			sourceTree = SOURCE_ROOT;
+			sourceTree = "<group>";
 		};
 		30C02E242385EC8D009CC2DF /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
@@ -501,6 +606,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = CS7Q92U9AY;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -518,9 +624,11 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.saeedtaheri.TeamApp;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -565,6 +673,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = CS7Q92U9AY;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -576,8 +685,10 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.saeedtaheri.TeamApp;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -591,22 +702,19 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "TeamApp/Supporting Files/TeamApp.entitlements";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_ENTITLEMENTS = "TeamApp iOS/Supporting Files/TeamApp.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CURRENT_PROJECT_VERSION = $iOS_Build;
-				DEVELOPMENT_ASSET_PATHS = "\"TeamApp/Preview Content\"";
-				DEVELOPMENT_TEAM = CS7Q92U9AY;
+				DEVELOPMENT_ASSET_PATHS = "\"TeamApp iOS/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = "TeamApp/Supporting Files/Info.plist";
-				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 14.2;
+				INFOPLIST_FILE = "TeamApp iOS/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = $iOS_Version;
-				PRODUCT_BUNDLE_IDENTIFIER = com.saeedtaheri.TeamApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -617,25 +725,66 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "TeamApp/Supporting Files/TeamApp.entitlements";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_ENTITLEMENTS = "TeamApp iOS/Supporting Files/TeamApp.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CURRENT_PROJECT_VERSION = $iOS_Build;
-				DEVELOPMENT_ASSET_PATHS = "\"TeamApp/Preview Content\"";
-				DEVELOPMENT_TEAM = CS7Q92U9AY;
+				DEVELOPMENT_ASSET_PATHS = "\"TeamApp iOS/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = "TeamApp/Supporting Files/Info.plist";
-				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 14.2;
+				INFOPLIST_FILE = "TeamApp iOS/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = $iOS_Version;
-				PRODUCT_BUNDLE_IDENTIFIER = com.saeedtaheri.TeamApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		30A6D1702572F70A00208C8D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "TeamApp Mac/TeamApp_Mac.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_ASSET_PATHS = "\"TeamApp Mac/Preview Content\"";
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "TeamApp Mac/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		30A6D1712572F70A00208C8D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "TeamApp Mac/TeamApp_Mac.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_ASSET_PATHS = "\"TeamApp Mac/Preview Content\"";
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "TeamApp Mac/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -660,6 +809,15 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		30A6D1722572F70A00208C8D /* Build configuration list for PBXNativeTarget "TeamApp Mac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				30A6D1702572F70A00208C8D /* Debug */,
+				30A6D1712572F70A00208C8D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
@@ -671,6 +829,16 @@
 			);
 			currentVersion = 30A50C252438CBA9008EF07F /* v2.rating.20.xcdatamodel */;
 			path = TeamApp.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		30A6D16B2572F70A00208C8D /* TeamApp_Mac.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				30A6D16C2572F70A00208C8D /* TeamApp_Mac.xcdatamodel */,
+			);
+			currentVersion = 30A6D16C2572F70A00208C8D /* TeamApp_Mac.xcdatamodel */;
+			path = TeamApp_Mac.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
